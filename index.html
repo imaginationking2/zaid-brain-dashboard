@@ -722,8 +722,10 @@
 
   async function fetchSnapshot() {
     const url = DASHBOARD_GIST_RAW + "?t=" + Date.now();
+    console.log("Fetching:", url);
     const r = await fetch(url, { cache: "no-store" });
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    console.log("Response status:", r.status);
+    if (!r.ok) throw new Error(`HTTP ${r.status} from ${url}`);
     return r.json();
   }
 
@@ -737,17 +739,19 @@
       snap = await fetchSnapshot();
       localStorage.setItem(CACHE_KEY, JSON.stringify(snap));
     } catch (e) {
+      console.error("Dashboard fetch error:", e);
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         snap = JSON.parse(cached); usedCache = true;
       } else {
         errBox.hidden = false;
-        errBox.textContent = "Could not fetch dashboard data: " + e.message;
+        errBox.style.display = "block";
+        errBox.textContent = "Fetch error: " + e.message + " — URL: " + DASHBOARD_GIST_RAW;
+        loading.style.display = "none";
         loading.hidden = true;
         return;
       }
-    }
-    loading.hidden = true;
+    }    loading.hidden = true;
     renderOverview(snap);
     renderInventory(snap);
     renderOrders(snap);
