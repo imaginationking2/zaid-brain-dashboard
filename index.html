@@ -274,6 +274,7 @@
   <button data-tab="orders">Orders</button>
   <button data-tab="businesses">Businesses</button>
   <button data-tab="notes">Notes</button>
+  <button data-tab="uae">UAE Market</button>
 </nav>
 
 <main>
@@ -332,6 +333,11 @@
     </form>
     <h3 class="section-title">Recent feedback (last 10)</h3>
     <div id="recent-feedback"></div>
+  </section>
+
+  <section id="uae" class="panel">
+    <h2>UAE Market</h2>
+    <div id="uae-content" class="muted">Loading market data...</div>
   </section>
 </main>
 
@@ -765,6 +771,113 @@
   document.getElementById("refresh").addEventListener("click", bootstrap);
 
   if (ensureAuth()) bootstrap();
+
+  /* ────────────────────────── UAE Market tab ────────────────────────── */
+  const UAE_GIST_URL = 'https://gist.githubusercontent.com/imaginationking2/6864f9c206558d36b9777b00f3758087/raw/uae_history.json';
+
+  function _clsDelta(cur, prev) {
+    if (cur == null || prev == null || prev === 0) return '—';
+    const pct = ((cur - prev) / prev * 100);
+    const sign = pct > 0 ? '+' : '';
+    const arrow = pct > 0.5 ? '▲' : pct < -0.5 ? '▼' : '·';
+    return arrow + ' ' + sign + pct.toFixed(2) + '%';
+  }
+
+  function _staleLabel(c) {
+    if (!c) return 'no data';
+    if (c.active) return 'active · ' + (c.stale_days || 0) + 'd';
+    return 'stale ' + (c.stale_days || 0) + 'd · excluded';
+  }
+
+  async function renderUae() {
+    const target = document.getElementById('uae-content');
+    if (!target) return;
+    try {
+      const r = await fetch(UAE_GIST_URL + '?t=' + Date.now());
+      if (!r.ok) throw new Error('Gist HTTP ' + r.status);
+      const data = await r.json();
+      const s = data.latest_stress || {};
+      const c = s.components || {};
+      const az = s.al_zorah_position || {};
+      const dq = s.data_quality || {};
+
+      const lux = (data.luxury_drops_series || []).slice(-1)[0] || {};
+      const bay = (data.bayut_series || []).slice(-1)[0] || {};
+      const ajm = (data.ajman_property_series || []).slice(-1)[0] || {};
+      const cls = (data.dubizzle_series || []).slice(-1)[0] || {};
+      const clsPrev = (data.dubizzle_series || []).slice(-2, -1)[0] || {};
+
+      const stressHist = (data.stress_series || []).slice(-7).reverse();
+
+      const d9 = bay.district9_listings;
+      const d9Delta = (d9 != null) ? (d9 - 31) : null;
+
+      const stressCards = [
+        card('Stress Index', (s.total != null ? s.total : '—') + (s.max_available ? '' : ' / 100'), s.band || '—'),
+        card('Raw / Available', (s.raw_score != null ? s.raw_score : '—') + ' / ' + (s.max_available || 100), (dq.active_sources || 0) + ' of 4 sources active'),
+        card('Al Zorah Position', (az.score != null ? az.score : '—') + ' / 100', (az.score != null && az.score < 50 ? 'favourable for selling' : 'pressure against seller')),
+        card('Last update', ago(data.last_updated), (dq.fresh_today || 0) + ' fresh today')
+      ].join('');
+
+      const subCards = [
+        card('A — Used cars', (c.dubizzle && c.dubizzle.score != null ? c.dubizzle.score : 0) + ' / 25',
+          c.dubizzle && c.dubizzle.active ? (num(c.dubizzle.value) + ' cars') : _staleLabel(c.dubizzle)),
+        card('B — Luxury drops', (c.luxury && c.luxury.score != null ? c.luxury.score : 0) + ' / 25',
+          num(c.luxury && c.luxury.value) + ' drops · log scale'),
+        card('C — Bayut D9', (c.bayut && c.bayut.score != null ? c.bayut.score : 0) + ' / 25',
+          (c.bayut && c.bayut.value != null ? c.bayut.value : '—') + ' listings · baseline 31'),
+        card('D — Ajman ratio', (c.ajman_ratio && c.ajman_ratio.score != null ? c.ajman_ratio.score : 0) + ' / 25',
+          'ratio ' + (c.ajman_ratio && c.ajman_ratio.value != null ? c.ajman_ratio.value.toFixed(3) : '—'))
+      ].join('');
+
+      const signalCards = [
+        card('D9 listings', d9 != null ? d9 : '—', d9Delta != null ? ((d9Delta >= 0 ? '+' : '') + d9Delta + ' vs baseline') : ''),
+        card('D9 avg price', aed(bay.d9_avg_price), 'benchmark ' + aed(bay.benchmark_price_aed)),
+        card('Luxury drops', num(lux.drop_count), 'max single drop ' + (lux.max_drop_pct != null ? '-' + lux.max_drop_pct + '%' : '—')),
+        card('Ajman ratio', (ajm.ratio != null ? ajm.ratio.toFixed(3) : '—'), num(ajm.ajman_for_sale) + ' sale / ' + num(ajm.ajman_for_rent) + ' rent')
+      ].join('');
+
+      const clsRows = [
+        ['Furniture, Home & Garden', num(cls.furniture_home),  _clsDelta(cls.furniture_home,  clsPrev.furniture_home)],
+        ['Home Appliances',          num(cls.home_appliances), _clsDelta(cls.home_appliances, clsPrev.home_appliances)],
+        ['Sports Equipment',         num(cls.sports),          _clsDelta(cls.sports,          clsPrev.sports)],
+        ['Mobile Phones & Tablets',  num(cls.mobiles_tablets), _clsDelta(cls.mobiles_tablets, clsPrev.mobiles_tablets)],
+        ['Electronics',              num(cls.electronics),     _clsDelta(cls.electronics,     clsPrev.electronics)],
+        ['Computers & Networking',   num(cls.computers),       _clsDelta(cls.computers,       clsPrev.computers)]
+      ];
+
+      const stressRows = stressHist.map(function(e) {
+        const max = e.max_available || 100;
+        const activeCount = e.data_quality ? e.data_quality.active_sources : (e.carry_forward ? (4 - Object.values(e.carry_forward).filter(function(v){return v;}).length) : null);
+        return [e.date, (e.total != null ? e.total : '—') + ' / ' + max, e.band || '—', activeCount != null ? (activeCount + '/4') : '—'];
+      });
+
+      target.innerHTML =
+        '<h3>Headline</h3>' +
+        '<div class="grid">' + stressCards + '</div>' +
+        '<h3>Component breakdown</h3>' +
+        '<div class="grid">' + subCards + '</div>' +
+        '<h3>Classifieds (manual capture)</h3>' +
+        table(['Category', 'Current', 'vs Previous'], clsRows) +
+        '<div class="muted">Last captured: ' + (cls.date || '—') + (cls.source === 'manual_browser_capture' ? ' · manual' : '') + '</div>' +
+        '<h3>Working signals</h3>' +
+        '<div class="grid">' + signalCards + '</div>' +
+        '<h3>Recent stress history</h3>' +
+        table(['Date', 'Total', 'Band', 'Sources'], stressRows) +
+        '<div class="muted" style="margin-top:16px">' +
+          'Schema: ' + (s.schema_version || 'v1') + ' · ' +
+          '<a href="https://imaginationking2.github.io/uae-monitor/" target="_blank" rel="noopener">Open full UAE Monitor dashboard →</a>' +
+        '</div>';
+    } catch (e) {
+      target.innerHTML = '<div class="error-box">UAE Monitor load failed: ' + (e.message || e) + '</div>';
+    }
+  }
+
+  // Render on load + when UAE tab becomes active
+  renderUae();
+  document.querySelectorAll('button[data-tab="uae"]').forEach(function(b) {
+    b.addEventListener('click', function() { renderUae(); });
+  });
 </script>
 </body>
 </html>
