@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<title>Zaid Brain — Dashboard</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --border: #e3e6eb;
+    --text: #1a1d22;
+    --text-muted: #5a6470;
+    --accent: #2d6cdf;
+    --critical: #d93025;
+    --warning: #e08e0b;
+    --ok: #2c8c4a;
+    --info: #2d6cdf;
+    --tab-active-bg: #2d6cdf;
+    --tab-active-fg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --surface: #181b22;
+      --border: #2a2f3a;
+      --text: #e6e9ee;
+      --text-muted: #98a2b3;
+      --accent: #6ea1ff;
+      --critical: #ff6b5e;
+      --warning: #f5b13d;
+      --ok: #4fc977;
+      --info: #6ea1ff;
+      --tab-active-bg: #6ea1ff;
+      --tab-active-fg: #0f1115;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; font-weight: 600; }
+  .meta {
+    color: var(--text-muted); font-size: 13px;
+  }
+  .meta button {
+    margin-left: 12px;
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--border); padding: 4px 10px;
+    border-radius: 4px; cursor: pointer; font-size: 13px;
+  }
+  .meta button:hover { background: var(--border); }
+  nav.tabs {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 8px;
+    display: flex; overflow-x: auto;
+  }
+  nav.tabs button {
+    background: transparent; border: 0;
+    color: var(--text-muted);
+    padding: 12px 16px;
+    cursor: pointer; font-size: 14px; font-weight: 500;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+  }
+  nav.tabs button:hover { color: var(--text); }
+  nav.tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  main { padding: 20px; max-width: 1200px; margin: 0 auto; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .card h3 {
+    margin: 0 0 6px 0; font-size: 13px; font-weight: 500;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .card .val {
+    font-size: 26px; font-weight: 600; line-height: 1.2;
+  }
+  .card .sub { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
+  .alert {
+    background: var(--surface);
+    border-left: 4px solid var(--info);
+    border: 1px solid var(--border);
+    border-left-width: 4px;
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .alert.critical { border-left-color: var(--critical); }
+  .alert.warning  { border-left-color: var(--warning); }
+  .alert.info     { border-left-color: var(--info); }
+  .alert .level {
+    text-transform: uppercase; font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 3px; flex-shrink: 0;
+  }
+  .alert.critical .level { background: var(--critical); color: #fff; }
+  .alert.warning  .level { background: var(--warning); color: #1a1d22; }
+  .alert.info     .level { background: var(--info); color: #fff; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  th {
+    background: var(--bg); color: var(--text-muted);
+    font-weight: 500; text-transform: uppercase; font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  tr:last-child td { border-bottom: 0; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .pill {
+    display: inline-block; padding: 2px 8px; border-radius: 3px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+  }
+  .pill.critical { background: var(--critical); color: #fff; }
+  .pill.ok       { background: var(--ok); color: #fff; }
+  .pill.warning  { background: var(--warning); color: #1a1d22; }
+  .pill.info     { background: var(--border); color: var(--text); }
+  .section-title {
+    margin: 20px 0 12px 0;
+    font-size: 15px; font-weight: 600;
+  }
+  .panel {
+    display: none;
+  }
+  .panel.active { display: block; }
+  .spinner {
+    border: 3px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 50%;
+    width: 32px; height: 32px;
+    animation: spin 0.8s linear infinite;
+    margin: 60px auto;
+  }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+  .error-box {
+    background: var(--surface);
+    border: 1px solid var(--critical);
+    color: var(--critical);
+    padding: 16px; border-radius: 6px;
+    margin: 20px 0;
+  }
+  /* Notes / feedback form */
+  form#feedback-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 700px;
+  }
+  form#feedback-form label {
+    display: block; margin: 10px 0 4px 0; font-size: 13px;
+    color: var(--text-muted);
+  }
+  form#feedback-form textarea, form#feedback-form select {
+    width: 100%; padding: 8px 10px;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px;
+    font: inherit;
+  }
+  form#feedback-form textarea { min-height: 100px; resize: vertical; }
+  form#feedback-form button {
+    margin-top: 12px;
+    background: var(--accent); color: #fff;
+    border: 0; padding: 9px 18px; border-radius: 4px;
+    cursor: pointer; font: inherit; font-weight: 500;
+  }
+  form#feedback-form button:hover { opacity: 0.92; }
+  form#feedback-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+  .feedback-status { margin-top: 12px; font-size: 13px; }
+  .feedback-status.ok   { color: var(--ok); }
+  .feedback-status.err  { color: var(--critical); }
+  .help {
+    color: var(--text-muted); font-size: 12px; margin-top: 8px;
+    line-height: 1.5;
+  }
+  /* Password gate */
+  #gate {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+  }
+  #gate .gate-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 24px; max-width: 320px; width: 90%;
+  }
+  #gate h2 { margin: 0 0 16px 0; font-size: 18px; }
+  #gate input {
+    width: 100%; padding: 10px 12px;
+    background: var(--bg); color: var(--text);
+    border: 1px solid var(--border); border-radius: 4px;
+    font: inherit;
+  }
+  #gate button {
+    width: 100%; margin-top: 12px;
+    background: var(--accent); color: #fff;
+    border: 0; padding: 10px; border-radius: 4px;
+    cursor: pointer; font: inherit; font-weight: 500;
+  }
+  #gate .err { color: var(--critical); font-size: 13px; margin-top: 8px; }
+  /* Mobile */
+  @media (max-width: 600px) {
+    main { padding: 12px; }
+    nav.tabs button { padding: 10px 12px; font-size: 13px; }
+    .card .val { font-size: 22px; }
+    th, td { padding: 8px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Password gate -->
+<div id="gate" hidden>
+  <div class="gate-card">
+    <h2>Zaid Brain Dashboard</h2>
+    <form id="gate-form">
+      <input id="gate-pw" type="password" placeholder="Password" autofocus />
+      <button type="submit">Unlock</button>
+      <div id="gate-err" class="err" hidden>Wrong password</div>
+    </form>
+  </div>
+</div>
+
+<header>
+  <h1>Zaid Brain</h1>
+  <div class="meta">
+    <span id="updated">…</span>
+    <button id="refresh" type="button">Refresh</button>
+    <button id="lock" type="button">Lock</button>
+  </div>
+</header>
+
+<nav class="tabs">
+  <button data-tab="overview"   class="active">Overview</button>
+  <button data-tab="inventory">Inventory</button>
+  <button data-tab="orders">Orders</button>
+  <button data-tab="businesses">Businesses</button>
+  <button data-tab="notes">Notes</button>
+</nav>
+
+<main>
+  <div id="loading" class="spinner"></div>
+  <div id="error" class="error-box" hidden></div>
+
+  <section id="overview" class="panel">
+    <div class="grid" id="overview-cards"></div>
+    <h3 class="section-title">Active Alerts</h3>
+    <div id="overview-alerts"></div>
+    <h3 class="section-title">Cache Status</h3>
+    <div id="cache-status"></div>
+  </section>
+
+  <section id="inventory" class="panel">
+    <div class="grid" id="inventory-cards"></div>
+    <h3 class="section-title">Fast Movers (top 5 by 90d units)</h3>
+    <div id="fast-table"></div>
+    <h3 class="section-title">Slow Movers / Overstocked</h3>
+    <div id="slow-table"></div>
+    <h3 class="section-title">Velocity Anomalies</h3>
+    <div id="anom-table"></div>
+  </section>
+
+  <section id="orders" class="panel">
+    <div class="grid" id="orders-cards"></div>
+    <h3 class="section-title">Pending Orders</h3>
+    <div id="pending-orders-table"></div>
+  </section>
+
+  <section id="businesses" class="panel">
+    <div class="grid" id="business-cards"></div>
+  </section>
+
+  <section id="notes" class="panel">
+    <h3 class="section-title">Submit Feedback</h3>
+    <form id="feedback-form">
+      <label for="fb-type">Type</label>
+      <select id="fb-type">
+        <option value="Decision">Decision made</option>
+        <option value="Override">Override Brain</option>
+        <option value="Context">New context</option>
+        <option value="Task">Task for Brain</option>
+        <option value="Question">Question</option>
+      </select>
+      <label for="fb-text">Note</label>
+      <textarea id="fb-text" placeholder="What do you want Brain to know or do?"></textarea>
+      <button type="submit" id="fb-submit">Submit</button>
+      <div id="fb-status" class="feedback-status"></div>
+      <div class="help">
+        Notes land in the feedback gist and are picked up by Brain's 60-minute
+        ingestion loop. First submission asks for a fine-grained GitHub token
+        (scoped only to the feedback gist) which is stored in this browser's
+        localStorage — never sent anywhere except api.github.com.
+      </div>
+    </form>
+    <h3 class="section-title">Recent feedback (last 10)</h3>
+    <div id="recent-feedback"></div>
+  </section>
+</main>
+
+<script>
+  /* ───────────────────── config ───────────────────── */
+  const DASHBOARD_GIST_RAW =
+    "https://gist.githubusercontent.com/imaginationking2/" +
+    "477a5c0315dfbbcfaf6fd10202bc8dfb/raw/brain-dashboard-data.json";
+  const FEEDBACK_GIST_ID = "5d997f6baa0820d1b97a600b73a5a9a7";
+  const FEEDBACK_GIST_RAW =
+    "https://gist.githubusercontent.com/imaginationking2/" +
+    "5d997f6baa0820d1b97a600b73a5a9a7/raw/brain-dashboard-feedback.json";
+  const PASSWORD = "mehiar2026";
+  const TOKEN_KEY = "brain_dashboard_gh_token";
+
+  /* ───────────────────── password gate ───────────────────── */
+  const gate     = document.getElementById("gate");
+  const gateForm = document.getElementById("gate-form");
+  const gatePw   = document.getElementById("gate-pw");
+  const gateErr  = document.getElementById("gate-err");
+
+  function ensureAuth() {
+    if (localStorage.getItem("brain_dashboard_auth") === "1") return true;
+    gate.hidden = false;
+    return false;
+  }
+  gateForm.addEventListener("submit", e => {
+    e.preventDefault();
+    if (gatePw.value === PASSWORD) {
+      localStorage.setItem("brain_dashboard_auth", "1");
+      gate.hidden = true;
+      bootstrap();
+    } else {
+      gateErr.hidden = false;
+    }
+  });
+  document.getElementById("lock").addEventListener("click", () => {
+    localStorage.removeItem("brain_dashboard_auth");
+    location.reload();
+  });
+
+  /* ───────────────────── tab switching ───────────────────── */
+  document.querySelectorAll("nav.tabs button").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll("nav.tabs button").forEach(x =>
+        x.classList.toggle("active", x === b));
+      document.querySelectorAll(".panel").forEach(p =>
+        p.classList.toggle("active", p.id === b.dataset.tab));
+    });
+  });
+  // open first tab
+  document.getElementById("overview").classList.add("active");
+
+  /* ───────────────────── render helpers ───────────────────── */
+  function aed(v) {
+    if (v === null || v === undefined) return "—";
+    return "AED " + Number(v).toLocaleString("en-US",
+      { maximumFractionDigits: 0 });
+  }
+  function num(v) {
+    if (v === null || v === undefined) return "—";
+    return Number(v).toLocaleString("en-US");
+  }
+  function card(title, val, sub) {
+    return `<div class="card">
+      <h3>${title}</h3>
+      <div class="val">${val}</div>
+      ${sub ? `<div class="sub">${sub}</div>` : ""}
+    </div>`;
+  }
+  function table(headers, rows) {
+    if (!rows || rows.length === 0) {
+      return `<div class="card" style="text-align:center; color:var(--text-muted);">No data</div>`;
+    }
+    const th = headers.map(h => `<th${h.cls ? ` class="${h.cls}"`:""}>${h.label}</th>`).join("");
+    const tr = rows.map(r => `<tr>${r.cells.map((c,i)=>
+      `<td${headers[i] && headers[i].cls ? ` class="${headers[i].cls}"`:""}>${c}</td>`
+    ).join("")}</tr>`).join("");
+    return `<table><thead><tr>${th}</tr></thead><tbody>${tr}</tbody></table>`;
+  }
+  function escape(s) {
+    return String(s ?? "").replace(/[<>&"]/g, c =>
+      ({"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;"}[c]));
+  }
+  function ago(iso) {
+    if (!iso) return "—";
+    const t = new Date(iso).getTime();
+    if (isNaN(t)) return iso;
+    const mins = Math.round((Date.now() - t) / 60000);
+    if (mins < 1)   return "just now";
+    if (mins < 60)  return `${mins} min ago`;
+    if (mins < 1440) return `${Math.round(mins/60)}h ago`;
+    return `${Math.round(mins/1440)}d ago`;
+  }
+
+  /* ───────────────────── render: Overview ───────────────────── */
+  function renderOverview(d) {
+    const u = d.mehiar_uae || {};
+    const o = d.orders     || {};
+    const c = d.cheques    || {};
+    const cards = [
+      card("Mehiar UAE Cash", aed(u.cash_aed)),
+      card("Receivables",     aed(u.receivables_aed)),
+      card("Monthly Net Burn", aed(u.monthly_burn_aed),
+           u.monthly_burn_aed < 0 ? "Net income this month" : "Outflow > inflow"),
+      card("Pending Orders",  num(o.pending_count),
+           `${num(o.total_count)} total`),
+      card("Pending Cheques", num(c.pending_count),
+           c.pending_total_aed ? `${aed(c.pending_total_aed)} total` : ""),
+      card("Cheques Overdue >90d", num(c.overdue_90d_count)),
+    ];
+    document.getElementById("overview-cards").innerHTML = cards.join("");
+
+    const alerts = (d.alerts || []).map(a => `
+      <div class="alert ${escape(a.level)}">
+        <div class="level">${escape(a.level)}</div>
+        <div><strong>${escape(a.entity)}</strong> — ${escape(a.message)}</div>
+      </div>`).join("");
+    document.getElementById("overview-alerts").innerHTML =
+      alerts || `<div class="card" style="color:var(--text-muted);">No active alerts</div>`;
+
+    const cs = d.cache_status || {};
+    const csRows = Object.entries(cs).map(([k, v]) => ({
+      cells: [
+        escape(k),
+        `<span class="pill ${v.startsWith("ok") ? "ok" : v.startsWith("skipped") ? "warning" : "critical"}">${escape(v)}</span>`,
+      ],
+    }));
+    document.getElementById("cache-status").innerHTML =
+      table([{label:"Source"},{label:"Status"}], csRows);
+  }
+
+  /* ───────────────────── render: Inventory ───────────────────── */
+  function renderInventory(d) {
+    const inv = d.inventory || {};
+    const cards = [
+      card("Total SKUs",       num(inv.total_skus)),
+      card("Zero Stock",       num(inv.zero_stock_count)),
+      card("Low Stock (≤5)",   num(inv.low_stock_count)),
+      card("Total Cost (AED)", aed(inv.total_cost_aed)),
+    ];
+    document.getElementById("inventory-cards").innerHTML = cards.join("");
+
+    const fastRows = (inv.fast_movers || []).map(r => ({
+      cells: [
+        escape(r.sku || ""),
+        escape((r.name || "").slice(0, 60)),
+        num(r.units_90d),
+        num(r.stock),
+        r.days_cover != null ? Math.round(r.days_cover) : "—",
+        `<span class="pill ${r.signal === "CRITICAL" ? "critical" : "ok"}">${escape(r.signal || "OK")}</span>`,
+      ],
+    }));
+    document.getElementById("fast-table").innerHTML = table(
+      [{label:"SKU"},{label:"Name"},{label:"90d",cls:"num"},
+       {label:"Stock",cls:"num"},{label:"Days cover",cls:"num"},{label:"Signal"}],
+      fastRows);
+
+    const slowRows = (inv.slow_movers || []).map(r => ({
+      cells: [
+        escape(r.sku || ""),
+        escape((r.name || "").slice(0, 60)),
+        r.capital_aed != null ? aed(r.capital_aed) : "—",
+        num(r.stock),
+        num(r.units_90d),
+        `<span class="pill warning">${escape(r.action || "WATCH")}</span>`,
+      ],
+    }));
+    document.getElementById("slow-table").innerHTML = table(
+      [{label:"SKU"},{label:"Name"},{label:"Capital",cls:"num"},
+       {label:"Stock",cls:"num"},{label:"90d",cls:"num"},{label:"Action"}],
+      slowRows);
+
+    const anom = (inv.accelerating || []).map(r => ({
+      cells: [
+        `<span class="pill ok">ACCEL</span> ${escape(r.sku)}`,
+        escape((r.name || "").slice(0, 50)),
+        num(r.units_30d), num(r.units_90d), num(r.stock),
+      ],
+    })).concat((inv.decelerating || []).map(r => ({
+      cells: [
+        `<span class="pill warning">DECEL</span> ${escape(r.sku)}`,
+        escape((r.name || "").slice(0, 50)),
+        num(r.units_30d), num(r.units_90d), num(r.stock),
+      ],
+    })));
+    document.getElementById("anom-table").innerHTML = table(
+      [{label:"SKU"},{label:"Name"},
+       {label:"30d",cls:"num"},{label:"90d",cls:"num"},{label:"Stock",cls:"num"}],
+      anom);
+  }
+
+  /* ───────────────────── render: Orders ───────────────────── */
+  function renderOrders(d) {
+    const o = d.orders || {};
+    const by = o.by_channel || {};
+    const cards = [
+      card("Pending",  num(o.pending_count)),
+      card("Total in DB", num(o.total_count)),
+      card("Amazon", num(by.AMAZON || 0)),
+      card("Microless", num(by.MICROLESS || 0)),
+      card("Direct", num(by.DIRECT || 0)),
+    ];
+    document.getElementById("orders-cards").innerHTML = cards.join("");
+
+    const rows = (o.pending_list || []).map(r => ({
+      cells: [
+        escape(r.order_id || ""),
+        `<span class="pill info">${escape(r.channel || "")}</span>`,
+        escape(r.order_date || ""),
+        escape((r.customer || "").slice(0, 30)),
+        aed(r.amount_aed),
+        r.confidence_flag
+          ? `<span class="pill warning">${escape(r.confidence_flag)}</span>`
+          : "",
+      ],
+    }));
+    document.getElementById("pending-orders-table").innerHTML = table(
+      [{label:"Order ID"},{label:"Channel"},{label:"Date"},
+       {label:"Customer"},{label:"Amount",cls:"num"},{label:"Flag"}],
+      rows);
+  }
+
+  /* ───────────────────── render: Businesses ───────────────────── */
+  function renderBusinesses(d) {
+    const b = d.businesses || {};
+    const html = Object.entries(b).map(([key, v]) => {
+      const fields = Object.entries(v)
+        .filter(([k]) => k !== "source")
+        .map(([k, val]) => `<div class="sub">${escape(k)}: <strong>${
+          typeof val === "number" && k.includes("aed")
+            ? aed(val)
+            : escape(val)
+        }</strong></div>`)
+        .join("");
+      const stale = v.source === "manual_constant"
+        ? `<div class="sub" style="margin-top:8px;"><span class="pill warning">vault-constant</span></div>`
+        : "";
+      return `<div class="card">
+        <h3>${escape(key.replace(/_/g, " "))}</h3>
+        ${fields}
+        ${stale}
+      </div>`;
+    }).join("");
+    document.getElementById("business-cards").innerHTML = html;
+  }
+
+  /* ───────────────────── render: Notes / feedback ───────────────────── */
+  async function renderRecentFeedback() {
+    try {
+      const r = await fetch(FEEDBACK_GIST_RAW + "?t=" + Date.now());
+      if (!r.ok) {
+        document.getElementById("recent-feedback").innerHTML =
+          `<div class="card" style="color:var(--text-muted);">Could not fetch feedback gist (HTTP ${r.status})</div>`;
+        return;
+      }
+      const txt = await r.text();
+      let parsed = [];
+      try {
+        const j = JSON.parse(txt);
+        parsed = Array.isArray(j) ? j : (j.notes || []);
+      } catch (e) { /* empty or invalid */ }
+      const rows = parsed.slice().reverse().slice(0, 10).map(n => ({
+        cells: [
+          escape(n.timestamp || "").slice(0, 19).replace("T", " "),
+          escape(n.type || ""),
+          escape((n.text || "").slice(0, 80)),
+          n.processed
+            ? `<span class="pill ok">processed</span>`
+            : `<span class="pill warning">pending</span>`,
+        ],
+      }));
+      document.getElementById("recent-feedback").innerHTML = table(
+        [{label:"Submitted"},{label:"Type"},{label:"Text"},{label:"Status"}],
+        rows);
+    } catch (e) {
+      document.getElementById("recent-feedback").innerHTML =
+        `<div class="card" style="color:var(--critical);">Error: ${escape(e.message)}</div>`;
+    }
+  }
+
+  /* ───────────────────── feedback submission ───────────────────── */
+  async function submitFeedback() {
+    const statusEl = document.getElementById("fb-status");
+    const btn      = document.getElementById("fb-submit");
+    const text     = document.getElementById("fb-text").value.trim();
+    const type     = document.getElementById("fb-type").value;
+    if (!text) {
+      statusEl.className = "feedback-status err";
+      statusEl.textContent = "Please write something first.";
+      return;
+    }
+    let token = localStorage.getItem(TOKEN_KEY);
+    if (!token) {
+      token = prompt(
+        "First submission — paste a GitHub fine-grained personal access " +
+        "token with `gist:write` scope (only this gist). It will be stored " +
+        "in this browser only.");
+      if (!token) return;
+      localStorage.setItem(TOKEN_KEY, token.trim());
+      token = token.trim();
+    }
+
+    btn.disabled = true;
+    statusEl.className = "feedback-status";
+    statusEl.textContent = "Submitting…";
+
+    try {
+      // 1) GET current feedback content
+      const gr = await fetch(
+        `https://api.github.com/gists/${FEEDBACK_GIST_ID}`,
+        { headers: { "Authorization": `token ${token}`,
+                     "Accept": "application/vnd.github+json" } });
+      if (!gr.ok) {
+        if (gr.status === 401) {
+          localStorage.removeItem(TOKEN_KEY);
+          throw new Error("Token rejected (401). Cleared from localStorage; resubmit.");
+        }
+        throw new Error(`GitHub GET ${gr.status}`);
+      }
+      const gj = await gr.json();
+      const fileObj = (gj.files || {})["brain-dashboard-feedback.json"] || {};
+      const oldContent = fileObj.content || "";
+      let arr = [];
+      let shape = "object_with_notes";
+      if (oldContent.trim()) {
+        try {
+          const parsed = JSON.parse(oldContent);
+          if (Array.isArray(parsed)) { arr = parsed; shape = "bare_list"; }
+          else if (parsed && typeof parsed === "object") {
+            arr = parsed.notes || [];
+          }
+        } catch (e) {
+          throw new Error("Existing feedback JSON is invalid — aborting");
+        }
+      }
+
+      // 2) Append new note
+      const note = {
+        id: arr.length + 1,
+        timestamp: new Date().toISOString(),
+        type: type,
+        text: text,
+        processed: false,
+      };
+      arr.push(note);
+      const newContent = JSON.stringify(
+        shape === "bare_list"
+          ? arr
+          : { notes: arr, last_updated: new Date().toISOString() },
+        null, 2);
+
+      // 3) PATCH
+      const pr = await fetch(
+        `https://api.github.com/gists/${FEEDBACK_GIST_ID}`,
+        {
+          method: "PATCH",
+          headers: { "Authorization": `token ${token}`,
+                     "Accept": "application/vnd.github+json",
+                     "Content-Type": "application/json" },
+          body: JSON.stringify({
+            files: { "brain-dashboard-feedback.json": { content: newContent } }
+          }),
+        });
+      if (!pr.ok) {
+        const errText = await pr.text();
+        throw new Error(`PATCH ${pr.status}: ${errText.slice(0, 120)}`);
+      }
+
+      statusEl.className = "feedback-status ok";
+      statusEl.textContent = `✓ Note #${note.id} submitted. Brain will pick it up within 60 minutes.`;
+      document.getElementById("fb-text").value = "";
+      renderRecentFeedback();
+    } catch (e) {
+      statusEl.className = "feedback-status err";
+      statusEl.textContent = "Error: " + e.message;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  document.getElementById("feedback-form").addEventListener("submit", e => {
+    e.preventDefault();
+    submitFeedback();
+  });
+
+  /* ───────────────────── bootstrap: fetch + render ───────────────────── */
+  const CACHE_KEY = "brain_dashboard_cache_v1";
+
+  async function fetchSnapshot() {
+    const url = DASHBOARD_GIST_RAW + "?t=" + Date.now();
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }
+
+  async function bootstrap() {
+    const loading = document.getElementById("loading");
+    const errBox  = document.getElementById("error");
+    loading.hidden = false; errBox.hidden = true;
+
+    let snap = null; let usedCache = false;
+    try {
+      snap = await fetchSnapshot();
+      localStorage.setItem(CACHE_KEY, JSON.stringify(snap));
+    } catch (e) {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        snap = JSON.parse(cached); usedCache = true;
+      } else {
+        errBox.hidden = false;
+        errBox.textContent = "Could not fetch dashboard data: " + e.message;
+        loading.hidden = true;
+        return;
+      }
+    }
+    loading.hidden = true;
+    renderOverview(snap);
+    renderInventory(snap);
+    renderOrders(snap);
+    renderBusinesses(snap);
+    renderRecentFeedback();
+    document.getElementById("updated").textContent =
+      (usedCache ? "Cached • " : "") +
+      "Updated " + ago(snap.generated_at);
+  }
+
+  document.getElementById("refresh").addEventListener("click", bootstrap);
+
+  if (ensureAuth()) bootstrap();
+</script>
+</body>
+</html>
