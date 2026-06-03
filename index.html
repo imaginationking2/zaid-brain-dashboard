@@ -858,12 +858,12 @@
         '<h3>Component breakdown</h3>' +
         '<div class="grid">' + subCards + '</div>' +
         '<h3>Classifieds (manual capture)</h3>' +
-        table(['Category', 'Current', 'vs Previous'], clsRows) +
+        table([{label:'Category'},{label:'Current'},{label:'vs Previous'}], clsRows.map(function(r){return {cells:r};})) +
         '<div class="muted">Last captured: ' + (cls.date || '—') + (cls.source === 'manual_browser_capture' ? ' · manual' : '') + '</div>' +
         '<h3>Working signals</h3>' +
         '<div class="grid">' + signalCards + '</div>' +
         '<h3>Recent stress history</h3>' +
-        table(['Date', 'Total', 'Band', 'Sources'], stressRows) +
+        table([{label:'Date'},{label:'Total'},{label:'Band'},{label:'Sources'}], stressRows.map(function(r){return {cells:r};})) +
         '<div class="muted" style="margin-top:16px">' +
           'Schema: ' + (s.schema_version || 'v1') + ' · ' +
           '<a href="https://imaginationking2.github.io/uae-monitor/" target="_blank" rel="noopener">Open full UAE Monitor dashboard →</a>' +
