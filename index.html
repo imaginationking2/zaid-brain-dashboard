@@ -997,6 +997,7 @@
     renderOrders(snap);
     renderBusinesses(snap);
     renderRecentFeedback();
+    renderUae();
     document.getElementById("updated").textContent = "Updated " + ago(snap.generated_at);
   }
 
@@ -1012,8 +1013,9 @@
   }
 
   /* ────────────────────────── UAE Market tab ────────────────────────── */
-  // Independent of the passphrase gate — served from a separate public gist.
-  const UAE_GIST_URL = 'https://gist.githubusercontent.com/imaginationking2/6864f9c206558d36b9777b00f3758087/raw/uae_history.json';
+  // Phase 8.5: UAE payload is now AES-GCM encrypted with DASHBOARD_PASSPHRASE
+  // (same envelope shape as the dashboard payload). Reuses decryptEnvelope().
+  const UAE_GIST_URL = 'https://gist.githubusercontent.com/imaginationking2/779781a0bd933984a7ee14d0102c38e5/raw/uae_history.json';
 
   function _clsDelta(cur, prev) {
     if (cur == null || prev == null || prev === 0) return '—';
@@ -1032,10 +1034,16 @@
   async function renderUae() {
     const target = document.getElementById('uae-content');
     if (!target) return;
+    const passphrase = sessionStorage.getItem(PASSPHRASE_KEY);
+    if (!passphrase) {
+      target.innerHTML = '<div class="muted">Enter dashboard passphrase to load UAE Market data.</div>';
+      return;
+    }
     try {
-      const r = await fetch(UAE_GIST_URL + '?t=' + Date.now());
+      const r = await fetch(UAE_GIST_URL + '?t=' + Date.now(), { cache: 'no-store' });
       if (!r.ok) throw new Error('Gist HTTP ' + r.status);
-      const data = await r.json();
+      const envelope = await r.json();
+      const data = await decryptEnvelope(envelope, passphrase);
       const s = data.latest_stress || {};
       const c = s.components || {};
       const az = s.al_zorah_position || {};
