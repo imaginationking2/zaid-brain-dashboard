@@ -20,7 +20,7 @@
     --tab-active-bg: #2d6cdf;
     --tab-active-fg: #ffffff;
   }
-  @media (prefers-color-scheme: dark) {h
+  @media (prefers-color-scheme: dark) {
     :root {
       --bg: #0f1115;
       --surface: #181b22;
@@ -252,9 +252,9 @@
   <div class="gate-card">
     <h2>Zaid Brain Dashboard</h2>
     <form id="gate-form">
-      <input id="gate-pw" type="password" placeholder="Password" autofocus />
+      <input id="gate-pw" type="password" placeholder="Passphrase" autofocus autocomplete="current-password" />
       <button type="submit">Unlock</button>
-      <div id="gate-err" class="err" hidden>Wrong password</div>
+      <div id="gate-err" class="err" hidden></div>
     </form>
   </div>
 </div>
@@ -270,6 +270,8 @@
 
 <nav class="tabs">
   <button data-tab="overview"   class="active">Overview</button>
+  <button data-tab="tasks">Tasks</button>
+  <button data-tab="cash">Cash</button>
   <button data-tab="inventory">Inventory</button>
   <button data-tab="orders">Orders</button>
   <button data-tab="businesses">Businesses</button>
@@ -303,6 +305,24 @@
     <div class="grid" id="orders-cards"></div>
     <h3 class="section-title">Pending Orders</h3>
     <div id="pending-orders-table"></div>
+  </section>
+
+  <section id="tasks" class="panel">
+    <div class="grid" id="tasks-cards"></div>
+    <h3 class="section-title">To address today</h3>
+    <div id="reminders-table"></div>
+    <h3 class="section-title">Collections owed</h3>
+    <div id="collections-table"></div>
+  </section>
+
+  <section id="cash" class="panel">
+    <div class="grid" id="cash-cards"></div>
+    <h3 class="section-title">Monthly bank flow</h3>
+    <div id="bank-monthly-table"></div>
+    <h3 class="section-title">Pending cheques</h3>
+    <div id="cheques-pending-table"></div>
+    <h3 class="section-title">Recently cleared</h3>
+    <div id="cheques-cleared-table"></div>
   </section>
 
   <section id="businesses" class="panel">
@@ -345,39 +365,108 @@
   /* ───────────────────── config ───────────────────── */
   const DASHBOARD_GIST_RAW =
     "https://gist.githubusercontent.com/imaginationking2/" +
-    "477a5c0315dfbbcfaf6fd10202bc8dfb/raw/brain-dashboard-data.json";
+    "c1cd0c79ad8adddcaf359fb40fa4e00b/raw/brain-dashboard-data.json";
   const FEEDBACK_GIST_ID = "5d997f6baa0820d1b97a600b73a5a9a7";
   const FEEDBACK_GIST_RAW =
     "https://gist.githubusercontent.com/imaginationking2/" +
     "5d997f6baa0820d1b97a600b73a5a9a7/raw/brain-dashboard-feedback.json";
-  const PASSWORD = "mehiar2026";
   const TOKEN_KEY = "brain_dashboard_gh_token";
+  // Phase 8: passphrase held only in sessionStorage. Never localStorage,
+  // never a cookie. Closing the tab wipes it.
+  const PASSPHRASE_KEY = "brain_dashboard_passphrase";
+  // Envelope version we understand. Bumped when the crypto shape changes.
+  const ENVELOPE_VERSION = 1;
+  // Purge Phase-7 leftovers so old plaintext caches never resurface.
+  try {
+    localStorage.removeItem("brain_dashboard_auth");
+    localStorage.removeItem("brain_dashboard_cache_v1");
+  } catch (_) { /* private-mode etc. */ }
 
-  /* ───────────────────── password gate ───────────────────── */
+  /* ───────────────────── passphrase gate ───────────────────── */
   const gate     = document.getElementById("gate");
   const gateForm = document.getElementById("gate-form");
   const gatePw   = document.getElementById("gate-pw");
   const gateErr  = document.getElementById("gate-err");
 
-  function ensureAuth() {
-    if (localStorage.getItem("brain_dashboard_auth") === "1") return true;
+  function showGate(errorText) {
     gate.hidden = false;
-    return false;
-  }
-  gateForm.addEventListener("submit", e => {
-    e.preventDefault();
-    if (gatePw.value === PASSWORD) {
-      localStorage.setItem("brain_dashboard_auth", "1");
-      gate.hidden = true;
-      bootstrap();
-    } else {
+    if (errorText) {
+      gateErr.textContent = errorText;
       gateErr.hidden = false;
+    } else {
+      gateErr.hidden = true;
     }
+    gatePw.value = "";
+    gatePw.focus();
+  }
+
+  function hideGate() {
+    gate.hidden = true;
+    gateErr.hidden = true;
+  }
+
+  gateForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    const pw = gatePw.value;
+    if (!pw) { showGate("Enter the dashboard passphrase."); return; }
+    sessionStorage.setItem(PASSPHRASE_KEY, pw);
+    hideGate();
+    await bootstrap();
   });
+
   document.getElementById("lock").addEventListener("click", () => {
-    localStorage.removeItem("brain_dashboard_auth");
+    sessionStorage.removeItem(PASSPHRASE_KEY);
     location.reload();
   });
+
+  /* ───────────────────── decrypt helpers (WebCrypto) ───────────────────── */
+  function b64ToBytes(b64) {
+    const bin = atob(b64);
+    const out = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+    return out;
+  }
+
+  async function deriveKey(passphrase, saltBytes, iterations) {
+    const enc = new TextEncoder();
+    const baseKey = await crypto.subtle.importKey(
+      "raw", enc.encode(passphrase), { name: "PBKDF2" }, false, ["deriveKey"]
+    );
+    return crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: saltBytes, iterations, hash: "SHA-256" },
+      baseKey,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["decrypt"]
+    );
+  }
+
+  async function decryptEnvelope(envelope, passphrase) {
+    if (!envelope || typeof envelope !== "object") {
+      throw new Error("Payload is not an encrypted envelope.");
+    }
+    if (envelope.v !== ENVELOPE_VERSION) {
+      throw new Error("Unsupported envelope version: " + envelope.v);
+    }
+    if (envelope.alg !== "AES-256-GCM" || envelope.kdf !== "PBKDF2-HMAC-SHA256") {
+      throw new Error("Unsupported crypto parameters.");
+    }
+    const iterations = Number(envelope.iter) || 0;
+    if (iterations < 600000) throw new Error("KDF iterations below floor.");
+    const salt = b64ToBytes(envelope.salt);
+    const iv   = b64ToBytes(envelope.iv);
+    const ct   = b64ToBytes(envelope.ct);
+    const key  = await deriveKey(passphrase, salt, iterations);
+    let plainBuf;
+    try {
+      plainBuf = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, ct);
+    } catch (_) {
+      throw new Error("Wrong passphrase (decrypt failed).");
+    }
+    const text = new TextDecoder().decode(plainBuf);
+    try { return JSON.parse(text); }
+    catch (_) { throw new Error("Decrypted payload is not JSON."); }
+  }
 
   /* ───────────────────── tab switching ───────────────────── */
   document.querySelectorAll("nav.tabs button").forEach(b => {
@@ -438,16 +527,21 @@
     const u = d.mehiar_uae || {};
     const o = d.orders     || {};
     const c = d.cheques    || {};
+    const r = d.reminders  || {};
+    const totals = Object.entries(r.total_by_currency || {})
+      .map(([k,v]) => `~${num(v)} ${k}`).join(" + ");
     const cards = [
-      card("Mehiar UAE Cash", aed(u.cash_aed)),
+      card("Mehiar UAE Cash", aed(u.cash_aed),
+           u.cash_as_of ? `as of ${u.cash_as_of}` : ""),
       card("Receivables",     aed(u.receivables_aed)),
-      card("Monthly Net Burn", aed(u.monthly_burn_aed),
-           u.monthly_burn_aed < 0 ? "Net income this month" : "Outflow > inflow"),
+      card("Last Month Net", aed(u.monthly_burn_aed),
+           u.burn_month ? `(${u.burn_month})` : ""),
       card("Pending Orders",  num(o.pending_count),
            `${num(o.total_count)} total`),
       card("Pending Cheques", num(c.pending_count),
            c.pending_total_aed ? `${aed(c.pending_total_aed)} total` : ""),
-      card("Cheques Overdue >90d", num(c.overdue_90d_count)),
+      card("To address today", num(r.to_address_count),
+           totals || "—"),
     ];
     document.getElementById("overview-cards").innerHTML = cards.join("");
 
@@ -481,43 +575,53 @@
     ];
     document.getElementById("inventory-cards").innerHTML = cards.join("");
 
-    const fastRows = (inv.fast_movers || []).map(r => ({
+    // Phase 5/6 lens: reorder_priority (3-bucket) + velocity_anomalies
+    const rp = inv.reorder_priority || {};
+    const va = inv.velocity_anomalies || {};
+    const rnRows = (rp.reorder_now || []).map(r => ({
       cells: [
         escape(r.sku || ""),
-        escape((r.name || "").slice(0, 60)),
-        num(r.units_90d),
+        escape((r.name || "").slice(0, 50)),
         num(r.stock),
-        r.days_cover != null ? Math.round(r.days_cover) : "—",
-        `<span class="pill ${r.signal === "CRITICAL" ? "critical" : "ok"}">${escape(r.signal || "OK")}</span>`,
+        num(r.units_30d),
+        num(r.units_90d),
+        `<span class="pill critical">REORDER NOW</span>`,
       ],
     }));
-    document.getElementById("fast-table").innerHTML = table(
-      [{label:"SKU"},{label:"Name"},{label:"90d",cls:"num"},
-       {label:"Stock",cls:"num"},{label:"Days cover",cls:"num"},{label:"Signal"}],
-      fastRows);
+    document.getElementById("fast-table").innerHTML =
+      `<div class="sub" style="margin-bottom:6px;">Reorder now (${rnRows.length}) — low/zero stock + 30d demand</div>` +
+      table(
+        [{label:"SKU"},{label:"Name"},{label:"Stock",cls:"num"},
+         {label:"30d",cls:"num"},{label:"90d",cls:"num"},{label:"Action"}],
+        rnRows);
 
-    const slowRows = (inv.slow_movers || []).map(r => ({
+    const waRows = (rp.watch || []).map(r => ({
       cells: [
         escape(r.sku || ""),
-        escape((r.name || "").slice(0, 60)),
-        r.capital_aed != null ? aed(r.capital_aed) : "—",
+        escape((r.name || "").slice(0, 50)),
         num(r.stock),
+        num(r.units_30d),
         num(r.units_90d),
-        `<span class="pill warning">${escape(r.action || "WATCH")}</span>`,
+        `<span class="pill warning">WATCH</span>`,
       ],
     }));
-    document.getElementById("slow-table").innerHTML = table(
-      [{label:"SKU"},{label:"Name"},{label:"Capital",cls:"num"},
-       {label:"Stock",cls:"num"},{label:"90d",cls:"num"},{label:"Action"}],
-      slowRows);
+    const supNote = rp.suppressed_count
+      ? ` (${rp.suppressed_count} more low/zero with no 90d sales suppressed as dead stock)`
+      : "";
+    document.getElementById("slow-table").innerHTML =
+      `<div class="sub" style="margin-bottom:6px;">Watch (${waRows.length})${supNote}</div>` +
+      table(
+        [{label:"SKU"},{label:"Name"},{label:"Stock",cls:"num"},
+         {label:"30d",cls:"num"},{label:"90d",cls:"num"},{label:"Action"}],
+        waRows);
 
-    const anom = (inv.accelerating || []).map(r => ({
+    const anom = (va.accelerating || []).map(r => ({
       cells: [
         `<span class="pill ok">ACCEL</span> ${escape(r.sku)}`,
         escape((r.name || "").slice(0, 50)),
         num(r.units_30d), num(r.units_90d), num(r.stock),
       ],
-    })).concat((inv.decelerating || []).map(r => ({
+    })).concat((va.decelerating || []).map(r => ({
       cells: [
         `<span class="pill warning">DECEL</span> ${escape(r.sku)}`,
         escape((r.name || "").slice(0, 50)),
@@ -559,6 +663,122 @@
       [{label:"Order ID"},{label:"Channel"},{label:"Date"},
        {label:"Customer"},{label:"Amount",cls:"num"},{label:"Flag"}],
       rows);
+  }
+
+  /* ───────────────────── render: Tasks (Phase 6) ───────────────────── */
+  function renderTasks(d) {
+    const r = d.reminders || {};
+    const col = d.collections || {};
+    const totals = Object.entries(r.total_by_currency || {})
+      .map(([k,v]) => `~${num(v)} ${k}`).join(" + ") || "—";
+    const ccyParts = (col.by_currency || [])
+      .map(c => `${num(c.total)} ${c.currency}`).join(" + ") || "—";
+    const collCount = (col.by_currency || [])
+      .reduce((s,x) => s + x.count, 0);
+    const oldestRow = (col.by_currency || [])[0];
+    document.getElementById("tasks-cards").innerHTML = [
+      card("To address today", num(r.to_address_count), totals),
+      card("Collections owed", num(collCount), ccyParts),
+      card("Oldest overdue",
+           oldestRow ? (oldestRow.oldest_overdue_days + "d") : "—",
+           oldestRow ? oldestRow.currency : ""),
+    ].join("");
+
+    const remRows = (r.items || []).map(it => {
+      const d = it.delta_days;
+      const overdue = d != null && d < -0.5
+        ? `<span class="pill warning">${Math.abs(Math.round(d))}d overdue</span>`
+        : d != null && d < 0.5
+          ? `<span class="pill info">due today</span>`
+          : `<span class="pill ok">in ${Math.round(d)}d</span>`;
+      return { cells: [
+        `#${it.id}`, overdue,
+        escape((it.title || "").slice(0, 80)),
+        it.amount && it.currency
+          ? `${num(it.amount)} ${it.currency}` : "—",
+        `<code>${escape(it.done_cmd)}</code>`,
+      ]};
+    });
+    document.getElementById("reminders-table").innerHTML = table(
+      [{label:"ID"},{label:"When"},{label:"Title"},
+       {label:"Amount",cls:"num"},{label:"Action (copy)"}],
+      remRows);
+
+    const colRows = (col.items || []).map(it => ({
+      cells: [
+        `#${it.id}`,
+        escape((it.title || "").slice(0, 80)),
+        `${num(it.amount)} ${it.currency}`,
+        it.delta_days != null
+          ? `<span class="pill warning">${Math.abs(Math.round(it.delta_days))}d overdue</span>`
+          : "—",
+        `<code>${escape(it.done_cmd)}</code>`,
+      ]
+    }));
+    document.getElementById("collections-table").innerHTML = table(
+      [{label:"ID"},{label:"Title"},{label:"Owed",cls:"num"},
+       {label:"Age"},{label:"Action (copy)"}], colRows);
+  }
+
+  /* ───────────────────── render: Cash (Phase 6) ───────────────────── */
+  function renderCash(d) {
+    const bf = d.bank_flow   || {};
+    const c  = d.cheques     || {};
+    const m  = d.mehiar_uae  || {};
+    const gapNote = (bf.gaps && bf.gaps.length)
+      ? `<span class="pill warning">gaps: ${bf.gaps.join(", ")}</span>`
+      : "complete";
+    document.getElementById("cash-cards").innerHTML = [
+      card("Closing balance", aed(bf.closing_balance_aed),
+           bf.closing_balance_date ? `as of ${bf.closing_balance_date}` : ""),
+      card("Data through", escape(bf.data_through || "—"), gapNote),
+      card("Pending cheques", num(c.pending_count),
+           c.pending_total_aed ? aed(c.pending_total_aed) : ""),
+      card("Receivables (xlsx)", aed(m.receivables_aed)),
+    ].join("");
+
+    const mRows = (bf.monthly_summary || []).map(r => ({
+      cells: [
+        escape(r.month),
+        aed(r.credits), aed(r.debits),
+        `<span style="color:var(${r.net >= 0 ? "--ok" : "--critical"});">${aed(r.net)}</span>`,
+        num(r.txn_count),
+      ]
+    }));
+    document.getElementById("bank-monthly-table").innerHTML = table(
+      [{label:"Month"},{label:"Credits",cls:"num"},{label:"Debits",cls:"num"},
+       {label:"Net",cls:"num"},{label:"Txns",cls:"num"}], mRows);
+
+    const pRows = (c.items || []).map(it => ({
+      cells: [
+        escape(it.cheque_number),
+        it.is_placeholder
+          ? `<span class="pill info">placeholder</span>`
+          : `<span class="pill ok">${escape(it.direction || "")}</span>`,
+        aed(it.amount),
+        escape((it.pending_date || "").slice(0, 10)),
+        it.days_waiting != null
+          ? `<span class="pill ${it.days_waiting > 30 ? "warning":"info"}">${it.days_waiting}d</span>`
+          : "—",
+      ]
+    }));
+    document.getElementById("cheques-pending-table").innerHTML = table(
+      [{label:"Cheque"},{label:"Type"},{label:"Amount",cls:"num"},
+       {label:"Pending since"},{label:"Waiting"}], pRows);
+
+    const clRows = (c.recent_cleared || []).map(it => ({
+      cells: [
+        escape(it.cheque_number),
+        aed(it.amount),
+        escape((it.cleared_date || "").slice(0, 10)),
+        it.days_in_flight != null ? num(it.days_in_flight) + "d" : "—",
+        it.is_placeholder
+          ? `<span class="pill info">placeholder</span>` : "",
+      ]
+    }));
+    document.getElementById("cheques-cleared-table").innerHTML = table(
+      [{label:"Cheque"},{label:"Amount",cls:"num"},{label:"Cleared"},
+       {label:"Days in flight",cls:"num"},{label:""}], clRows);
   }
 
   /* ───────────────────── render: Businesses ───────────────────── */
@@ -723,15 +943,14 @@
     submitFeedback();
   });
 
-  /* ───────────────────── bootstrap: fetch + render ───────────────────── */
-  const CACHE_KEY = "brain_dashboard_cache_v1";
+  /* ───────────────────── bootstrap: fetch + decrypt + render ───────────────────── */
+  // Phase 8: no plaintext cache. If the network fails or the passphrase is
+  // wrong, we prefer a clear error over silently rendering stale data.
 
-  async function fetchSnapshot() {
+  async function fetchEnvelope() {
     const url = DASHBOARD_GIST_RAW + "?t=" + Date.now();
-    console.log("Fetching:", url);
     const r = await fetch(url, { cache: "no-store" });
-    console.log("Response status:", r.status);
-    if (!r.ok) throw new Error(`HTTP ${r.status} from ${url}`);
+    if (!r.ok) throw new Error(`HTTP ${r.status} fetching gist`);
     return r.json();
   }
 
@@ -740,39 +959,60 @@
     const errBox  = document.getElementById("error");
     loading.hidden = false; errBox.hidden = true;
 
-    let snap = null; let usedCache = false;
+    const passphrase = sessionStorage.getItem(PASSPHRASE_KEY);
+    if (!passphrase) {
+      loading.hidden = true;
+      showGate("");
+      return;
+    }
+
+    let envelope = null;
     try {
-      snap = await fetchSnapshot();
-      localStorage.setItem(CACHE_KEY, JSON.stringify(snap));
+      envelope = await fetchEnvelope();
     } catch (e) {
-      console.error("Dashboard fetch error:", e);
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) {
-        snap = JSON.parse(cached); usedCache = true;
-      } else {
-        errBox.hidden = false;
-        errBox.style.display = "block";
-        errBox.textContent = "Fetch error: " + e.message + " — URL: " + DASHBOARD_GIST_RAW;
-        loading.style.display = "none";
-        loading.hidden = true;
-        return;
-      }
-    }    loading.hidden = true;
+      console.error("Envelope fetch failed:", e);
+      loading.hidden = true;
+      errBox.hidden = false;
+      errBox.style.display = "block";
+      errBox.textContent = "Fetch error: " + e.message + " — URL: " + DASHBOARD_GIST_RAW;
+      return;
+    }
+
+    let snap = null;
+    try {
+      snap = await decryptEnvelope(envelope, passphrase);
+    } catch (e) {
+      // Wrong passphrase or bad envelope. Wipe it so refresh re-prompts.
+      sessionStorage.removeItem(PASSPHRASE_KEY);
+      loading.hidden = true;
+      showGate(e.message || "Decryption failed.");
+      return;
+    }
+
+    loading.hidden = true;
     renderOverview(snap);
+    renderTasks(snap);
+    renderCash(snap);
     renderInventory(snap);
     renderOrders(snap);
     renderBusinesses(snap);
     renderRecentFeedback();
-    document.getElementById("updated").textContent =
-      (usedCache ? "Cached • " : "") +
-      "Updated " + ago(snap.generated_at);
+    document.getElementById("updated").textContent = "Updated " + ago(snap.generated_at);
   }
 
   document.getElementById("refresh").addEventListener("click", bootstrap);
 
-  if (ensureAuth()) bootstrap();
+  // On page load: if we already have a passphrase this tab session, try to
+  // decrypt and render. If not, show the gate. Either way we never render
+  // plaintext without a fresh decrypt.
+  if (sessionStorage.getItem(PASSPHRASE_KEY)) {
+    bootstrap();
+  } else {
+    showGate("");
+  }
 
   /* ────────────────────────── UAE Market tab ────────────────────────── */
+  // Independent of the passphrase gate — served from a separate public gist.
   const UAE_GIST_URL = 'https://gist.githubusercontent.com/imaginationking2/6864f9c206558d36b9777b00f3758087/raw/uae_history.json';
 
   function _clsDelta(cur, prev) {
