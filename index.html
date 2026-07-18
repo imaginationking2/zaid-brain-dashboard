@@ -243,7 +243,46 @@
     .card .val { font-size: 22px; }
     th, td { padding: 8px; font-size: 13px; }
   }
-  [hidden] { display: none !important; }</style>
+  [hidden] { display: none !important; }
+
+  /* ───────────────────── UAE Market tab (Phase 8.8 redesign) ───────────────────── */
+  .uae-dash { display: flex; flex-direction: column; gap: 14px; }
+  .uae-grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .uae-grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .uae-grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .uae-grid6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+  .uae-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .uae-mc { background: var(--bg); border-radius: 6px; padding: 12px 14px; }
+  .uae-mc .lbl { font-size: 10px; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .uae-mc .val { font-size: 22px; font-weight: 600; line-height: 1.1; }
+  .uae-mc .sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+  .uae-st { font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+  .uae-pill { display: inline-block; font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 99px; letter-spacing: .03em; white-space: nowrap; }
+  .uae-p-ok { background: rgba(29, 158, 117, .18); color: #1D9E75; border: 1px solid rgba(29, 158, 117, .3); }
+  .uae-p-warn { background: rgba(239, 159, 39, .18); color: #B87A00; border: 1px solid rgba(239, 159, 39, .3); }
+  .uae-p-red { background: rgba(226, 75, 74, .18); color: #C82F2E; border: 1px solid rgba(226, 75, 74, .3); }
+  .uae-p-blue { background: rgba(55, 138, 221, .18); color: #2A6BB4; border: 1px solid rgba(55, 138, 221, .3); }
+  .uae-p-gray { background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
+  .uae-gauge-wrap { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .uae-gauge-num { font-size: 52px; font-weight: 700; line-height: 1; margin-top: -10px; }
+  .uae-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+  .uae-bar-lbl { font-size: 11px; color: var(--text-muted); width: 130px; flex-shrink: 0; }
+  .uae-bar-track { flex: 1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+  .uae-bar-fill { height: 100%; border-radius: 3px; transition: width .6s ease; }
+  .uae-bar-val { font-size: 11px; font-weight: 600; width: 44px; text-align: right; flex-shrink: 0; }
+  .uae-leg { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; }
+  .uae-li { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-muted); }
+  .uae-ld { width: 14px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+  .uae-cw { position: relative; width: 100%; }
+  .uae-mode-badge { background: var(--bg); border-radius: 6px; padding: 9px 13px; display: flex; justify-content: space-between; align-items: center; }
+  .uae-src { font-size: 10px; color: var(--text-muted); margin-top: 6px; }
+  .uae-section-div { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); padding: 4px 0; border-bottom: 1px solid var(--border); margin-top: 6px; }
+  .uae-header-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
+  .uae-status-bar { font-size: 10px; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; padding-top: 10px; border-top: 1px solid var(--border); }
+  @media (max-width: 1100px) { .uae-grid6 { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px) { .uae-grid2, .uae-grid3, .uae-grid4, .uae-grid6 { grid-template-columns: 1fr; } }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
 
@@ -1013,22 +1052,367 @@
   }
 
   /* ────────────────────────── UAE Market tab ────────────────────────── */
-  // Phase 8.5: UAE payload is now AES-GCM encrypted with DASHBOARD_PASSPHRASE
-  // (same envelope shape as the dashboard payload). Reuses decryptEnvelope().
+  // Phase 8.8 (2026-07-18): redesigned from standalone uae-monitor page.
+  // Same encrypted-gist fetch + decryptEnvelope path as before; only the
+  // rendered output changed. Chart.js from CDN loaded in <head>.
   const UAE_GIST_URL = 'https://gist.githubusercontent.com/imaginationking2/779781a0bd933984a7ee14d0102c38e5/raw/uae_history.json';
 
-  function _clsDelta(cur, prev) {
-    if (cur == null || prev == null || prev === 0) return '—';
-    const pct = ((cur - prev) / prev * 100);
-    const sign = pct > 0 ? '+' : '';
-    const arrow = pct > 0.5 ? '▲' : pct < -0.5 ? '▼' : '·';
-    return arrow + ' ' + sign + pct.toFixed(2) + '%';
+  const UAE_C = {
+    green: '#1D9E75', blue: '#378ADD', amber: '#EF9F27', red: '#E24B4A',
+    teal: '#5DCAA5', coral: '#D85A30', purple: '#7F77DD', gray: '#888780',
+    grid: (getComputedStyle(document.documentElement).getPropertyValue('--border') || '#e3e6eb').trim(),
+    tick: (getComputedStyle(document.documentElement).getPropertyValue('--text-muted') || '#5a6470').trim()
+  };
+  const UAE_CLS_KEYS = ['furniture_home','home_appliances','sports','mobiles_tablets','electronics','computers'];
+  const UAE_CLS_NAMES = {
+    furniture_home: 'Furniture & Home', home_appliances: 'Home Appliances',
+    sports: 'Sports Equipment', mobiles_tablets: 'Mobiles & Tablets',
+    electronics: 'Electronics', computers: 'Computers'
+  };
+  const UAE_CLS_COLORS = {
+    furniture_home: UAE_C.coral, home_appliances: UAE_C.amber,
+    sports: UAE_C.green, mobiles_tablets: UAE_C.blue,
+    electronics: UAE_C.purple, computers: UAE_C.teal
+  };
+
+  let _uaeCharts = {};
+  function _uaeMkChart(id, cfg) {
+    if (_uaeCharts[id]) _uaeCharts[id].destroy();
+    const el = document.getElementById(id);
+    if (!el || typeof Chart === 'undefined') return;
+    _uaeCharts[id] = new Chart(el, cfg);
+  }
+  function _uaeEmptyChart(id) {
+    _uaeMkChart(id, {
+      type: 'line',
+      data: { labels: ['No data yet'], datasets: [{ data: [null], borderColor: UAE_C.gray, borderWidth: 1, pointRadius: 0 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: { grid: { color: UAE_C.grid }, ticks: { color: UAE_C.tick, font: { size: 10 } } },
+                  y: { grid: { color: UAE_C.grid }, ticks: { color: UAE_C.tick, font: { size: 10 } } } } }
+    });
+  }
+  function _uaeScales(cb) {
+    return { x: { grid: { color: UAE_C.grid }, ticks: { color: UAE_C.tick, font: { size: 10 } } },
+             y: { grid: { color: UAE_C.grid }, ticks: { color: UAE_C.tick, font: { size: 10 }, callback: cb } } };
+  }
+  function _uaeFmt(n) { return n != null ? Number(n).toLocaleString() : '—'; }
+  function _uaeFmtDate(iso) { const d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); }
+  function _uaePillCls(band) {
+    if (!band || band.indexOf('Stable') !== -1 || band.indexOf('Mild') !== -1) return 'uae-pill uae-p-ok';
+    if (band.indexOf('Clear') !== -1) return 'uae-pill uae-p-warn';
+    return 'uae-pill uae-p-red';
+  }
+  function _uaeHyteMode(s) {
+    return s < 55 ? 'Hold / markup' : s < 70 ? 'Controlled clearance' : s < 80 ? 'Aggressive clearance' : 'Exit / cash convert';
+  }
+  function _uaeAlzMode(s) {
+    return s < 50 ? 'Hold fully' : s < 65 ? 'Improve selectively' : s < 75 ? 'Partial exit' : 'Urgent sale';
+  }
+  // Insert {date, _gap:true} for every missing calendar day between the
+  // earliest and latest date in a series. Chart.js with spanGaps:false
+  // will render each gap as a visible break in the line.
+  function _uaeFillGaps(series) {
+    if (!Array.isArray(series) || series.length < 2) return series || [];
+    const sorted = series.slice().sort(function(a, b) { return (a.date || '') < (b.date || '') ? -1 : 1; });
+    const first = new Date(sorted[0].date + 'T00:00:00Z');
+    const last = new Date(sorted[sorted.length - 1].date + 'T00:00:00Z');
+    const byDate = {};
+    sorted.forEach(function(e) { byDate[e.date] = e; });
+    const out = [];
+    const d = new Date(first);
+    while (d <= last) {
+      const iso = d.toISOString().slice(0, 10);
+      out.push(byDate[iso] || { date: iso, _gap: true });
+      d.setUTCDate(d.getUTCDate() + 1);
+    }
+    return out;
+  }
+  function _uaeVals(gapped, key) { return gapped.map(function(e) { return e._gap ? null : (e[key] != null ? e[key] : null); }); }
+  function _uaeLabels(gapped) { return gapped.map(function(e) { return _uaeFmtDate(e.date); }); }
+
+  function _uaeUpdateGauge(score) {
+    const cx = 110, cy = 108, r = 88, startA = 218, sweep = 284;
+    function polar(deg) { const rad = (deg - 90) * Math.PI / 180; return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) }; }
+    const endDeg = startA + (score / 100) * sweep;
+    const s = polar(startA), e = polar(endDeg);
+    const large = ((score / 100) * sweep) > 180 ? 1 : 0;
+    const arc = document.getElementById('uae-gauge-arc');
+    const needle = document.getElementById('uae-gauge-needle');
+    const num = document.getElementById('uae-gauge-num');
+    if (!arc || !needle || !num) return;
+    arc.setAttribute('d', 'M ' + s.x + ',' + s.y + ' A ' + r + ',' + r + ' 0 ' + large + ',1 ' + e.x + ',' + e.y);
+    const nRad = (endDeg - 90) * Math.PI / 180;
+    needle.setAttribute('x2', (cx + (r - 14) * Math.cos(nRad)).toFixed(1));
+    needle.setAttribute('y2', (cy + (r - 14) * Math.sin(nRad)).toFixed(1));
+    const col = score >= 65 ? UAE_C.red : score >= 45 ? UAE_C.amber : UAE_C.green;
+    arc.setAttribute('stroke', col);
+    num.textContent = score;
+    num.style.color = col;
   }
 
-  function _staleLabel(c) {
-    if (!c) return 'no data';
-    if (c.active) return 'active · ' + (c.stale_days || 0) + 'd';
-    return 'stale ' + (c.stale_days || 0) + 'd · excluded';
+  function _uaeRenderSubscores(stress) {
+    const names = { dubizzle: 'A — Used cars', luxury: 'B — Luxury drops', bayut: 'C — Bayut/D9', ajman_ratio: 'D — Ajman ratio' };
+    const order = ['dubizzle', 'luxury', 'bayut', 'ajman_ratio'];
+    const c = stress.components || {};
+    const html = order.map(function(k) {
+      const comp = c[k] || {};
+      const s = comp.score != null ? comp.score : 0;
+      const pct = s / 25;
+      const col = pct >= 0.8 ? UAE_C.red : pct >= 0.5 ? UAE_C.amber : UAE_C.green;
+      const stale = comp.active === false ? ' <span style="color:' + UAE_C.gray + ';font-size:10px;">(stale ' + (comp.stale_days || 0) + 'd)</span>' : '';
+      return '<div class="uae-bar-row"><div class="uae-bar-lbl">' + names[k] + stale + '</div>' +
+             '<div class="uae-bar-track"><div class="uae-bar-fill" style="width:' + Math.round(pct * 100) + '%;background:' + col + ';"></div></div>' +
+             '<div class="uae-bar-val" style="color:' + col + ';">' + s + '/25</div></div>';
+    }).join('');
+    const el = document.getElementById('uae-subscores');
+    if (el) el.innerHTML = html;
+  }
+
+  function _uaeRenderStressChart(series) {
+    if (!series || !series.length) { _uaeEmptyChart('uae-stress-chart'); return; }
+    const g = _uaeFillGaps(series);
+    const labels = _uaeLabels(g);
+    const totals = _uaeVals(g, 'total');
+    const colors = totals.map(function(t) { return t == null ? UAE_C.gray : (t >= 60 ? UAE_C.red : t >= 45 ? UAE_C.amber : UAE_C.green); });
+    _uaeMkChart('uae-stress-chart', {
+      type: 'line',
+      data: { labels: labels, datasets: [
+        { label: 'Stress', data: totals, borderColor: UAE_C.purple, backgroundColor: UAE_C.purple + '22', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: colors, fill: true, tension: 0.35, spanGaps: false },
+        { label: 'High', data: labels.map(function() { return 60; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
+        { label: 'Clear', data: labels.map(function() { return 45; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { min: 0, max: 100 }) } }
+    });
+  }
+
+  function _uaeRenderClassified(series) {
+    const last = series && series.length ? series[series.length - 1] : null;
+    const prev = series && series.length >= 2 ? series[series.length - 2] : null;
+    const metricsEl = document.getElementById('uae-cls-metrics');
+    const pillEl = document.getElementById('uae-cls-pill');
+    const legEl = document.getElementById('uae-cls-leg');
+    if (!last) {
+      if (metricsEl) metricsEl.innerHTML = '<div style="color:var(--text-muted);grid-column:1/-1;font-size:11px;">No data yet.</div>';
+      if (pillEl) pillEl.textContent = 'No data';
+      _uaeEmptyChart('uae-cls-chart');
+      return;
+    }
+    const cards = UAE_CLS_KEYS.filter(function(k) { return last[k] != null; }).map(function(k) {
+      const v = last[k], p = prev ? prev[k] : null;
+      const chg = (p != null && v != null && p !== 0) ? ((v - p) / p * 100).toFixed(2) : null;
+      const col = UAE_CLS_COLORS[k];
+      const chgCol = chg != null ? (Number(chg) >= 0 ? UAE_C.red : UAE_C.green) : UAE_C.gray;
+      return '<div class="uae-mc"><div class="lbl">' + UAE_CLS_NAMES[k] + '</div>' +
+             '<div class="val" style="color:' + col + ';">' + _uaeFmt(v) + '</div>' +
+             '<div class="sub" style="color:' + chgCol + ';">' + (chg != null ? (Number(chg) >= 0 ? '+' : '') + chg + '% vs prev' : 'baseline') + '</div></div>';
+    }).join('');
+    if (metricsEl) metricsEl.innerHTML = cards;
+    const total = UAE_CLS_KEYS.reduce(function(s, k) { return s + (last[k] || 0); }, 0);
+    const prevTotal = prev ? UAE_CLS_KEYS.reduce(function(s, k) { return s + (prev[k] || 0); }, 0) : null;
+    const totalChg = prevTotal ? ((total - prevTotal) / prevTotal * 100).toFixed(2) : null;
+    if (pillEl) {
+      pillEl.textContent = 'Total: ' + _uaeFmt(total) + (totalChg != null ? ' (' + (Number(totalChg) >= 0 ? '+' : '') + totalChg + '%)' : '');
+      pillEl.className = 'uae-pill ' + (totalChg != null && Number(totalChg) > 2 ? 'uae-p-red' : totalChg != null && Number(totalChg) > 0.5 ? 'uae-p-warn' : 'uae-p-ok');
+    }
+    if (legEl) {
+      legEl.innerHTML = UAE_CLS_KEYS.map(function(k) {
+        return '<div class="uae-li"><span class="uae-ld" style="background:' + UAE_CLS_COLORS[k] + ';"></span>' + UAE_CLS_NAMES[k] + '</div>';
+      }).join('');
+    }
+    if (series.length < 2) { _uaeEmptyChart('uae-cls-chart'); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart('uae-cls-chart', {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: UAE_CLS_KEYS.map(function(k) {
+        return { label: UAE_CLS_NAMES[k], data: _uaeVals(g, k), borderColor: UAE_CLS_COLORS[k], borderWidth: 1.8, pointRadius: 2.5, tension: 0.35, fill: false, spanGaps: false };
+      })},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: _uaeScales(function(v) { return v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v; }) }
+    });
+  }
+
+  function _uaeRenderUsedCars(series) {
+    const last = series && series.length ? series[series.length - 1] : null;
+    const BASELINE = 38770;
+    const pillEl = document.getElementById('uae-usedcars-pill');
+    if (!last) { if (pillEl) pillEl.textContent = 'No data'; _uaeEmptyChart('uae-usedcars-chart'); return; }
+    const v = last.used_cars || 0;
+    const trend = v > BASELINE ? '▲ ' + (((v - BASELINE) / BASELINE * 100).toFixed(1)) + '% above baseline'
+                : v < BASELINE ? '▼ ' + (((BASELINE - v) / BASELINE * 100).toFixed(1)) + '% below baseline' : 'At baseline';
+    if (pillEl) {
+      pillEl.textContent = _uaeFmt(v) + ' · ' + trend;
+      pillEl.className = 'uae-pill ' + (v > BASELINE * 1.05 ? 'uae-p-red' : v > BASELINE * 1.02 ? 'uae-p-warn' : 'uae-p-ok');
+    }
+    if (series.length < 2) { _uaeEmptyChart('uae-usedcars-chart'); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart('uae-usedcars-chart', {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [
+        { label: 'Used cars', data: _uaeVals(g, 'used_cars'), borderColor: UAE_C.amber, backgroundColor: UAE_C.amber + '22', borderWidth: 2.5, pointRadius: 4, fill: true, tension: 0.35, spanGaps: false },
+        { label: 'Baseline', data: _uaeLabels(g).map(function() { return BASELINE; }), borderColor: UAE_C.gray, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { labels: { color: UAE_C.tick, font: { size: 10 } } } },
+        scales: _uaeScales(function(v) { return v.toLocaleString(); }) }
+    });
+  }
+
+  function _uaeRenderPropertyTotal(series, prefix, color) {
+    const last = series && series.length ? series[series.length - 1] : null;
+    const prev = series && series.length >= 2 ? series[series.length - 2] : null;
+    const chartId = 'uae-' + prefix + '-chart';
+    const pillEl = document.getElementById('uae-' + prefix + '-pill');
+    if (!last) { if (pillEl) pillEl.textContent = 'No data'; _uaeEmptyChart(chartId); return; }
+    const v = last.total_uae || 0;
+    const chg = prev && prev.total_uae ? ((v - prev.total_uae) / prev.total_uae * 100).toFixed(2) : null;
+    if (pillEl) {
+      pillEl.textContent = _uaeFmt(v) + (chg != null ? ' (' + (Number(chg) >= 0 ? '+' : '') + chg + '%)' : '');
+      pillEl.className = 'uae-pill ' + (chg != null && Number(chg) > 1 ? 'uae-p-red' : chg != null && Number(chg) > 0.3 ? 'uae-p-warn' : 'uae-p-ok');
+    }
+    if (series.length < 2) { _uaeEmptyChart(chartId); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart(chartId, {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [{
+        label: 'Total UAE', data: _uaeVals(g, 'total_uae'), borderColor: color, backgroundColor: color + '22', borderWidth: 2.5, pointRadius: 4, fill: true, tension: 0.35, spanGaps: false
+      }]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: _uaeScales(function(v) { return v >= 1000 ? (v / 1000).toFixed(0) + 'k' : v; }) }
+    });
+  }
+
+  function _uaeRenderLuxury(last, dScr) {
+    const metricsEl = document.getElementById('uae-lux-metrics');
+    const pillEl = document.getElementById('uae-lux-pill');
+    if (!last) {
+      if (metricsEl) metricsEl.innerHTML = '<div style="color:var(--text-muted);font-size:11px;grid-column:1/-1;">No luxury drops data.</div>';
+      _uaeEmptyChart('uae-lux-chart');
+      return;
+    }
+    const dc = last.drop_count || 0, avg = last.avg_drop_pct || 0, maxD = last.max_drop_pct || avg;
+    if (metricsEl) {
+      metricsEl.innerHTML =
+        '<div class="uae-mc"><div class="lbl">Drop count</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">detected</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Avg drop</div><div class="val" style="color:' + UAE_C.red + ';">' + avg + '%</div><div class="sub">across all</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Max drop</div><div class="val" style="color:' + UAE_C.red + ';">' + maxD + '%</div><div class="sub">single listing</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Score</div><div class="val" style="color:' + (dScr >= 20 ? UAE_C.red : dScr >= 14 ? UAE_C.amber : UAE_C.green) + ';">' + dScr + '/25</div><div class="sub">B component</div></div>';
+    }
+    if (pillEl) {
+      pillEl.textContent = 'B: ' + dScr + '/25';
+      pillEl.className = 'uae-pill ' + (dScr >= 20 ? 'uae-p-red' : dScr >= 14 ? 'uae-p-warn' : 'uae-p-ok');
+    }
+  }
+
+  function _uaeRenderLuxChart(series) {
+    if (!series || !series.length) { _uaeEmptyChart('uae-lux-chart'); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart('uae-lux-chart', {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [
+        { label: 'Drop count', data: _uaeVals(g, 'drop_count'), borderColor: UAE_C.red, backgroundColor: UAE_C.red + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false },
+        { label: 'Elevated', data: _uaeLabels(g).map(function() { return 1500; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
+        { label: 'Max stress', data: _uaeLabels(g).map(function() { return 2500; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return v.toLocaleString(); }, min: 0, suggestedMax: 3000 }) } }
+    });
+  }
+
+  function _uaeRenderD9Chart(series) {
+    if (!series || !series.length) { _uaeEmptyChart('uae-d9-chart'); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart('uae-d9-chart', {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [{
+        label: 'Properties', data: _uaeVals(g, 'district9_listings'), borderColor: UAE_C.blue, backgroundColor: UAE_C.blue + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false
+      }]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { min: 0, suggestedMax: 60 }) } }
+    });
+    const last = series[series.length - 1];
+    const noteEl = document.getElementById('uae-d9-note');
+    if (last && noteEl) noteEl.textContent = 'Latest: ' + last.district9_listings + ' properties · Avg: AED ' + (last.d9_avg_price ? last.d9_avg_price.toLocaleString() : '—');
+  }
+
+  function _uaeRenderBenchChart(series) {
+    if (!series || !series.length) { _uaeEmptyChart('uae-bench-chart'); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart('uae-bench-chart', {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [{
+        label: 'AED M',
+        data: g.map(function(e) { return e._gap ? null : (e.benchmark_price_aed ? +(e.benchmark_price_aed / 1e6).toFixed(3) : null); }),
+        borderColor: UAE_C.coral, backgroundColor: UAE_C.coral + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false
+      }]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return 'AED ' + v.toFixed(1) + 'M'; }, min: 2.5, max: 4.0 }) } }
+    });
+    const noteEl = document.getElementById('uae-bench-note');
+    const last = series[series.length - 1];
+    if (noteEl && last) {
+      const flag = last.benchmark_flag || '—';
+      const flagCol = flag === 'NO CHANGE' ? UAE_C.teal : UAE_C.amber;
+      noteEl.innerHTML = '<span style="color:' + flagCol + ';">' + flag + '</span> · <span style="color:var(--text-muted);">AED ' + (last.benchmark_price_aed ? (last.benchmark_price_aed / 1e6).toFixed(1) : '—') + 'M · Semi-Detached Villa · Corner Type D</span>';
+    }
+  }
+
+  function _uaeRenderAjmanMetrics(series) {
+    const metricsEl = document.getElementById('uae-ajman-metrics');
+    const pillEl = document.getElementById('uae-ajman-ratio-pill');
+    if (!series || !series.length) {
+      if (metricsEl) metricsEl.innerHTML = '<div style="color:var(--text-muted);font-size:11px;grid-column:1/-1;">No Ajman data.</div>';
+      return;
+    }
+    const last = series[series.length - 1], prev = series.length >= 2 ? series[series.length - 2] : null;
+    const sale = last.ajman_for_sale || 0, rent = last.ajman_for_rent || 0;
+    const ratio = rent ? +(sale / rent).toFixed(3) : 0;
+    const saleChg = prev && sale && prev.ajman_for_sale ? ((sale - prev.ajman_for_sale) / prev.ajman_for_sale * 100).toFixed(1) : null;
+    const rentChg = prev && rent && prev.ajman_for_rent ? ((rent - prev.ajman_for_rent) / prev.ajman_for_rent * 100).toFixed(1) : null;
+    if (metricsEl) {
+      metricsEl.innerHTML =
+        '<div class="uae-mc"><div class="lbl">For Sale</div><div class="val" style="color:' + UAE_C.amber + ';">' + _uaeFmt(sale) + '</div><div class="sub">' + (saleChg != null ? (Number(saleChg) >= 0 ? '+' : '') + saleChg + '% vs prev' : 'First reading') + '</div></div>' +
+        '<div class="uae-mc"><div class="lbl">For Rent</div><div class="val" style="color:' + UAE_C.blue + ';">' + _uaeFmt(rent) + '</div><div class="sub">' + (rentChg != null ? (Number(rentChg) >= 0 ? '+' : '') + rentChg + '% vs prev' : 'First reading') + '</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Sale:Rent</div><div class="val" style="color:' + (ratio >= 2.5 ? UAE_C.red : ratio >= 2.0 ? UAE_C.amber : UAE_C.teal) + ';">' + (ratio > 0 ? ratio.toFixed(3) : '—') + '</div><div class="sub">Watch &gt;2.0</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Avg Sale Price</div><div class="val" style="font-size:16px;color:' + UAE_C.teal + ';">' + (last.ajman_for_sale_avg_price ? 'AED ' + Math.round(last.ajman_for_sale_avg_price / 1000) + 'k' : '—') + '</div><div class="sub">Bayut avg</div></div>';
+    }
+    if (pillEl) {
+      pillEl.textContent = 'Sale:Rent = ' + (ratio > 0 ? ratio.toFixed(3) : '—');
+      pillEl.className = 'uae-pill ' + (ratio >= 2.5 ? 'uae-p-red' : ratio >= 2.0 ? 'uae-p-warn' : 'uae-p-ok');
+    }
+  }
+
+  function _uaeRenderAjmanCharts(series) {
+    if (!series || !series.length) {
+      _uaeEmptyChart('uae-ajman-sale-chart');
+      _uaeEmptyChart('uae-ajman-rent-chart');
+      _uaeEmptyChart('uae-ratio-chart');
+      return;
+    }
+    const g = _uaeFillGaps(series);
+    const labels = _uaeLabels(g);
+    _uaeMkChart('uae-ajman-sale-chart', {
+      type: 'line',
+      data: { labels: labels, datasets: [{ label: 'For Sale', data: _uaeVals(g, 'ajman_for_sale'), borderColor: UAE_C.amber, backgroundColor: UAE_C.amber + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return (v / 1000).toFixed(0) + 'k'; }, suggestedMin: 60000 }) } }
+    });
+    _uaeMkChart('uae-ajman-rent-chart', {
+      type: 'line',
+      data: { labels: labels, datasets: [{ label: 'For Rent', data: _uaeVals(g, 'ajman_for_rent'), borderColor: UAE_C.blue, backgroundColor: UAE_C.blue + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return (v / 1000).toFixed(0) + 'k'; }, suggestedMin: 40000 }) } }
+    });
+    const ratios = g.map(function(e) { return e._gap ? null : (e.ajman_for_sale && e.ajman_for_rent ? +(e.ajman_for_sale / e.ajman_for_rent).toFixed(3) : null); });
+    _uaeMkChart('uae-ratio-chart', {
+      type: 'line',
+      data: { labels: labels, datasets: [
+        { label: 'Sale:Rent', data: ratios, borderColor: UAE_C.purple, backgroundColor: UAE_C.purple + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false },
+        { label: 'Watch', data: labels.map(function() { return 2.0; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
+        { label: 'Alert', data: labels.map(function() { return 2.5; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+      ]},
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { min: 1.0, max: 3.0 }) } }
+    });
   }
 
   async function renderUae() {
@@ -1044,77 +1428,159 @@
       if (!r.ok) throw new Error('Gist HTTP ' + r.status);
       const envelope = await r.json();
       const data = await decryptEnvelope(envelope, passphrase);
-      const s = data.latest_stress || {};
-      const c = s.components || {};
-      const az = s.al_zorah_position || {};
-      const dq = s.data_quality || {};
-
-      const lux = (data.luxury_drops_series || []).slice(-1)[0] || {};
-      const bay = (data.bayut_series || []).slice(-1)[0] || {};
-      const ajm = (data.ajman_property_series || []).slice(-1)[0] || {};
-      const cls = (data.dubizzle_series || []).slice(-1)[0] || {};
-      const clsPrev = (data.dubizzle_series || []).slice(-2, -1)[0] || {};
-
-      const stressHist = (data.stress_series || []).slice(-7).reverse();
-
-      const d9 = bay.district9_listings;
-      const d9Delta = (d9 != null) ? (d9 - 31) : null;
-
-      const stressCards = [
-        card('Stress Index', (s.total != null ? s.total : '—') + (s.max_available ? '' : ' / 100'), s.band || '—'),
-        card('Raw / Available', (s.raw_score != null ? s.raw_score : '—') + ' / ' + (s.max_available || 100), (dq.active_sources || 0) + ' of 4 sources active'),
-        card('Al Zorah Position', (az.score != null ? az.score : '—') + ' / 100', (az.score != null && az.score < 50 ? 'favourable for selling' : 'pressure against seller')),
-        card('Last update', ago(data.last_updated), (dq.fresh_today || 0) + ' fresh today')
-      ].join('');
-
-      const subCards = [
-        card('A — Used cars', (c.dubizzle && c.dubizzle.score != null ? c.dubizzle.score : 0) + ' / 25',
-          c.dubizzle && c.dubizzle.active ? (num(c.dubizzle.value) + ' cars') : _staleLabel(c.dubizzle)),
-        card('B — Luxury drops', (c.luxury && c.luxury.score != null ? c.luxury.score : 0) + ' / 25',
-          num(c.luxury && c.luxury.value) + ' drops · log scale'),
-        card('C — Bayut D9', (c.bayut && c.bayut.score != null ? c.bayut.score : 0) + ' / 25',
-          (c.bayut && c.bayut.value != null ? c.bayut.value : '—') + ' listings · baseline 31'),
-        card('D — Ajman ratio', (c.ajman_ratio && c.ajman_ratio.score != null ? c.ajman_ratio.score : 0) + ' / 25',
-          'ratio ' + (c.ajman_ratio && c.ajman_ratio.value != null ? c.ajman_ratio.value.toFixed(3) : '—'))
-      ].join('');
-
-      const signalCards = [
-        card('D9 listings', d9 != null ? d9 : '—', d9Delta != null ? ((d9Delta >= 0 ? '+' : '') + d9Delta + ' vs baseline') : ''),
-        card('D9 avg price', aed(bay.d9_avg_price), 'benchmark ' + aed(bay.benchmark_price_aed)),
-        card('Luxury drops', num(lux.drop_count), 'max single drop ' + (lux.max_drop_pct != null ? '-' + lux.max_drop_pct + '%' : '—')),
-        card('Ajman ratio', (ajm.ratio != null ? ajm.ratio.toFixed(3) : '—'), num(ajm.ajman_for_sale) + ' sale / ' + num(ajm.ajman_for_rent) + ' rent')
-      ].join('');
-
-      const clsRows = [
-        ['Furniture, Home & Garden', num(cls.furniture_home),  _clsDelta(cls.furniture_home,  clsPrev.furniture_home)],
-        ['Home Appliances',          num(cls.home_appliances), _clsDelta(cls.home_appliances, clsPrev.home_appliances)],
-        ['Sports Equipment',         num(cls.sports),          _clsDelta(cls.sports,          clsPrev.sports)],
-        ['Mobile Phones & Tablets',  num(cls.mobiles_tablets), _clsDelta(cls.mobiles_tablets, clsPrev.mobiles_tablets)],
-        ['Electronics',              num(cls.electronics),     _clsDelta(cls.electronics,     clsPrev.electronics)],
-        ['Computers & Networking',   num(cls.computers),       _clsDelta(cls.computers,       clsPrev.computers)]
-      ];
-
-      const stressRows = stressHist.map(function(e) {
-        const max = e.max_available || 100;
-        const activeCount = e.data_quality ? e.data_quality.active_sources : (e.carry_forward ? (4 - Object.values(e.carry_forward).filter(function(v){return v;}).length) : null);
-        return [e.date, (e.total != null ? e.total : '—') + ' / ' + max, e.band || '—', activeCount != null ? (activeCount + '/4') : '—'];
-      });
+      const stress = data.latest_stress || (data.stress_series || []).slice(-1)[0] || {};
+      const dq = stress.data_quality || {};
+      const activeSources = dq.active_sources != null ? dq.active_sources : '—';
+      const totalSources = dq.total_sources != null ? dq.total_sources : 4;
+      const scoreTxt = stress.total != null ? stress.total : '—';
+      const bandTxt = stress.band || '—';
+      const pillClass = _uaePillCls(stress.band);
 
       target.innerHTML =
-        '<h3>Headline</h3>' +
-        '<div class="grid">' + stressCards + '</div>' +
-        '<h3>Component breakdown</h3>' +
-        '<div class="grid">' + subCards + '</div>' +
-        '<h3>Classifieds (manual capture)</h3>' +
-        table([{label:'Category'},{label:'Current'},{label:'vs Previous'}], clsRows.map(function(r){return {cells:r};})) +
-        '<div class="muted">Last captured: ' + (cls.date || '—') + (cls.source === 'manual_browser_capture' ? ' · manual' : '') + '</div>' +
-        '<h3>Working signals</h3>' +
-        '<div class="grid">' + signalCards + '</div>' +
-        '<h3>Recent stress history</h3>' +
-        table([{label:'Date'},{label:'Total'},{label:'Band'},{label:'Sources'}], stressRows.map(function(r){return {cells:r};})) +
-        '<div class="muted" style="margin-top:16px">' +
-          'Schema: ' + (s.schema_version || 'v1') +
+        '<div class="uae-dash">' +
+          '<div class="uae-header-row">' +
+            '<div style="font-size:11px;color:var(--text-muted);">' +
+              'Last collection: ' + (stress.date || '—') +
+            '</div>' +
+            '<span id="uae-stress-pill" class="' + pillClass + '">' +
+              scoreTxt + '/100 · ' + activeSources + '/' + totalSources + ' sources — ' + bandTxt +
+            '</span>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Stress Index</div>' +
+          '<div class="uae-grid2">' +
+            '<div class="uae-card uae-gauge-wrap" style="justify-content:center;">' +
+              '<svg width="220" height="120" viewBox="0 0 220 120">' +
+                '<path d="M22,108 A88,88 0 0,1 110,20" fill="none" stroke="#1D9E75" stroke-width="14" stroke-linecap="butt" opacity=".3"/>' +
+                '<path d="M110,20 A88,88 0 0,1 178,68" fill="none" stroke="#EF9F27" stroke-width="14" stroke-linecap="butt" opacity=".3"/>' +
+                '<path d="M178,68 A88,88 0 0,1 198,108" fill="none" stroke="#E24B4A" stroke-width="14" stroke-linecap="butt" opacity=".3"/>' +
+                '<path id="uae-gauge-arc" d="" fill="none" stroke-width="14" stroke-linecap="round"/>' +
+                '<line id="uae-gauge-needle" x1="110" y1="108" x2="35" y2="40" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>' +
+                '<circle cx="110" cy="108" r="5" fill="currentColor"/>' +
+                '<text x="10" y="116" font-size="10" fill="currentColor" opacity=".6">0</text>' +
+                '<text x="98" y="13" font-size="10" fill="currentColor" opacity=".6">50</text>' +
+                '<text x="196" y="116" font-size="10" fill="currentColor" opacity=".6">100</text>' +
+              '</svg>' +
+              '<div class="uae-gauge-num" id="uae-gauge-num">—</div>' +
+              '<div style="font-size:11px;color:var(--text-muted);">stress index · out of 100</div>' +
+              '<div style="width:100%;margin-top:8px;display:flex;flex-direction:column;gap:6px;">' +
+                '<div class="uae-mode-badge"><span style="color:var(--text-muted);">HYTE</span><span id="uae-hyte-pill" class="uae-pill uae-p-blue">—</span></div>' +
+                '<div class="uae-mode-badge"><span style="color:var(--text-muted);">Al Zorah</span><span id="uae-alz-pill" class="uae-pill uae-p-ok">—</span></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="uae-card">' +
+              '<div class="uae-st">Stress sub-scores</div>' +
+              '<div id="uae-subscores"></div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="uae-card">' +
+            '<div class="uae-st">Stress index — daily trend</div>' +
+            '<div class="uae-cw" style="height:150px;"><canvas id="uae-stress-chart"></canvas></div>' +
+            '<div class="uae-src">Bands: 0–29 Stable · 30–44 Mild · 45–59 Clear · 60–74 High · 75–100 Crisis · line breaks = no data / actor failed</div>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Dubizzle Classifieds — Consumer Goods Pressure</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-st">Dubizzle Classified UAE — 6 categories <span class="uae-pill uae-p-blue" id="uae-cls-pill">—</span></div>' +
+            '<div class="uae-grid6" id="uae-cls-metrics" style="margin-bottom:14px;"></div>' +
+            '<div class="uae-leg" id="uae-cls-leg"></div>' +
+            '<div class="uae-cw" style="height:200px;"><canvas id="uae-cls-chart"></canvas></div>' +
+            '<div class="uae-src">Source: uae.dubizzle.com/classified/ · Rising = consumer asset liquidation</div>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Used Cars — Asset Liquidation Signal</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-st">Dubizzle Used Cars UAE — daily listing count <span class="uae-pill uae-p-blue" id="uae-usedcars-pill">—</span></div>' +
+            '<div class="uae-cw" style="height:160px;"><canvas id="uae-usedcars-chart"></canvas></div>' +
+            '<div class="uae-src">Source: uae.dubizzle.com/motors/ · Rising = consumer asset liquidation signal</div>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Property Supply — UAE Total</div>' +
+          '<div class="uae-grid2">' +
+            '<div class="uae-card">' +
+              '<div class="uae-st">Property for-sale UAE <span class="uae-pill uae-p-blue" id="uae-propsale-pill">—</span></div>' +
+              '<div class="uae-cw" style="height:170px;"><canvas id="uae-propsale-chart"></canvas></div>' +
+              '<div class="uae-src">Source: uae.dubizzle.com/property-for-sale/residential/</div>' +
+            '</div>' +
+            '<div class="uae-card">' +
+              '<div class="uae-st">Property for-rent UAE <span class="uae-pill uae-p-blue" id="uae-proprent-pill">—</span></div>' +
+              '<div class="uae-cw" style="height:170px;"><canvas id="uae-proprent-chart"></canvas></div>' +
+              '<div class="uae-src">Source: uae.dubizzle.com/property-for-rent/residential/</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Luxury Price Drops — HNW Distress</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-st">Luxury Price Drops — Dubai <span id="uae-lux-pill" class="uae-pill uae-p-gray">B score —/25</span></div>' +
+            '<div class="uae-grid4" id="uae-lux-metrics"></div>' +
+            '<div class="uae-cw" style="height:150px;margin-top:12px;"><canvas id="uae-lux-chart"></canvas></div>' +
+            '<div class="uae-src">Source: luxurypricedrops.com/dubai/ · Baseline Apr 5 2026: 1,542</div>' +
+          '</div>' +
+
+          '<div class="uae-section-div">Bayut — Al Zorah District 9 &amp; Ajman Market</div>' +
+          '<div class="uae-grid2">' +
+            '<div class="uae-card">' +
+              '<div class="uae-st">District 9, Al Zorah — listed properties</div>' +
+              '<div class="uae-cw" style="height:170px;"><canvas id="uae-d9-chart"></canvas></div>' +
+              '<div class="uae-src" id="uae-d9-note">Source: bayut.com/for-sale/property/ajman/al-zorah/district-9/</div>' +
+            '</div>' +
+            '<div class="uae-card">' +
+              '<div class="uae-st">Benchmark — Villa D9 (AED M)</div>' +
+              '<div style="background:var(--bg);border-radius:6px;padding:7px 11px;margin-bottom:8px;font-size:11px;color:var(--text-muted);">Semi-Detached Villa · Corner Type D · District 9</div>' +
+              '<div class="uae-cw" style="height:135px;"><canvas id="uae-bench-chart"></canvas></div>' +
+              '<div class="uae-src" id="uae-bench-note"></div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div class="uae-card">' +
+            '<div class="uae-st">Ajman Property Market — Bayut supply pressure <span id="uae-ajman-ratio-pill" class="uae-pill uae-p-gray">Sale:Rent —</span></div>' +
+            '<div class="uae-grid4" id="uae-ajman-metrics" style="margin-bottom:12px;"></div>' +
+            '<div class="uae-grid2">' +
+              '<div>' +
+                '<div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">For Sale trend</div>' +
+                '<div class="uae-cw" style="height:150px;"><canvas id="uae-ajman-sale-chart"></canvas></div>' +
+              '</div>' +
+              '<div>' +
+                '<div style="font-size:10px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">For Rent trend</div>' +
+                '<div class="uae-cw" style="height:150px;"><canvas id="uae-ajman-rent-chart"></canvas></div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="uae-src" style="margin-top:8px;">Source: bayut.com/for-sale/property/ajman/ · bayut.com/to-rent/property/ajman/</div>' +
+          '</div>' +
+
+          '<div class="uae-card">' +
+            '<div class="uae-st">Ajman Sale-to-Rent Ratio — day by day</div>' +
+            '<div class="uae-cw" style="height:150px;"><canvas id="uae-ratio-chart"></canvas></div>' +
+            '<div class="uae-src">Ratio = for-sale ÷ for-rent · Watch &gt;2.0 · Alert &gt;2.5</div>' +
+          '</div>' +
+
+          '<div class="uae-status-bar">' +
+            '<span>Last collection: ' + (stress.date || '—') + '</span>' +
+            '<span>gaps in trend lines = actor failed / scheduler off (no interpolation)</span>' +
+          '</div>' +
         '</div>';
+
+      if (stress.total != null) _uaeUpdateGauge(stress.total);
+      const hp = document.getElementById('uae-hyte-pill');
+      const ap = document.getElementById('uae-alz-pill');
+      if (hp) hp.textContent = _uaeHyteMode(stress.total || 0);
+      if (ap) ap.textContent = _uaeAlzMode(stress.total || 0);
+      _uaeRenderSubscores(stress);
+      _uaeRenderStressChart(data.stress_series || []);
+      _uaeRenderClassified(data.dubizzle_series || []);
+      _uaeRenderUsedCars(data.dubizzle_motors_series || []);
+      _uaeRenderPropertyTotal(data.dubizzle_property_sale_series || [], 'propsale', UAE_C.green);
+      _uaeRenderPropertyTotal(data.dubizzle_property_rent_series || [], 'proprent', UAE_C.blue);
+      const luxSeries = data.luxury_drops_series || [];
+      const luxScore = (stress.components && stress.components.luxury && stress.components.luxury.score) || 0;
+      _uaeRenderLuxury(luxSeries[luxSeries.length - 1], luxScore);
+      _uaeRenderLuxChart(luxSeries);
+      _uaeRenderD9Chart(data.bayut_series || []);
+      _uaeRenderBenchChart(data.bayut_series || []);
+      const ajmanSeries = data.ajman_property_series || [];
+      _uaeRenderAjmanMetrics(ajmanSeries);
+      _uaeRenderAjmanCharts(ajmanSeries);
     } catch (e) {
       target.innerHTML = '<div class="error-box">UAE Monitor load failed: ' + (e.message || e) + '</div>';
     }
