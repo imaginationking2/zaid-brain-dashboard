@@ -281,6 +281,12 @@
   .uae-status-bar { font-size: 10px; color: var(--text-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; padding-top: 10px; border-top: 1px solid var(--border); }
   @media (max-width: 1100px) { .uae-grid6 { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 700px) { .uae-grid2, .uae-grid3, .uae-grid4, .uae-grid6 { grid-template-columns: 1fr; } }
+
+  /* Phase 9 · Leading Indicators — neutral colors, magnitude-based highlight */
+  .uae-lead-delta { color: var(--text-muted); font-size: 11px; font-weight: 500; }
+  .uae-lead-delta.alarm { color: var(--text); font-weight: 700; }
+  .uae-lead-fresh { color: var(--text-muted); font-size: 10px; margin-top: 3px; opacity: .8; }
+  .uae-lead-note { font-size: 10px; color: var(--text-muted); font-style: italic; }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
@@ -1150,6 +1156,84 @@
     num.style.color = col;
   }
 
+  // Phase 9 · Leading Indicators helpers (direction-neutral colors,
+  // magnitude-based alarm at |change| >= 2%). Kept OUTSIDE the stress
+  // rendering path — these numbers are DATA-ONLY per project-state §5.
+  const _WDAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  function _uaeLeadFresh(entry, kind) {
+    if (!entry) return '—';
+    let lastClose;
+    if (kind === 'brent' && entry.market_last_close_at) {
+      lastClose = new Date(entry.market_last_close_at);
+    } else {
+      // UAE indices: TV scanner doesn't return a timestamp; infer from
+      // entry.date + weekday (indices trade Mon-Fri Dubai time)
+      lastClose = new Date(entry.date + 'T00:00:00Z');
+      const dow = lastClose.getUTCDay();
+      if (dow === 0) lastClose.setUTCDate(lastClose.getUTCDate() - 2);       // Sun → Fri
+      else if (dow === 6) lastClose.setUTCDate(lastClose.getUTCDate() - 1);  // Sat → Fri
+    }
+    const now = new Date();
+    const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    const lcDay = new Date(Date.UTC(lastClose.getUTCFullYear(), lastClose.getUTCMonth(), lastClose.getUTCDate()));
+    const age = Math.round((today - lcDay) / 86400000);
+    const wday = _WDAY[lastClose.getUTCDay()];
+    if (age <= 0) return "Today's close";
+    if (age === 1) return "Yesterday's close · " + wday;
+    if (age <= 3) return wday + " close · " + age + "d ago · market closed";
+    return "⚠ stale " + age + "d";
+  }
+  function _uaeLeadDeltaHtml(pct) {
+    if (pct == null) return '<span class="uae-lead-delta">—</span>';
+    const mag = Math.abs(pct);
+    const arrow = pct > 0.05 ? '▲' : pct < -0.05 ? '▼' : '·';
+    const alarm = mag >= 2 ? ' alarm' : '';
+    const lbl = mag < 0.05 ? 'flat' : (pct > 0 ? '+' : '') + pct.toFixed(2) + '%';
+    return '<span class="uae-lead-delta' + alarm + '">' + arrow + ' ' + lbl + '</span>';
+  }
+  function _uaeRenderLeading(oilSeries, marketsSeries) {
+    const oil = oilSeries && oilSeries.length ? oilSeries[oilSeries.length - 1] : null;
+    const mkt = marketsSeries && marketsSeries.length ? marketsSeries[marketsSeries.length - 1] : null;
+    const metricsEl = document.getElementById('uae-lead-metrics');
+    if (!metricsEl) return;
+    function _card(lbl, val, unit, deltaHtml, freshTxt) {
+      return '<div class="uae-mc">' +
+        '<div class="lbl">' + lbl + '</div>' +
+        '<div class="val">' + val + (unit ? ' <span style="font-size:11px;color:var(--text-muted);font-weight:400;">' + unit + '</span>' : '') + '</div>' +
+        '<div class="sub">' + deltaHtml + '</div>' +
+        '<div class="uae-lead-fresh">' + freshTxt + '</div>' +
+        '</div>';
+    }
+    const brentVal = oil && oil.brent_usd != null ? '$' + oil.brent_usd.toFixed(2) : '—';
+    const dfmgiVal = mkt && mkt.dfmgi_close != null ? _uaeFmt(mkt.dfmgi_close) : '—';
+    const fadgiVal = mkt && mkt.fadgi_close != null ? _uaeFmt(mkt.fadgi_close) : '—';
+    metricsEl.innerHTML =
+      _card('Brent Crude', brentVal, 'USD',
+            _uaeLeadDeltaHtml(oil ? oil.change_pct : null),
+            _uaeLeadFresh(oil, 'brent')) +
+      _card('DFM General', dfmgiVal, 'pts',
+            _uaeLeadDeltaHtml(mkt ? mkt.dfmgi_change_pct : null),
+            _uaeLeadFresh(mkt, 'uae_index')) +
+      _card('ADX (FTSE)', fadgiVal, 'pts',
+            _uaeLeadDeltaHtml(mkt ? mkt.fadgi_change_pct : null),
+            _uaeLeadFresh(mkt, 'uae_index'));
+  }
+  function _uaeRenderLeadingChart(id, series, valueKey, color, yFmt) {
+    if (!series || !series.length) { _uaeEmptyChart(id); return; }
+    const g = _uaeFillGaps(series);
+    _uaeMkChart(id, {
+      type: 'line',
+      data: { labels: _uaeLabels(g), datasets: [{
+        label: valueKey, data: _uaeVals(g, valueKey),
+        borderColor: color, backgroundColor: color + '22',
+        borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false
+      }] },
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: yFmt }) } }
+    });
+  }
+
   function _uaeRenderSubscores(stress) {
     const names = { dubizzle: 'A — Used cars', luxury: 'B — Luxury drops', bayut: 'C — Bayut/D9', ajman_ratio: 'D — Ajman ratio' };
     const order = ['dubizzle', 'luxury', 'bayut', 'ajman_ratio'];
@@ -1447,6 +1531,18 @@
             '</span>' +
           '</div>' +
 
+          '<div class="uae-section-div">Leading Indicators · unscored, data-only</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-lead-note" style="margin-bottom:10px;">Purpose: geopolitical/economic early-warning in front of the lagging property/consumer stress components. NOT fed into the stress score. Deltas are direction-neutral; bold = |change| ≥ 2% (magnitude is the alarm).</div>' +
+            '<div class="uae-grid3" id="uae-lead-metrics" style="margin-bottom:14px;"></div>' +
+            '<div class="uae-grid3">' +
+              '<div><div class="uae-lead-note" style="margin-bottom:4px;">Brent 90-day trend</div><div class="uae-cw" style="height:150px;"><canvas id="uae-lead-brent-chart"></canvas></div></div>' +
+              '<div><div class="uae-lead-note" style="margin-bottom:4px;">DFMGI 90-day trend</div><div class="uae-cw" style="height:150px;"><canvas id="uae-lead-dfmgi-chart"></canvas></div></div>' +
+              '<div><div class="uae-lead-note" style="margin-bottom:4px;">FADGI 90-day trend</div><div class="uae-cw" style="height:150px;"><canvas id="uae-lead-fadgi-chart"></canvas></div></div>' +
+            '</div>' +
+            '<div class="uae-src" style="margin-top:10px;">Sources: Yahoo Finance BZ=F · TradingView UAE scanner (DFMGI, FADGI) · gaps in trend = weekends / market closed · score only after weeks of observed behavior</div>' +
+          '</div>' +
+
           '<div class="uae-section-div">Stress Index</div>' +
           '<div class="uae-grid2">' +
             '<div class="uae-card uae-gauge-wrap" style="justify-content:center;">' +
@@ -1581,6 +1677,14 @@
       const ajmanSeries = data.ajman_property_series || [];
       _uaeRenderAjmanMetrics(ajmanSeries);
       _uaeRenderAjmanCharts(ajmanSeries);
+
+      // Phase 9 · Leading Indicators (data-only, direction-neutral colors)
+      const oilSeries = data.oil_series || [];
+      const marketsSeries = data.uae_markets_series || [];
+      _uaeRenderLeading(oilSeries, marketsSeries);
+      _uaeRenderLeadingChart('uae-lead-brent-chart', oilSeries, 'brent_usd', UAE_C.amber, function(v){return '$'+Number(v).toFixed(0);});
+      _uaeRenderLeadingChart('uae-lead-dfmgi-chart', marketsSeries, 'dfmgi_close', UAE_C.blue, function(v){return Number(v).toLocaleString();});
+      _uaeRenderLeadingChart('uae-lead-fadgi-chart', marketsSeries, 'fadgi_close', UAE_C.blue, function(v){return Number(v).toLocaleString();});
     } catch (e) {
       target.innerHTML = '<div class="error-box">UAE Monitor load failed: ' + (e.message || e) + '</div>';
     }
