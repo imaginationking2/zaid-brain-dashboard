@@ -1234,6 +1234,37 @@
     });
   }
 
+  // Phase 8.13 — coarse rental supply (Ajman for-rent aggregate).
+  // Same neutral color / magnitude-alarm rules as leading indicators;
+  // labelled experimental — NOT in the stress score.
+  function _uaeRenderRentalSupply(series) {
+    const metricsEl = document.getElementById('uae-rental-supply-metric');
+    if (!metricsEl) return;
+    const last = series && series.length ? series[series.length - 1] : null;
+    const prev = series && series.length >= 2 ? series[series.length - 2] : null;
+    if (!last) {
+      metricsEl.innerHTML = '<div style="color:var(--text-muted);font-size:11px;">No data yet.</div>';
+      _uaeEmptyChart('uae-rental-supply-chart');
+      return;
+    }
+    const v = last.ajman_for_rent;
+    const p = prev ? prev.ajman_for_rent : null;
+    let deltaHtml = '<span class="uae-lead-delta">baseline</span>';
+    if (p != null && v != null && p !== 0) {
+      const pct = (v - p) / p * 100;
+      deltaHtml = _uaeLeadDeltaHtml(pct);
+    }
+    metricsEl.innerHTML =
+      '<div class="uae-mc" style="max-width:280px;">' +
+      '<div class="lbl">Ajman rental supply</div>' +
+      '<div class="val">' + _uaeFmt(v) + ' <span style="font-size:11px;color:var(--text-muted);font-weight:400;">listings</span></div>' +
+      '<div class="sub">' + deltaHtml + '</div>' +
+      '<div class="uae-lead-fresh">Source: bayut.com/to-rent/property/ajman/ · aggregate count · ' + (last.date || '—') + '</div>' +
+      '</div>';
+    _uaeRenderLeadingChart('uae-rental-supply-chart', series, 'ajman_for_rent',
+                           UAE_C.blue, function(v){return Number(v).toLocaleString();});
+  }
+
   function _uaeRenderSubscores(stress) {
     const names = { dubizzle: 'A — Used cars', luxury: 'B — Luxury drops', bayut: 'C — Bayut/D9', ajman_ratio: 'D — Ajman ratio' };
     const order = ['dubizzle', 'luxury', 'bayut', 'ajman_ratio'];
@@ -1543,6 +1574,15 @@
             '<div class="uae-src" style="margin-top:10px;">Sources: Yahoo Finance BZ=F · TradingView UAE scanner (DFMGI, FADGI) · gaps in trend = weekends / market closed · score only after weeks of observed behavior</div>' +
           '</div>' +
 
+          '<div class="uae-section-div">Rental Supply · experimental — not in stress score</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-lead-note" style="margin-bottom:10px;">Coarse aggregate: total Ajman for-rent listings on Bayut. Per-listing velocity (new/delisted/price-cuts/days-on-market) is parked — Bayut is client-side-rendered with a runtime Algolia key that requires a headless browser to resolve, not justified for an unvalidated signal (see project-state §5). Revisit if this aggregate visibly moves against a known stress event over several weeks. Backfilled from ajman_property_series on 2026-07-20 — pre-Phase-8.7 June entries include partial salvage days, so the trend <em>shape</em> is the signal, not exact June point values.</div>' +
+            '<div class="uae-grid2">' +
+              '<div id="uae-rental-supply-metric"></div>' +
+              '<div><div class="uae-lead-note" style="margin-bottom:4px;">Ajman rental supply — daily count</div><div class="uae-cw" style="height:150px;"><canvas id="uae-rental-supply-chart"></canvas></div></div>' +
+            '</div>' +
+          '</div>' +
+
           '<div class="uae-section-div">Stress Index</div>' +
           '<div class="uae-grid2">' +
             '<div class="uae-card uae-gauge-wrap" style="justify-content:center;">' +
@@ -1685,6 +1725,9 @@
       _uaeRenderLeadingChart('uae-lead-brent-chart', oilSeries, 'brent_usd', UAE_C.amber, function(v){return '$'+Number(v).toFixed(0);});
       _uaeRenderLeadingChart('uae-lead-dfmgi-chart', marketsSeries, 'dfmgi_close', UAE_C.blue, function(v){return Number(v).toLocaleString();});
       _uaeRenderLeadingChart('uae-lead-fadgi-chart', marketsSeries, 'fadgi_close', UAE_C.blue, function(v){return Number(v).toLocaleString();});
+
+      // Phase 8.13 · Rental Supply (aggregate only, experimental)
+      _uaeRenderRentalSupply(data.rental_supply_series || []);
     } catch (e) {
       target.innerHTML = '<div class="error-box">UAE Monitor load failed: ' + (e.message || e) + '</div>';
     }
