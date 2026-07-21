@@ -729,25 +729,81 @@
            oldestRow ? oldestRow.currency : ""),
     ].join("");
 
-    const remRows = (r.items || []).map(it => {
+    // Phase 8.14 — group reminders by category. Front-end reads the
+    // canonical category order from the payload (r.categories); falls back
+    // to a sensible default so payloads from before schema 1.2 still render.
+    const _CATS = Array.isArray(r.categories) && r.categories.length
+      ? r.categories
+      : ["bandai", "mehiar", "general", "hosting"];
+
+    function _remCell(it) {
+      // "When" cell: timed rows show overdue/due/in-Nd pill; untimed rows
+      // show "no date · open Nd" (age since created, oldest-open first).
+      if (it.is_timed === false || it.fire_at == null) {
+        const age = it.age_days != null ? Math.floor(it.age_days) : null;
+        const ageTxt = age != null && age > 0 ? `open ${age}d`
+                    : age === 0 ? "open today" : "untimed";
+        return `<span class="pill info">no date · ${escape(ageTxt)}</span>`;
+      }
       const d = it.delta_days;
-      const overdue = d != null && d < -0.5
-        ? `<span class="pill warning">${Math.abs(Math.round(d))}d overdue</span>`
-        : d != null && d < 0.5
-          ? `<span class="pill info">due today</span>`
-          : `<span class="pill ok">in ${Math.round(d)}d</span>`;
-      return { cells: [
-        `#${it.id}`, overdue,
-        escape((it.title || "").slice(0, 80)),
-        it.amount && it.currency
-          ? `${num(it.amount)} ${it.currency}` : "—",
-        `<code>${escape(it.done_cmd)}</code>`,
-      ]};
+      if (d != null && d < -0.5) return `<span class="pill warning">${Math.abs(Math.round(d))}d overdue</span>`;
+      if (d != null && d < 0.5)  return `<span class="pill info">due today</span>`;
+      return `<span class="pill ok">in ${Math.round(d)}d</span>`;
+    }
+
+    // Bucket items by category. Older payloads (schema < 1.2) have no
+    // `category` field on items — those fall into "general" so nothing
+    // silently disappears.
+    const buckets = {};
+    _CATS.forEach(c => { buckets[c] = []; });
+    (r.items || []).forEach(it => {
+      const cat = it.category || "general";
+      if (!buckets[cat]) buckets[cat] = [];
+      buckets[cat].push(it);
     });
-    document.getElementById("reminders-table").innerHTML = table(
-      [{label:"ID"},{label:"When"},{label:"Title"},
-       {label:"Amount",cls:"num"},{label:"Action (copy)"}],
-      remRows);
+    // Sort within bucket: untimed rows oldest-open first, timed rows
+    // most-overdue first, matching the digest's ordering intent.
+    Object.keys(buckets).forEach(c => {
+      buckets[c].sort((a, b) => {
+        const ta = a.is_timed === false ? 1 : 0;
+        const tb = b.is_timed === false ? 1 : 0;
+        if (ta !== tb) return ta - tb;                // timed first
+        if (ta === 1) return (b.age_days || 0) - (a.age_days || 0);  // untimed: oldest first
+        return (a.delta_days || 0) - (b.delta_days || 0);            // timed: most-overdue first
+      });
+    });
+
+    // Render sections — one per non-empty category, in canonical order.
+    // Any unexpected category (future one added on the bot side before the
+    // dashboard is redeployed) appears after the canonical ones.
+    const sections = [];
+    const orderedCats = _CATS.filter(c => buckets[c] && buckets[c].length);
+    Object.keys(buckets).forEach(c => {
+      if (!_CATS.includes(c) && buckets[c] && buckets[c].length) orderedCats.push(c);
+    });
+    if (orderedCats.length === 0) {
+      sections.push('<div class="muted">No reminders due.</div>');
+    } else {
+      orderedCats.forEach(cat => {
+        const rows = buckets[cat].map(it => ({ cells: [
+          `#${it.id}`, _remCell(it),
+          escape((it.title || "").slice(0, 80)),
+          it.amount && it.currency ? `${num(it.amount)} ${it.currency}` : "—",
+          `<code>${escape(it.done_cmd || ("/done " + it.id))}</code>`,
+        ]}));
+        const label = cat.charAt(0).toUpperCase() + cat.slice(1);
+        sections.push(
+          `<h3 style="margin:14px 0 6px;font-size:13px;font-weight:600;">` +
+          `${escape(label)} <span class="muted" style="font-weight:400;">` +
+          `(${rows.length})</span></h3>` +
+          table(
+            [{label:"ID"},{label:"When"},{label:"Title"},
+             {label:"Amount",cls:"num"},{label:"Action (copy)"}],
+            rows)
+        );
+      });
+    }
+    document.getElementById("reminders-table").innerHTML = sections.join("");
 
     const colRows = (col.items || []).map(it => ({
       cells: [
