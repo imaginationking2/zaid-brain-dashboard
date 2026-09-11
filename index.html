@@ -1159,6 +1159,14 @@
   }
   function _uaeFmt(n) { return n != null ? Number(n).toLocaleString() : '—'; }
   function _uaeFmtDate(iso) { const d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); }
+  function _uaeReadingAge(iso) {
+    if (!iso) return { days: null, text: 'date unavailable', stale: true };
+    const d = new Date(iso + 'T00:00:00Z');
+    const now = new Date();
+    const today = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+    const days = Math.max(0, Math.floor((today - d.getTime()) / 86400000));
+    return { days: days, text: days === 0 ? 'today' : days === 1 ? '1 day old' : days + ' days old', stale: days >= 3 };
+  }
   function _uaePillCls(band, confidence) {
     if (confidence === 'low' || !band || band.indexOf('Insufficient') !== -1) return 'uae-pill uae-p-warn';
     if (band.indexOf('Green') !== -1) return 'uae-pill uae-p-ok';
@@ -1472,28 +1480,36 @@
       return;
     }
     const dc = last.drop_count || 0, avg = last.avg_drop_pct || 0, maxD = last.max_drop_pct || avg;
+    const age = _uaeReadingAge(last.date);
+    const scoreText = dScr == null ? '—' : dScr;
+    const severe = last.drops_10pct_plus;
+    const severeShare = last.distress_share_pct;
     if (metricsEl) {
       metricsEl.innerHTML =
-        '<div class="uae-mc"><div class="lbl">Drop count</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">detected</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Active drops</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">' + (last.source_last_scan || ('observed ' + (last.date || '—'))) + '</div></div>' +
         '<div class="uae-mc"><div class="lbl">Avg drop</div><div class="val" style="color:' + UAE_C.red + ';">' + avg + '%</div><div class="sub">across all</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Drops ≥10%</div><div class="val" style="color:' + UAE_C.amber + ';">' + (severe != null ? _uaeFmt(severe) : '—') + '</div><div class="sub">' + (severeShare != null ? severeShare.toFixed(1) + '% of active drops' : 'tier data unavailable') + '</div></div>' +
         '<div class="uae-mc"><div class="lbl">Max drop</div><div class="val" style="color:' + UAE_C.red + ';">' + maxD + '%</div><div class="sub">single listing</div></div>' +
-        '<div class="uae-mc"><div class="lbl">Provisional score</div><div class="val" style="color:' + (dScr >= 24 ? UAE_C.red : dScr >= 15 ? UAE_C.amber : UAE_C.green) + ';">' + dScr + '/30</div><div class="sub">active-drop stock vs rolling median</div></div>';
+        '<div class="uae-lead-note" style="grid-column:1/-1;color:' + (age.stale ? UAE_C.red : UAE_C.teal) + ';">Reading: ' + (last.date || '—') + ' · ' + age.text + (last.source_updated_date ? ' · source page updated ' + last.source_updated_date : '') + '</div>';
     }
     if (pillEl) {
-      pillEl.textContent = 'Price-drop stock: ' + dScr + '/30';
-      pillEl.className = 'uae-pill ' + (dScr >= 24 ? 'uae-p-red' : dScr >= 15 ? 'uae-p-warn' : 'uae-p-ok');
+      pillEl.textContent = age.stale ? 'STALE · ' + (last.date || '—') : 'Price-drop stock: ' + scoreText + '/30';
+      pillEl.className = 'uae-pill ' + (age.stale ? 'uae-p-red' : dScr == null ? 'uae-p-gray' : dScr >= 24 ? 'uae-p-red' : dScr >= 15 ? 'uae-p-warn' : 'uae-p-ok');
     }
   }
 
   function _uaeRenderLuxChart(series) {
     if (!series || !series.length) { _uaeEmptyChart('uae-lux-chart'); return; }
     const g = _uaeFillGaps(series);
+    const historyValues = series.slice(0, -1).slice(-182).map(function(e) { return Number(e.drop_count); }).filter(function(v) { return Number.isFinite(v) && v > 0; }).sort(function(a, b) { return a - b; });
+    const mid = Math.floor(historyValues.length / 2);
+    const baseline = historyValues.length ? (historyValues.length % 2 ? historyValues[mid] : (historyValues[mid - 1] + historyValues[mid]) / 2) : null;
     _uaeMkChart('uae-lux-chart', {
       type: 'line',
       data: { labels: _uaeLabels(g), datasets: [
         { label: 'Drop count', data: _uaeVals(g, 'drop_count'), borderColor: UAE_C.red, backgroundColor: UAE_C.red + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false },
-        { label: 'Elevated', data: _uaeLabels(g).map(function() { return 1500; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
-        { label: 'Max stress', data: _uaeLabels(g).map(function() { return 2500; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+        { label: 'Score begins (1.10× median)', data: _uaeLabels(g).map(function() { return baseline == null ? null : Math.round(baseline * 1.10); }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
+        { label: 'Full component score (2.00×)', data: _uaeLabels(g).map(function() { return baseline == null ? null : Math.round(baseline * 2.00); }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
       ]},
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
         scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return v.toLocaleString(); }, min: 0, suggestedMax: 3000 }) } }
@@ -1593,20 +1609,22 @@
       return;
     }
     const last = series[series.length - 1], prev = series.length >= 2 ? series[series.length - 2] : null;
+    const age = _uaeReadingAge(last.date);
     const sale = last.ajman_for_sale || 0, rent = last.ajman_for_rent || 0;
     const ratio = rent ? +(sale / rent).toFixed(3) : 0;
     const saleChg = prev && sale && prev.ajman_for_sale ? ((sale - prev.ajman_for_sale) / prev.ajman_for_sale * 100).toFixed(1) : null;
     const rentChg = prev && rent && prev.ajman_for_rent ? ((rent - prev.ajman_for_rent) / prev.ajman_for_rent * 100).toFixed(1) : null;
     if (metricsEl) {
       metricsEl.innerHTML =
-        '<div class="uae-mc"><div class="lbl">For Sale</div><div class="val" style="color:' + UAE_C.amber + ';">' + _uaeFmt(sale) + '</div><div class="sub">' + (saleChg != null ? (Number(saleChg) >= 0 ? '+' : '') + saleChg + '% vs prev' : 'First reading') + '</div></div>' +
-        '<div class="uae-mc"><div class="lbl">For Rent</div><div class="val" style="color:' + UAE_C.blue + ';">' + _uaeFmt(rent) + '</div><div class="sub">' + (rentChg != null ? (Number(rentChg) >= 0 ? '+' : '') + rentChg + '% vs prev' : 'First reading') + '</div></div>' +
+        '<div class="uae-mc"><div class="lbl">For Sale</div><div class="val" style="color:' + UAE_C.amber + ';">' + _uaeFmt(sale) + '</div><div class="sub">' + (last.sale_6m_change_pct != null ? (last.sale_6m_change_pct >= 0 ? '+' : '') + last.sale_6m_change_pct + '% advertised-price trend, 6m' : saleChg != null ? (Number(saleChg) >= 0 ? '+' : '') + saleChg + '% since ' + (prev.date || 'previous') : 'First reading') + '</div></div>' +
+        '<div class="uae-mc"><div class="lbl">For Rent</div><div class="val" style="color:' + UAE_C.blue + ';">' + _uaeFmt(rent) + '</div><div class="sub">' + (last.rent_6m_change_pct != null ? (last.rent_6m_change_pct >= 0 ? '+' : '') + last.rent_6m_change_pct + '% asking-rent trend, 6m' : rentChg != null ? (Number(rentChg) >= 0 ? '+' : '') + rentChg + '% since ' + (prev.date || 'previous') : 'First reading') + '</div></div>' +
         '<div class="uae-mc"><div class="lbl">Sale:Rent</div><div class="val" style="color:' + (ratio >= 2.5 ? UAE_C.red : ratio >= 2.0 ? UAE_C.amber : UAE_C.teal) + ';">' + (ratio > 0 ? ratio.toFixed(3) : '—') + '</div><div class="sub">Watch &gt;2.0</div></div>' +
-        '<div class="uae-mc"><div class="lbl">Avg Sale Price</div><div class="val" style="font-size:16px;color:' + UAE_C.teal + ';">' + (last.ajman_for_sale_avg_price ? 'AED ' + Math.round(last.ajman_for_sale_avg_price / 1000) + 'k' : '—') + '</div><div class="sub">Bayut avg</div></div>';
+        '<div class="uae-mc"><div class="lbl">Avg Sale Price</div><div class="val" style="font-size:16px;color:' + UAE_C.teal + ';">' + (last.ajman_for_sale_avg_price ? 'AED ' + Math.round(last.ajman_for_sale_avg_price / 1000) + 'k' : '—') + '</div><div class="sub">Bayut avg</div></div>' +
+        '<div class="uae-lead-note" style="grid-column:1/-1;color:' + (age.stale ? UAE_C.red : UAE_C.teal) + ';">Reading: ' + (last.date || '—') + ' · ' + age.text + '</div>';
     }
     if (pillEl) {
-      pillEl.textContent = 'Sale:Rent = ' + (ratio > 0 ? ratio.toFixed(3) : '—');
-      pillEl.className = 'uae-pill ' + (ratio >= 2.5 ? 'uae-p-red' : ratio >= 2.0 ? 'uae-p-warn' : 'uae-p-ok');
+      pillEl.textContent = age.stale ? 'STALE · ' + (last.date || '—') : 'Sale:Rent = ' + (ratio > 0 ? ratio.toFixed(3) : '—');
+      pillEl.className = 'uae-pill ' + (age.stale ? 'uae-p-red' : ratio >= 2.5 ? 'uae-p-red' : ratio >= 2.0 ? 'uae-p-warn' : 'uae-p-ok');
     }
   }
 
@@ -1694,7 +1712,7 @@
 
           '<div class="uae-section-div">Rental Supply · experimental — not in stress score</div>' +
           '<div class="uae-card">' +
-            '<div class="uae-lead-note" style="margin-bottom:10px;">Coarse aggregate: total Ajman for-rent listings on Bayut. Per-listing velocity (new/delisted/price-cuts/days-on-market) is parked — Bayut is client-side-rendered with a runtime Algolia key that requires a headless browser to resolve, not justified for an unvalidated signal (see project-state §5). Revisit if this aggregate visibly moves against a known stress event over several weeks. Backfilled from ajman_property_series on 2026-07-20 — pre-Phase-8.7 June entries include partial salvage days, so the trend <em>shape</em> is the signal, not exact June point values.</div>' +
+            '<div class="uae-lead-note" style="margin-bottom:10px;">Coarse aggregate: total Ajman for-rent listings on Bayut, now collected from Bayut’s rendered page through the supervised browser. Per-listing velocity (new/delisted/price-cuts/days-on-market) remains parked. Treat the trend <em>shape</em> as supporting evidence, not a standalone sell trigger.</div>' +
             '<div class="uae-grid2">' +
               '<div id="uae-rental-supply-metric"></div>' +
               '<div><div class="uae-lead-note" style="margin-bottom:4px;">Ajman rental supply — daily count</div><div class="uae-cw" style="height:150px;"><canvas id="uae-rental-supply-chart"></canvas></div></div>' +
@@ -1766,7 +1784,7 @@
             '<div class="uae-st">Luxury Price Drops — Dubai <span id="uae-lux-pill" class="uae-pill uae-p-gray">score —/30</span></div>' +
             '<div class="uae-grid4" id="uae-lux-metrics"></div>' +
             '<div class="uae-cw" style="height:150px;margin-top:12px;"><canvas id="uae-lux-chart"></canvas></div>' +
-            '<div class="uae-src">Source: luxurypricedrops.com/dubai/ · Baseline Apr 5 2026: 1,542</div>' +
+            '<div class="uae-src">Source: luxurypricedrops.com/dubai/market-data/ · score begins at 1.10× the rolling median and reaches 30/30 at 2.00× · source date shown above</div>' +
           '</div>' +
 
           '<div class="uae-section-div">Al Zorah · weekly liquidity watch</div>' +
@@ -1807,7 +1825,7 @@
 
           '<div class="uae-status-bar">' +
             '<span>Last collection: ' + (stress.date || '—') + '</span>' +
-            '<span>gaps in trend lines = actor failed / scheduler off (no interpolation)</span>' +
+            '<span>gaps in trend lines = source collector missed / scheduler off (no interpolation)</span>' +
           '</div>' +
         '</div>';
 
@@ -1820,7 +1838,7 @@
       _uaeRenderPropertyTotal(data.dubizzle_property_sale_series || [], 'propsale', UAE_C.green);
       _uaeRenderPropertyTotal(data.dubizzle_property_rent_series || [], 'proprent', UAE_C.blue);
       const luxSeries = data.luxury_drops_series || [];
-      const luxScore = (stress.components && stress.components.luxury_price_drops && stress.components.luxury_price_drops.score) || 0;
+      const luxScore = stress.components && stress.components.luxury_price_drops ? stress.components.luxury_price_drops.score : null;
       _uaeRenderLuxury(luxSeries[luxSeries.length - 1], luxScore);
       _uaeRenderLuxChart(luxSeries);
       _uaeRenderBenchChart(data.al_zorah_weekly_series || []);
