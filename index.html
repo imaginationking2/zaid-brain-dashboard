@@ -1159,16 +1159,11 @@
   }
   function _uaeFmt(n) { return n != null ? Number(n).toLocaleString() : '—'; }
   function _uaeFmtDate(iso) { const d = new Date(iso + 'T00:00:00'); return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' }); }
-  function _uaePillCls(band) {
-    if (!band || band.indexOf('Stable') !== -1 || band.indexOf('Mild') !== -1) return 'uae-pill uae-p-ok';
-    if (band.indexOf('Clear') !== -1) return 'uae-pill uae-p-warn';
+  function _uaePillCls(band, confidence) {
+    if (confidence === 'low' || !band || band.indexOf('Insufficient') !== -1) return 'uae-pill uae-p-warn';
+    if (band.indexOf('Green') !== -1) return 'uae-pill uae-p-ok';
+    if (band.indexOf('Yellow') !== -1) return 'uae-pill uae-p-warn';
     return 'uae-pill uae-p-red';
-  }
-  function _uaeHyteMode(s) {
-    return s < 55 ? 'Hold / markup' : s < 70 ? 'Controlled clearance' : s < 80 ? 'Aggressive clearance' : 'Exit / cash convert';
-  }
-  function _uaeAlzMode(s) {
-    return s < 50 ? 'Hold fully' : s < 65 ? 'Improve selectively' : s < 75 ? 'Partial exit' : 'Urgent sale';
   }
   // Insert {date, _gap:true} for every missing calendar day between the
   // earliest and latest date in a series. Chart.js with spanGaps:false
@@ -1322,18 +1317,25 @@
   }
 
   function _uaeRenderSubscores(stress) {
-    const names = { dubizzle: 'A — Used cars', luxury: 'B — Luxury drops', bayut: 'C — Bayut/D9', ajman_ratio: 'D — Ajman ratio' };
-    const order = ['dubizzle', 'luxury', 'bayut', 'ajman_ratio'];
+    const names = {
+      classified_liquidation: 'Classified liquidation',
+      used_cars: 'Used cars',
+      luxury_price_drops: 'Luxury price-drop stock',
+      property_supply: 'Property for-sale supply',
+      employer_jobs_cooling: 'Employer jobs cooling'
+    };
+    const order = Object.keys(names);
     const c = stress.components || {};
     const html = order.map(function(k) {
       const comp = c[k] || {};
-      const s = comp.score != null ? comp.score : 0;
-      const pct = s / 25;
+      const s = comp.score;
+      const weight = comp.weight || 0;
+      const pct = s != null && weight ? s / weight : 0;
       const col = pct >= 0.8 ? UAE_C.red : pct >= 0.5 ? UAE_C.amber : UAE_C.green;
       const stale = comp.active === false ? ' <span style="color:' + UAE_C.gray + ';font-size:10px;">(stale ' + (comp.stale_days || 0) + 'd)</span>' : '';
       return '<div class="uae-bar-row"><div class="uae-bar-lbl">' + names[k] + stale + '</div>' +
              '<div class="uae-bar-track"><div class="uae-bar-fill" style="width:' + Math.round(pct * 100) + '%;background:' + col + ';"></div></div>' +
-             '<div class="uae-bar-val" style="color:' + col + ';">' + s + '/25</div></div>';
+             '<div class="uae-bar-val" style="color:' + (s == null ? UAE_C.gray : col) + ';">' + (s == null ? '—' : s) + '/' + weight + '</div></div>';
     }).join('');
     const el = document.getElementById('uae-subscores');
     if (el) el.innerHTML = html;
@@ -1343,14 +1345,23 @@
     if (!series || !series.length) { _uaeEmptyChart('uae-stress-chart'); return; }
     const g = _uaeFillGaps(series);
     const labels = _uaeLabels(g);
-    const totals = _uaeVals(g, 'total');
-    const colors = totals.map(function(t) { return t == null ? UAE_C.gray : (t >= 60 ? UAE_C.red : t >= 45 ? UAE_C.amber : UAE_C.green); });
+    const totals = g.map(function(row) {
+      if (!row || row._gap || row.total == null) return null;
+      if (row.data_quality && row.data_quality.coverage_confidence === 'low') return null;
+      return row.total;
+    });
+    const colors = g.map(function(row, i) {
+      const t = totals[i];
+      const coverage = row && row.data_quality ? row.data_quality.coverage_confidence : null;
+      if (t == null || coverage === 'low') return UAE_C.gray;
+      return t >= 80 ? UAE_C.red : t >= 50 ? UAE_C.amber : UAE_C.green;
+    });
     _uaeMkChart('uae-stress-chart', {
       type: 'line',
       data: { labels: labels, datasets: [
         { label: 'Stress', data: totals, borderColor: UAE_C.purple, backgroundColor: UAE_C.purple + '22', borderWidth: 2.5, pointRadius: 4, pointBackgroundColor: colors, fill: true, tension: 0.35, spanGaps: false },
-        { label: 'High', data: labels.map(function() { return 60; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
-        { label: 'Clear', data: labels.map(function() { return 45; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
+        { label: 'Red', data: labels.map(function() { return 80; }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
+        { label: 'Orange', data: labels.map(function() { return 50; }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
       ]},
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
         scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { min: 0, max: 100 }) } }
@@ -1466,11 +1477,11 @@
         '<div class="uae-mc"><div class="lbl">Drop count</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">detected</div></div>' +
         '<div class="uae-mc"><div class="lbl">Avg drop</div><div class="val" style="color:' + UAE_C.red + ';">' + avg + '%</div><div class="sub">across all</div></div>' +
         '<div class="uae-mc"><div class="lbl">Max drop</div><div class="val" style="color:' + UAE_C.red + ';">' + maxD + '%</div><div class="sub">single listing</div></div>' +
-        '<div class="uae-mc"><div class="lbl">Score</div><div class="val" style="color:' + (dScr >= 20 ? UAE_C.red : dScr >= 14 ? UAE_C.amber : UAE_C.green) + ';">' + dScr + '/25</div><div class="sub">B component</div></div>';
+        '<div class="uae-mc"><div class="lbl">Provisional score</div><div class="val" style="color:' + (dScr >= 24 ? UAE_C.red : dScr >= 15 ? UAE_C.amber : UAE_C.green) + ';">' + dScr + '/30</div><div class="sub">active-drop stock vs rolling median</div></div>';
     }
     if (pillEl) {
-      pillEl.textContent = 'B: ' + dScr + '/25';
-      pillEl.className = 'uae-pill ' + (dScr >= 20 ? 'uae-p-red' : dScr >= 14 ? 'uae-p-warn' : 'uae-p-ok');
+      pillEl.textContent = 'Price-drop stock: ' + dScr + '/30';
+      pillEl.className = 'uae-pill ' + (dScr >= 24 ? 'uae-p-red' : dScr >= 15 ? 'uae-p-warn' : 'uae-p-ok');
     }
   }
 
@@ -1506,25 +1517,72 @@
   }
 
   function _uaeRenderBenchChart(series) {
-    if (!series || !series.length) { _uaeEmptyChart('uae-bench-chart'); return; }
+    const portfolioEl = document.getElementById('uae-portfolio-reference');
+    if (!series || !series.length) {
+      if (portfolioEl) portfolioEl.innerHTML = '<div class="uae-lead-note">No encrypted weekly portfolio reference available yet.</div>';
+      _uaeEmptyChart('uae-bench-chart');
+      return;
+    }
     const g = _uaeFillGaps(series);
+    const last = series[series.length - 1];
+    const ctx = last.portfolio_context || {};
+    const corner = ctx.corner || {};
+    const middle = ctx.middle || {};
+    const urgent = ctx.urgent_sale_observed_aed || {};
+    const cornerM = corner.completion_estimate_aed_each ? corner.completion_estimate_aed_each / 1e6 : null;
+    const middleM = middle.completion_estimate_aed ? middle.completion_estimate_aed / 1e6 : null;
+    const urgentHighM = urgent.high ? urgent.high / 1e6 : null;
+    const urgentLowM = urgent.low ? urgent.low / 1e6 : null;
+    if (portfolioEl) {
+      portfolioEl.innerHTML =
+        '<div class="uae-grid2">' +
+          '<div class="uae-mc"><div class="lbl">Corner units</div><div class="val">' + (corner.units || '—') + ' × ' + (cornerM ? 'AED ' + cornerM.toFixed(2) + 'M' : '—') + '</div><div class="sub">estimated completed value · ' + (corner.status || 'status unavailable') + '</div></div>' +
+          '<div class="uae-mc"><div class="lbl">Middle unit</div><div class="val">' + (middleM ? 'AED ' + middleM.toFixed(2) + 'M' : '—') + '</div><div class="sub">estimated completed value</div></div>' +
+        '</div>' +
+        '<div class="uae-lead-note" style="margin-top:10px;"><strong>Urgent-sale observed market: ' + (urgentLowM ? 'AED ' + urgentLowM.toFixed(2) + 'M' : '—') + '–' + (urgentHighM ? 'AED ' + urgentHighM.toFixed(2) + 'M' : '—') + '.</strong> Stored separately from completed-value estimates; not treated as fair value.</div>';
+    }
+    const datasets = [{
+      label: 'Watched corner listing',
+      data: g.map(function(e) { return e._gap ? null : (e.benchmark_price_aed ? +(e.benchmark_price_aed / 1e6).toFixed(3) : null); }),
+      borderColor: UAE_C.coral, backgroundColor: UAE_C.coral + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false
+    }];
+    function referenceLine(label, value, color, dash) {
+      if (value == null) return;
+      datasets.push({ label: label, data: _uaeLabels(g).map(function(){return value;}), borderColor: color, borderDash: dash, borderWidth: 1.5, pointRadius: 0 });
+    }
+    referenceLine('Corner completion estimate', cornerM, UAE_C.teal, [6,4]);
+    referenceLine('Middle completion estimate', middleM, UAE_C.blue, [6,4]);
+    referenceLine('Urgent observed high', urgentHighM, UAE_C.amber, [3,3]);
+    referenceLine('Urgent observed low', urgentLowM, UAE_C.red, [3,3]);
+    const rangeValues = [cornerM, middleM, urgentHighM, urgentLowM, last.benchmark_price_aed ? last.benchmark_price_aed / 1e6 : null].filter(function(v){return v != null;});
+    const yMin = rangeValues.length ? Math.max(0, Math.floor((Math.min.apply(null, rangeValues) - 0.2) * 10) / 10) : 0;
+    const yMax = rangeValues.length ? Math.ceil((Math.max.apply(null, rangeValues) + 0.2) * 10) / 10 : 4;
     _uaeMkChart('uae-bench-chart', {
       type: 'line',
-      data: { labels: _uaeLabels(g), datasets: [{
-        label: 'AED M',
-        data: g.map(function(e) { return e._gap ? null : (e.benchmark_price_aed ? +(e.benchmark_price_aed / 1e6).toFixed(3) : null); }),
-        borderColor: UAE_C.coral, backgroundColor: UAE_C.coral + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false
-      }]},
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return 'AED ' + v.toFixed(1) + 'M'; }, min: 2.5, max: 4.0 }) } }
+      data: { labels: _uaeLabels(g), datasets: datasets },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, labels: { color: UAE_C.tick, font: { size: 9 } } } },
+        scales: { x: _uaeScales().x, y: Object.assign({}, _uaeScales().y, { callback: function(v) { return 'AED ' + v.toFixed(1) + 'M'; }, min: yMin, max: yMax }) } }
     });
     const noteEl = document.getElementById('uae-bench-note');
-    const last = series[series.length - 1];
     if (noteEl && last) {
       const flag = last.benchmark_flag || '—';
-      const flagCol = flag === 'NO CHANGE' ? UAE_C.teal : UAE_C.amber;
-      noteEl.innerHTML = '<span style="color:' + flagCol + ';">' + flag + '</span> · <span style="color:var(--text-muted);">AED ' + (last.benchmark_price_aed ? (last.benchmark_price_aed / 1e6).toFixed(1) : '—') + 'M · Semi-Detached Villa · Corner Type D</span>';
+      const flagCol = flag === 'PRICE CUT' ? UAE_C.red : flag === 'NO MATERIAL CHANGE' ? UAE_C.teal : UAE_C.amber;
+      noteEl.innerHTML = '<span style="color:' + flagCol + ';">' + flag + '</span> · <span style="color:var(--text-muted);">AED ' + (last.benchmark_price_aed ? (last.benchmark_price_aed / 1e6).toFixed(2) : '—') + 'M · exact listing verified ' + (last.date || '—') + ' · no fallback price</span>';
     }
+  }
+
+  function _uaeRenderSecurity(series) {
+    const el = document.getElementById('uae-security-card');
+    if (!el) return;
+    const last = series && series.length ? series[series.length - 1] : null;
+    if (!last) {
+      el.innerHTML = '<div class="uae-st">Security &amp; mobility</div><div class="uae-lead-note">Insufficient evidence — no current official-advisory consensus.</div>';
+      return;
+    }
+    const cls = last.level >= 3 ? 'uae-p-red' : last.level >= 2 ? 'uae-p-red' : last.level >= 1 ? 'uae-p-warn' : 'uae-p-ok';
+    const usable = last.sources_available != null ? last.sources_available + '/' + last.sources_total : '—';
+    el.innerHTML = '<div class="uae-st">Security &amp; mobility <span class="uae-pill ' + cls + '">' + last.band + ' · ' + last.score + '/100</span></div>' +
+      '<div class="uae-lead-note">Official advisory consensus · ' + usable + ' sources available · observed ' + (last.date || '—') + '. Security is a floor: quiet market data cannot lower it.</div>';
   }
 
   function _uaeRenderAjmanMetrics(series) {
@@ -1602,10 +1660,12 @@
       const stress = data.latest_stress || (data.stress_series || []).slice(-1)[0] || {};
       const dq = stress.data_quality || {};
       const activeSources = dq.active_sources != null ? dq.active_sources : '—';
-      const totalSources = dq.total_sources != null ? dq.total_sources : 4;
+      const totalSources = dq.total_sources != null ? dq.total_sources : 5;
       const scoreTxt = stress.total != null ? stress.total : '—';
       const bandTxt = stress.band || '—';
-      const pillClass = _uaePillCls(stress.band);
+      const coverageConfidence = dq.coverage_confidence || (Number(activeSources) === Number(totalSources) ? 'high' : Number(activeSources) >= 2 ? 'medium' : 'low');
+      const confidenceTxt = coverageConfidence.charAt(0).toUpperCase() + coverageConfidence.slice(1) + ' confidence';
+      const pillClass = _uaePillCls(stress.band, coverageConfidence);
 
       target.innerHTML =
         '<div class="uae-dash">' +
@@ -1614,13 +1674,15 @@
               'Last collection: ' + (stress.date || '—') +
             '</div>' +
             '<span id="uae-stress-pill" class="' + pillClass + '">' +
-              scoreTxt + '/100 · ' + activeSources + '/' + totalSources + ' sources — ' + bandTxt +
+              scoreTxt + '/100 · ' + activeSources + '/' + totalSources + ' available — ' + bandTxt + ' · ' + confidenceTxt +
             '</span>' +
           '</div>' +
 
-          '<div class="uae-section-div">Leading Indicators · unscored, data-only</div>' +
+          '<div class="uae-card" id="uae-security-card"></div>' +
+
+          '<div class="uae-section-div">Market &amp; liquidity context · supporting evidence</div>' +
           '<div class="uae-card">' +
-            '<div class="uae-lead-note" style="margin-bottom:10px;">Purpose: geopolitical/economic early-warning in front of the lagging property/consumer stress components. NOT fed into the stress score. Deltas are direction-neutral; bold = |change| ≥ 2% (magnitude is the alarm).</div>' +
+            '<div class="uae-lead-note" style="margin-bottom:10px;">Brent and UAE equities provide context but do not override official security warnings. Deltas are direction-neutral; bold = |change| ≥ 2%.</div>' +
             '<div class="uae-grid3" id="uae-lead-metrics" style="margin-bottom:14px;"></div>' +
             '<div class="uae-grid3">' +
               '<div><div class="uae-lead-note" style="margin-bottom:4px;">Brent 90-day trend</div><div class="uae-cw" style="height:150px;"><canvas id="uae-lead-brent-chart"></canvas></div></div>' +
@@ -1639,7 +1701,7 @@
             '</div>' +
           '</div>' +
 
-          '<div class="uae-section-div">Stress Index</div>' +
+          '<div class="uae-section-div">UAE Early-Warning Alert</div>' +
           '<div class="uae-grid2">' +
             '<div class="uae-card uae-gauge-wrap" style="justify-content:center;">' +
               '<svg width="220" height="120" viewBox="0 0 220 120">' +
@@ -1654,22 +1716,19 @@
                 '<text x="196" y="116" font-size="10" fill="currentColor" opacity=".6">100</text>' +
               '</svg>' +
               '<div class="uae-gauge-num" id="uae-gauge-num">—</div>' +
-              '<div style="font-size:11px;color:var(--text-muted);">stress index · out of 100</div>' +
-              '<div style="width:100%;margin-top:8px;display:flex;flex-direction:column;gap:6px;">' +
-                '<div class="uae-mode-badge"><span style="color:var(--text-muted);">HYTE</span><span id="uae-hyte-pill" class="uae-pill uae-p-blue">—</span></div>' +
-                '<div class="uae-mode-badge"><span style="color:var(--text-muted);">Al Zorah</span><span id="uae-alz-pill" class="uae-pill uae-p-ok">—</span></div>' +
-              '</div>' +
+              '<div style="font-size:11px;color:var(--text-muted);">security floor or exit/economic stress · out of 100</div>' +
+              '<div class="uae-lead-note" style="margin-top:8px;text-align:center;">No business sell/hold decision is generated automatically.</div>' +
             '</div>' +
             '<div class="uae-card">' +
-              '<div class="uae-st">Stress sub-scores</div>' +
+              '<div class="uae-st">Exit &amp; economic evidence</div>' +
               '<div id="uae-subscores"></div>' +
             '</div>' +
           '</div>' +
 
           '<div class="uae-card">' +
-            '<div class="uae-st">Stress index — daily trend</div>' +
+            '<div class="uae-st">UAE alert — daily trend</div>' +
             '<div class="uae-cw" style="height:150px;"><canvas id="uae-stress-chart"></canvas></div>' +
-            '<div class="uae-src">Bands: 0–29 Stable · 30–44 Mild · 45–59 Clear · 60–74 High · 75–100 Crisis · line breaks = no data / actor failed</div>' +
+            '<div class="uae-src">Bands: 0–24 Green · 25–49 Yellow · 50–79 Orange · 80–100 Red · insufficient source coverage is a gap, never zero</div>' +
           '</div>' +
 
           '<div class="uae-section-div">Dubizzle Classifieds — Consumer Goods Pressure</div>' +
@@ -1678,14 +1737,14 @@
             '<div class="uae-grid6" id="uae-cls-metrics" style="margin-bottom:14px;"></div>' +
             '<div class="uae-leg" id="uae-cls-leg"></div>' +
             '<div class="uae-cw" style="height:200px;"><canvas id="uae-cls-chart"></canvas></div>' +
-            '<div class="uae-src">Source: uae.dubizzle.com/classified/ · Rising = consumer asset liquidation</div>' +
+            '<div class="uae-src">Source: uae.dubizzle.com/classified/ · raw active stock is provisional; a meaningful signal requires a sustained rise across categories and price-cut/owner evidence</div>' +
           '</div>' +
 
           '<div class="uae-section-div">Used Cars — Asset Liquidation Signal</div>' +
           '<div class="uae-card">' +
             '<div class="uae-st">Dubizzle Used Cars UAE — daily listing count <span class="uae-pill uae-p-blue" id="uae-usedcars-pill">—</span></div>' +
             '<div class="uae-cw" style="height:160px;"><canvas id="uae-usedcars-chart"></canvas></div>' +
-            '<div class="uae-src">Source: uae.dubizzle.com/motors/ · Rising = consumer asset liquidation signal</div>' +
+            '<div class="uae-src">Source: uae.dubizzle.com/motors/ · supporting signal only until private sellers, new listings and relists are separated from dealers</div>' +
           '</div>' +
 
           '<div class="uae-section-div">Property Supply — UAE Total</div>' +
@@ -1704,23 +1763,22 @@
 
           '<div class="uae-section-div">Luxury Price Drops — HNW Distress</div>' +
           '<div class="uae-card">' +
-            '<div class="uae-st">Luxury Price Drops — Dubai <span id="uae-lux-pill" class="uae-pill uae-p-gray">B score —/25</span></div>' +
+            '<div class="uae-st">Luxury Price Drops — Dubai <span id="uae-lux-pill" class="uae-pill uae-p-gray">score —/30</span></div>' +
             '<div class="uae-grid4" id="uae-lux-metrics"></div>' +
             '<div class="uae-cw" style="height:150px;margin-top:12px;"><canvas id="uae-lux-chart"></canvas></div>' +
             '<div class="uae-src">Source: luxurypricedrops.com/dubai/ · Baseline Apr 5 2026: 1,542</div>' +
           '</div>' +
 
-          '<div class="uae-section-div">Bayut — Al Zorah District 9 &amp; Ajman Market</div>' +
+          '<div class="uae-section-div">Al Zorah · weekly liquidity watch</div>' +
           '<div class="uae-grid2">' +
             '<div class="uae-card">' +
-              '<div class="uae-st">District 9, Al Zorah — listed properties</div>' +
-              '<div class="uae-cw" style="height:170px;"><canvas id="uae-d9-chart"></canvas></div>' +
-              '<div class="uae-src" id="uae-d9-note">Source: bayut.com/for-sale/property/ajman/al-zorah/district-9/</div>' +
+              '<div class="uae-st">Portfolio reference</div>' +
+              '<div id="uae-portfolio-reference"><div class="uae-lead-note">Loading encrypted portfolio reference…</div></div>' +
             '</div>' +
             '<div class="uae-card">' +
-              '<div class="uae-st">Benchmark — Villa D9 (AED M)</div>' +
-              '<div style="background:var(--bg);border-radius:6px;padding:7px 11px;margin-bottom:8px;font-size:11px;color:var(--text-muted);">Semi-Detached Villa · Corner Type D · District 9</div>' +
-              '<div class="uae-cw" style="height:135px;"><canvas id="uae-bench-chart"></canvas></div>' +
+              '<div class="uae-st">Exact watched listing (AED M)</div>' +
+              '<div style="background:var(--bg);border-radius:6px;padding:7px 11px;margin-bottom:8px;font-size:11px;color:var(--text-muted);">4BR · Corner Type D · 3,860 sqft BUA · 2,500 sqft plot · District 9</div>' +
+              '<div class="uae-cw" style="height:185px;"><canvas id="uae-bench-chart"></canvas></div>' +
               '<div class="uae-src" id="uae-bench-note"></div>' +
             '</div>' +
           '</div>' +
@@ -1754,10 +1812,7 @@
         '</div>';
 
       if (stress.total != null) _uaeUpdateGauge(stress.total);
-      const hp = document.getElementById('uae-hyte-pill');
-      const ap = document.getElementById('uae-alz-pill');
-      if (hp) hp.textContent = _uaeHyteMode(stress.total || 0);
-      if (ap) ap.textContent = _uaeAlzMode(stress.total || 0);
+      _uaeRenderSecurity(data.security_alert_series || []);
       _uaeRenderSubscores(stress);
       _uaeRenderStressChart(data.stress_series || []);
       _uaeRenderClassified(data.dubizzle_series || []);
@@ -1765,11 +1820,10 @@
       _uaeRenderPropertyTotal(data.dubizzle_property_sale_series || [], 'propsale', UAE_C.green);
       _uaeRenderPropertyTotal(data.dubizzle_property_rent_series || [], 'proprent', UAE_C.blue);
       const luxSeries = data.luxury_drops_series || [];
-      const luxScore = (stress.components && stress.components.luxury && stress.components.luxury.score) || 0;
+      const luxScore = (stress.components && stress.components.luxury_price_drops && stress.components.luxury_price_drops.score) || 0;
       _uaeRenderLuxury(luxSeries[luxSeries.length - 1], luxScore);
       _uaeRenderLuxChart(luxSeries);
-      _uaeRenderD9Chart(data.bayut_series || []);
-      _uaeRenderBenchChart(data.bayut_series || []);
+      _uaeRenderBenchChart(data.al_zorah_weekly_series || []);
       const ajmanSeries = data.ajman_property_series || [];
       _uaeRenderAjmanMetrics(ajmanSeries);
       _uaeRenderAjmanCharts(ajmanSeries);
