@@ -1601,6 +1601,33 @@
       '<div class="uae-lead-note">Official advisory consensus · ' + usable + ' sources available · observed ' + (last.date || '—') + '. Security is a floor: quiet market data cannot lower it.</div>';
   }
 
+  function _uaeRenderMobility(airlineSeries, residenceSeries, redditSeries) {
+    const el = document.getElementById('uae-mobility-grid');
+    if (!el) return;
+    const airline = airlineSeries && airlineSeries.length ? airlineSeries[airlineSeries.length - 1] : null;
+    const residence = residenceSeries && residenceSeries.length ? residenceSeries[residenceSeries.length - 1] : null;
+    const reddit = redditSeries && redditSeries.length ? redditSeries[redditSeries.length - 1] : null;
+    const airlineAge = _uaeReadingAge(airline ? airline.date : null);
+    const residenceAge = _uaeReadingAge(residence ? residence.date : null);
+    const redditAge = _uaeReadingAge(reddit ? reddit.date : null);
+    const airlineLevel = airline ? Number(airline.level || 0) : null;
+    const airlineColor = airlineLevel >= 2 ? UAE_C.red : airlineLevel === 1 ? UAE_C.amber : UAE_C.teal;
+    const delta = residence ? residence.change_since_prior : null;
+    el.innerHTML =
+      '<div class="uae-mc"><div class="lbl">Foreign-airline warning</div>' +
+        '<div class="val" style="font-size:16px;color:' + airlineColor + ';">' + (airline ? airline.band : '—') + '</div>' +
+        '<div class="sub">' + (airline ? airline.current_warning_sources + '/' + airline.sources_total + ' current dated notices' : 'No reading') + '</div>' +
+        '<div class="uae-lead-fresh" style="color:' + (airlineAge.stale ? UAE_C.red : '') + ';">Air India + IndiGo · ' + (airline ? airline.date : '—') + '</div></div>' +
+      '<div class="uae-mc"><div class="lbl">ICP residence cancellations</div>' +
+        '<div class="val">' + (residence ? _uaeFmt(residence.total_transactions) : '—') + '</div>' +
+        '<div class="sub">' + (delta == null ? 'Building baseline' : (delta >= 0 ? '+' : '') + _uaeFmt(delta) + ' since ' + (residence.prior_observation_date || 'prior reading')) + '</div>' +
+        '<div class="uae-lead-fresh" style="color:' + (residenceAge.stale ? UAE_C.red : '') + ';">Cumulative service transactions · not people departed · ' + (residence ? residence.date : '—') + '</div></div>' +
+      '<div class="uae-mc"><div class="lbl">Reddit exit chatter</div>' +
+        '<div class="val">' + (reddit ? reddit.exit_signal_posts + '/' + reddit.posts_scanned : '—') + '</div>' +
+        '<div class="sub">' + (reddit && reddit.exit_signal_share_pct != null ? reddit.exit_signal_share_pct.toFixed(1) + '% matched · r/' + reddit.subreddit : 'Building baseline') + '</div>' +
+        '<div class="uae-lead-fresh" style="color:' + (redditAge.stale ? UAE_C.red : '') + ';">Aggregate only · one subreddit/day · anecdotal · ' + (reddit ? reddit.date : '—') + '</div></div>';
+  }
+
   function _uaeRenderAjmanMetrics(series) {
     const metricsEl = document.getElementById('uae-ajman-metrics');
     const pillEl = document.getElementById('uae-ajman-ratio-pill');
@@ -1697,6 +1724,13 @@
           '</div>' +
 
           '<div class="uae-card" id="uae-security-card"></div>' +
+
+          '<div class="uae-section-div">External mobility &amp; resident-exit proxies · experimental</div>' +
+          '<div class="uae-card">' +
+            '<div class="uae-lead-note" style="margin-bottom:10px;">Foreign airlines can reduce service before a formal UAE closure. Official cancellation transactions and public-community chatter add context, but neither equals verified permanent emigration. These readings remain outside the stress score while baselines are built.</div>' +
+            '<div class="uae-grid3" id="uae-mobility-grid"></div>' +
+            '<div class="uae-src" style="margin-top:10px;">Airlines: official Air India and IndiGo notice pages · Residency: official ICP cumulative service counter (Dubai GDRFA may be separate) · Reddit: rotating r/UAE, r/dubai, r/abudhabi and r/dubairealestate RSS sample; no usernames, titles, bodies or links retained</div>' +
+          '</div>' +
 
           '<div class="uae-section-div">Market &amp; liquidity context · supporting evidence</div>' +
           '<div class="uae-card">' +
@@ -1831,6 +1865,11 @@
 
       if (stress.total != null) _uaeUpdateGauge(stress.total);
       _uaeRenderSecurity(data.security_alert_series || []);
+      _uaeRenderMobility(
+        data.airline_disruption_series || [],
+        data.residency_cancellation_series || [],
+        data.reddit_exit_chatter_series || []
+      );
       _uaeRenderSubscores(stress);
       _uaeRenderStressChart(data.stress_series || []);
       _uaeRenderClassified(data.dubizzle_series || []);
