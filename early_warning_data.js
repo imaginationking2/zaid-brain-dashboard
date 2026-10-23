@@ -1,12 +1,12 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "watch-review-2026-10-23-203216692-uae",
-  "checked_at": "2026-10-23T16:32:16.692Z",
+  "snapshot_id": "watch-review-2026-10-23-210040770-uae",
+  "checked_at": "2026-10-23T17:00:40.770Z",
   "mode": "snapshot",
   "incidents": [
     {
       "id": "uaq-coastal-oil-spill-2026-10-22",
-      "revision": 11,
+      "revision": 12,
       "title": "UAQ coastal oil spill \u2014 temporary beach closures reported",
       "summary": "Temporary UAQ beach/coastal closures remain unresolved. The original Gulf News ministry report is unchanged; municipal cleanup and Sharjah24 direct reads failed, with prior successful evidence preserved. No reopening verified.",
       "status": "active",
@@ -20,22 +20,22 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Sharjah"
       ],
       "event_at": null,
-      "checked_at": "2026-10-23T16:32:16.692Z",
+      "checked_at": "2026-10-23T17:00:40.770Z",
       "resolved_at": null,
       "sources": [
         {
           "name": "Gulf News \u2014 reported MOCCAE statement",
           "url": "https://gulfnews.com/uae/uae-oil-spill-umm-al-quwain-beaches-closed-as-cleanup-efforts-begin-1.500720483",
           "access": "secondhand",
-          "description": "Publisher retrieved 16:31:58.252 UTC, text confirmed 16:32:04.625. Unchanged October 23 02:33 display; timezone unstated, prior contextual UTC+4 assumption retained. Secondhand ministry report; no reopening.",
+          "description": "Publisher retrieved 17:00:17.416 UTC, text confirmed 17:00:23.882. Unchanged October 23 02:33 display; timezone unstated, prior contextual UTC+4 assumption retained. Secondhand ministry report; no reopening.",
           "published_at": "2026-10-23T02:33:00+04:00",
-          "checked_at": "2026-10-23T16:32:04.625Z"
+          "checked_at": "2026-10-23T17:00:23.882Z"
         },
         {
           "name": "Gulf News \u2014 municipality cleanup report",
           "url": "https://gulfnews.com/uae/umm-al-quwain-municipality-steps-up-efforts-to-contain-oil-spill-along-emirates-beaches-1.500720994",
           "access": "secondhand",
-          "description": "Last successful direct read remains October 23 12:29:56.604 UTC. Latest attempt 16:31:58.252 UTC inaccessible; search repeats historical October 23 14:37 publication. Existing timezone assumption retained. Not new direct evidence or reopening.",
+          "description": "Last direct success remains October 23 12:29:56.604 UTC. Latest attempt failed 17:00:17.416 UTC; historical October 23 14:37 publication and timezone assumption retained. Not newly verified direct evidence or reopening.",
           "published_at": "2026-10-23T14:37:00+04:00",
           "checked_at": "2026-10-23T12:29:56.604Z"
         },
@@ -43,9 +43,17 @@ window.ZAID_UAE_EARLY_WARNING = {
           "name": "Sharjah24 \u2014 reproduced UAQ ministry closure/cleanup report",
           "url": "https://sharjah24.ae/ar/Articles/2026/10/23/KMR1",
           "access": "secondhand",
-          "description": "Last successful publisher read remains October 23 15:01:37.936 UTC. Latest attempt 16:32:04.625 UTC inaccessible. URL date October 23, exact publication time unknown; secondhand ministry reproduction.",
+          "description": "Last publisher success remains October 23 15:01:37.936 UTC. Latest attempt failed 17:00:23.882 UTC. URL date October 23, exact publication time unknown; secondhand ministry reproduction.",
           "published_at": null,
           "checked_at": "2026-10-23T15:01:37.936Z"
+        },
+        {
+          "name": "Gulf Today \u2014 reproduction of existing MOCCAE odour statement",
+          "url": "https://www.gulftoday.ae/news/2026/10/23/beach-odours-in-sharjah-ajman-uaq-pose-no-health-risks-says-ministry",
+          "access": "secondhand",
+          "description": "Read October 23 at 17:00:23.882 UTC. Displays October 23 19:07, timezone unstated; exact publication timestamp null. Repeats existing ministry statement including its assessment of no health concerns from odours. Same statement, not fresh pollutant measurements, independent corroboration, reopening or an all-clear.",
+          "published_at": null,
+          "checked_at": "2026-10-23T17:00:23.882Z"
         }
       ],
       "unknowns": [
@@ -116,12 +124,17 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-23T16:32:16.692Z",
           "kind": "update",
           "note": "20:32 UAE review: no new actionable hazard, closure expansion, reopening or advisory change. A different Al Khaleej URL reproduces the same precautionary Hamriyah statement with different displayed publication/update times; retained as a separate observation, not a new decision or independent corroboration. Failed reads retain historical successful evidence; status, severity and confidence unchanged."
+        },
+        {
+          "at": "2026-10-23T17:00:40.770Z",
+          "kind": "update",
+          "note": "21:00 UAE review: no new actionable hazard, closure expansion, reopening or advisory change verified. Gulf Today repeats the existing ministry statement; not independent corroboration, new measurements or an all-clear. Maritime circular index is limited coverage with linked PDFs inaccessible, not a new urgent incident. Status, severity and confidence unchanged; historical source evidence preserved."
         }
       ]
     },
     {
       "id": "al-hamriyah-beach-precautionary-closure-2026-10-23",
-      "revision": 5,
+      "revision": 6,
       "title": "Al Hamriyah Beach \u2014 reported temporary precautionary closure",
       "summary": "Al Hamriyah Beach remains a geographically bounded precautionary WATCH with medium confidence. No closure expansion, confirmed shore pollution, evacuation or reopening verified in the approximately 19:31:47 UAE review. Gulf News direct access failed; search retrieval repeated the same statement. Al Khaleej and Reuters reproductions were not freshly checked and remain historical support, not independent on-site corroboration.",
       "status": "active",
@@ -134,14 +147,14 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Al Hamriyah Beach"
       ],
       "event_at": null,
-      "checked_at": "2026-10-23T16:32:16.692Z",
+      "checked_at": "2026-10-23T17:00:40.770Z",
       "resolved_at": null,
       "sources": [
         {
           "name": "Gulf News \u2014 attributed Sharjah Government Media Bureau report",
           "url": "https://gulfnews.com/uae/environment/sharjah-temporarily-closes-al-hamriyah-beach-over-oil-spill-concerns-1.500721368",
           "access": "secondhand",
-          "description": "Last successful direct Gulf News read remains October 23 14:31:12.943 UTC. Direct read failed 16:31:51.438 UTC; search 16:31:58.252 repeats October 23 17:48 display. Timezone unstated, prior contextual UTC+4 assumption retained. No new direct official instruction, contamination or reopening evidence.",
+          "description": "Last direct Gulf News success remains October 23 14:31:12.943 UTC. Latest direct attempt failed 17:00:07.705 UTC; search 17:00:17.416 repeats October 23 17:48 display. Timezone unstated, prior contextual UTC+4 assumption retained. No new direct official instruction or reopening evidence.",
           "published_at": "2026-10-23T17:48:00+04:00",
           "checked_at": "2026-10-23T14:31:12.943Z"
         },
@@ -201,6 +214,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-23T16:32:16.692Z",
           "kind": "update",
           "note": "20:32 UAE review: no new actionable hazard, closure expansion, reopening or advisory change. A different Al Khaleej URL reproduces the same precautionary Hamriyah statement with different displayed publication/update times; retained as a separate observation, not a new decision or independent corroboration. Failed reads retain historical successful evidence; status, severity and confidence unchanged."
+        },
+        {
+          "at": "2026-10-23T17:00:40.770Z",
+          "kind": "update",
+          "note": "21:00 UAE review: no new actionable hazard, closure expansion, reopening or advisory change verified. Gulf Today repeats the existing ministry statement; not independent corroboration, new measurements or an all-clear. Maritime circular index is limited coverage with linked PDFs inaccessible, not a new urgent incident. Status, severity and confidence unchanged; historical source evidence preserved."
         }
       ]
     }
@@ -211,7 +229,7 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "UK FCDO",
       "url": "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:42.897Z",
+      "checked_at": "2026-10-23T17:00:03.254Z",
       "published_at": null,
       "detail": "Unchanged July 24 substantive update; current-today label is not new advice."
     },
@@ -220,25 +238,25 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "US travel advisory",
       "url": "https://travel.state.gov/en/international-travel/travel-advisories/united-arab-emirates.html",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:51.438Z",
+      "checked_at": "2026-10-23T17:00:07.705Z",
       "published_at": null,
-      "detail": "Page retrieved 16:31:42.897 UTC, text confirmed 16:31:51.438. Unchanged August 29 Level 3; September 17 footer is not a new advisory."
+      "detail": "Page retrieved 17:00:03.254 UTC; text confirmed 17:00:07.705. Unchanged August 29 Level 3; September 17 footer is not a new advisory."
     },
     {
       "id": "emirates",
       "name": "Emirates travel updates",
       "url": "https://www.emirates.com/english/help/travel-updates/",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:42.897Z",
+      "checked_at": "2026-10-23T17:00:07.705Z",
       "published_at": "2026-10-05T20:31:00+04:00",
-      "detail": "Unchanged October 5 at 20:31 Dubai Tel Aviv flydubai codeshare suspension."
+      "detail": "Page retrieved 17:00:03.254 UTC; text confirmed 17:00:07.705. Unchanged October 5 at 20:31 Dubai Tel Aviv flydubai codeshare suspension."
     },
     {
       "id": "etihad",
       "name": "Etihad flight status",
       "url": "https://www.etihad.com/en-ae/manage/flight-status",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:42.897Z",
+      "checked_at": "2026-10-23T17:00:03.254Z",
       "published_at": null,
       "detail": "Unchanged Saudi route cancellations through November 5, Taipei October 22\u201323 delays and old October 21 EY542 notice. Publication timestamps absent."
     },
@@ -247,25 +265,25 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "flydubai operational updates",
       "url": "https://www.flydubai.com/en/help/operational-updates/",
       "status": "checked",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": "2026-03-31T16:00:00+04:00",
-      "detail": "Retrieved 16:31:51.438 UTC; date confirmed 16:32:04.625. Unchanged March 31 at 16:00 Dubai reduced-network notice; not proof of normality."
+      "detail": "Retrieved 17:00:07.705 UTC, date confirmed 17:00:23.882. Unchanged March 31 at 16:00 Dubai reduced-network notice; not proof of normality."
     },
     {
       "id": "maersk",
       "name": "Maersk updates",
       "url": "https://www.maersk.com/stay-ahead",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:51.438Z",
+      "checked_at": "2026-10-23T17:00:07.705Z",
       "published_at": null,
-      "detail": "Unchanged October 8 Update 51 and existing cargo restrictions; not newly issued."
+      "detail": "Unchanged October 8 Update 51 and existing restrictions; not newly issued."
     },
     {
       "id": "ncema",
       "name": "NCEMA",
       "url": "https://www.ncema.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-23T16:31:58.252Z",
+      "checked_at": "2026-10-23T17:00:17.416Z",
       "published_at": null,
       "detail": "Request timed out; no usable new evidence."
     },
@@ -283,7 +301,7 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Embassy alert pages",
       "url": "https://ae.usembassy.gov/",
       "status": "inaccessible",
-      "checked_at": "2026-10-23T16:31:58.252Z",
+      "checked_at": "2026-10-23T17:00:17.416Z",
       "published_at": null,
       "detail": "US Embassy returned 403; not bypassed."
     },
@@ -292,7 +310,7 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air-quality platform",
       "url": "https://www.ncm.gov.ae/",
       "status": "no_current_values",
-      "checked_at": "2026-10-23T16:31:58.252Z",
+      "checked_at": "2026-10-23T17:00:17.416Z",
       "published_at": null,
       "detail": "Homepage shell only; no dated warning bulletin."
     },
@@ -301,9 +319,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Dubai Airports flight rows",
       "url": "https://dubaiairports.ae/flight-status?type=arrivals",
       "status": "unretrievable",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "Generic flight-status page without flight rows. No airport-wide anomaly calculation or operational all-clear."
+      "detail": "Generic flight-status page without flight rows; no airport-wide anomaly calculation or operational all-clear."
     },
     {
       "id": "reddit",
@@ -319,18 +337,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Gulf News closure report",
       "url": "https://gulfnews.com/uae/uae-oil-spill-umm-al-quwain-beaches-closed-as-cleanup-efforts-begin-1.500720483",
       "status": "checked",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": "2026-10-23T02:33:00+04:00",
-      "detail": "Retrieved 16:31:58.252 UTC, text confirmed 16:32:04.625. Unchanged October 23 02:33 display, timezone unstated; prior contextual UTC+4 assumption retained. Secondhand ministry report, no reopening."
+      "detail": "Retrieved 17:00:17.416 UTC, text confirmed 17:00:23.882. Unchanged October 23 02:33 display; timezone unstated, prior contextual UTC+4 assumption retained. Secondhand ministry report; no reopening."
     },
     {
       "id": "gn-cleanup",
       "name": "Gulf News cleanup report",
       "url": "https://gulfnews.com/uae/umm-al-quwain-municipality-steps-up-efforts-to-contain-oil-spill-along-emirates-beaches-1.500720994",
       "status": "inaccessible",
-      "checked_at": "2026-10-23T16:31:58.252Z",
+      "checked_at": "2026-10-23T17:00:17.416Z",
       "published_at": "2026-10-23T14:37:00+04:00",
-      "detail": "Direct read inaccessible; search repeats October 23 14:37 baseline. Last direct success 12:29:56.604 UTC preserved; not new direct evidence."
+      "detail": "Direct read failed. Last direct success 12:29:56.604 UTC and historical October 23 14:37 display preserved; not reopening."
     },
     {
       "id": "zayed-airport",
@@ -355,81 +373,81 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air quality",
       "url": "https://airquality.ncm.gov.ae/?lang=en",
       "status": "no_current_values",
-      "checked_at": "2026-10-23T16:31:58.252Z",
+      "checked_at": "2026-10-23T17:00:17.416Z",
       "published_at": null,
-      "detail": "Legend and empty values; no dated station pollutant readings."
+      "detail": "Legend and empty values; no dated pollutant readings."
     },
     {
       "id": "ncm-aviation",
       "name": "NCM Aviation Meteorology airports",
       "url": "https://www.avmet.ae/airports.aspx",
       "status": "checked",
-      "checked_at": "2026-10-23T16:32:16.692Z",
+      "checked_at": "2026-10-23T17:00:35.635Z",
       "published_at": null,
-      "detail": "Retrieved 16:32:04.625 UTC, details through 16:32:16.692. Page stamp 16:29 UTC, AUH/DXB station observations 16:28Z, visibility 10000m each, METARs 16:30Z. Station observation age at final review 4m16.692s; METAR age 2m16.692s. Warnings unavailable means missing, not none. Weather is not pollution data or operational all-clear."
+      "detail": "Retrieved 17:00:23.882 UTC, details 17:00:35.635. Still page stamp 16:29 UTC, station observations 16:28Z with visibility 10000m and METAR 16:30Z. At final review station age 32m40.770s, METAR age 30m40.770s. Retrieval does not refresh observation times. Warnings unavailable means missing, not none; weather is not pollution data or operational all-clear."
     },
     {
       "id": "ajman-police",
       "name": "Ajman Police",
       "url": "https://www.ajmanpolice.gov.ae/",
       "status": "checked",
-      "checked_at": "2026-10-23T16:32:16.692Z",
+      "checked_at": "2026-10-23T17:00:29.511Z",
       "published_at": null,
-      "detail": "Retrieved 16:32:04.625 UTC, listings inspected 16:32:16.692. Routine October 23 campaign and October 20\u201321 items unchanged. Limited displayed listings, not an all-clear."
+      "detail": "Retrieved 17:00:23.882 UTC, listings inspected 17:00:29.511. Routine October 23 campaign and October 20\u201321 items unchanged; limited displayed listings, not an all-clear."
     },
     {
       "id": "dubai-police",
       "name": "Dubai Police",
       "url": "https://www.dubaipolice.gov.ae/app/home",
-      "status": "timeout",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "status": "no_current_values",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "Request timed out; no usable current observations. Prior successful evidence, where available, is historical."
+      "detail": "Homepage shell only; no usable dated bulletin."
     },
     {
       "id": "abu-dhabi-police",
       "name": "Abu Dhabi Police",
       "url": "https://www.adpolice.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "Request timed out; no usable current observations. Prior successful evidence, where available, is historical."
+      "detail": "Request timed out; no usable current observations."
     },
     {
       "id": "sharjah-police",
       "name": "Sharjah Police",
       "url": "https://www.shjpolice.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "Request timed out; no usable current observations. Prior successful evidence, where available, is historical."
+      "detail": "Request timed out; no usable current observations."
     },
     {
       "id": "dubai-civil-defence",
       "name": "Dubai Civil Defence",
       "url": "https://www.dcd.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "Request timed out; no usable current observations. Prior successful evidence, where available, is historical."
+      "detail": "Request timed out; no usable current observations."
     },
     {
       "id": "gn-al-hamriyah",
       "name": "Gulf News Al Hamriyah Beach report",
       "url": "https://gulfnews.com/uae/environment/sharjah-temporarily-closes-al-hamriyah-beach-over-oil-spill-concerns-1.500721368",
       "status": "inaccessible",
-      "checked_at": "2026-10-23T16:31:51.438Z",
+      "checked_at": "2026-10-23T17:00:07.705Z",
       "published_at": null,
-      "detail": "Direct read failed; search 16:31:58.252 UTC repeats October 23 17:48 report. Last successful direct read 14:31:12.943 UTC preserved; no reopening."
+      "detail": "Direct read failed; search 17:00:17.416 UTC repeats October 23 17:48 report. Last direct success 14:31:12.943 UTC preserved."
     },
     {
       "id": "sgmb-ar",
       "name": "Sharjah Government Media Bureau Arabic",
       "url": "https://sgmb.ae/ar",
       "status": "checked",
-      "checked_at": "2026-10-23T16:31:51.438Z",
+      "checked_at": "2026-10-23T17:00:07.705Z",
       "published_at": null,
-      "detail": "Today crawl and October 23 condolences headline remain; no Hamriyah instruction in displayed listings. Not closure corroboration or reopening."
+      "detail": "Today crawl/October 23 condolences headline; no Hamriyah instruction displayed. Not closure corroboration or reopening."
     },
     {
       "id": "sgmb-home",
@@ -445,9 +463,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Sharjah24",
       "url": "https://sharjah24.ae/ar/Articles/2026/10/23/KMR1",
       "status": "inaccessible",
-      "checked_at": "2026-10-23T16:32:04.625Z",
+      "checked_at": "2026-10-23T17:00:23.882Z",
       "published_at": null,
-      "detail": "UAQ report inaccessible. Last successful publisher read 15:01:37.936 UTC preserved. Secondhand ministry reproduction."
+      "detail": "UAQ report failed. Last successful publisher read 15:01:37.936 UTC preserved; secondhand ministry reproduction."
     },
     {
       "id": "sharjahmedia-x",
@@ -466,6 +484,24 @@ window.ZAID_UAE_EARLY_WARNING = {
       "checked_at": "2026-10-23T15:31:47Z",
       "published_at": null,
       "detail": "Approximate check: page 19:31:31 UAE, details 19:31:47. Displays publication 21 October 13:58:26, timezone unstated; exact timestamp left null. Two-day-old supplementary carrier report describes restricted Dubai/Abu Dhabi air/ocean services and Saudi cargo constraints. Etihad 24 October dates are superseded by airline primary 5 November notice. Not a fresh alert; broad labels do not establish new airport/airspace closure or override newer primary evidence."
+    },
+    {
+      "id": "gulftoday-hamriyah",
+      "name": "Gulf Today \u2014 Al Hamriyah report access",
+      "url": "https://www.gulftoday.ae/news/2026/10/23/sharjah-closes-al-hamriyah-beach-after-oil-spill",
+      "status": "inaccessible",
+      "checked_at": "2026-10-23T17:00:29.511Z",
+      "published_at": null,
+      "detail": "Direct read failed. Search result displays 18:52, timezone unverified; later timestamp is not a new closure decision. No new direct evidence established."
+    },
+    {
+      "id": "pcfc-circular-index",
+      "name": "PCFC \u2014 warnings and circulars index",
+      "url": "https://pcfc.ae/en/Pages/Warnings-and-Circulars.aspx",
+      "status": "checked",
+      "checked_at": "2026-10-23T17:00:40.770Z",
+      "published_at": null,
+      "detail": "Index read 17:00:35.635 UTC: October 23 R004 43-foot traditional dhow race Heat 1; October 20 G029 Dubai Harbour approach-channel buoys reported unlit; October 18 G028 floating/partially submerged shipping containers. All three linked PDFs returned 403 at 17:00:40.770, no bypass. Exact scope, validity and instructions unverified. Limited index coverage only, not broad disruption, urgent alert or resolved incident. Older entries are newly discovered, not newly issued; race is not an emergency."
     }
   ]
 };
