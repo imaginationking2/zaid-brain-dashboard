@@ -1,0 +1,19 @@
+.ew-wrap { max-width: 1100px; margin: 0 auto; padding-bottom: 32px; }
+.ew-wrap h2 { margin-bottom: 4px; }
+.ew-wrap h3 { margin-top: 26px; }
+.ew-wrap h4 { margin: 0 0 10px; font-size: 18px; }
+.ew-wrap h5 { margin: 16px 0 6px; font-size: 14px; }
+.ew-wrap p { margin: 8px 0; overflow-wrap: anywhere; }
+.ew-muted { color: var(--text-muted); font-size: 13px; }
+.ew-banner { border: 1px solid var(--warning); border-left-width: 5px; padding: 14px; margin: 16px 0; background: var(--surface); }
+.ew-disclaimer { color: var(--text-muted); max-width: 85ch; }
+.ew-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+.ew-wrap select, .ew-wrap button { color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 9px 12px; }
+.ew-wrap button { cursor: pointer; }
+.ew-wrap button:disabled { opacity: .6; cursor: wait; }
+.ew-card, .ew-coverage { border: 1px solid var(--border); background: var(--surface); padding: 18px; border-radius: 9px; margin: 12px 0; }
+.ew-badges { font-weight: 600; color: var(--text); }
+.ew-wrap a { color: var(--accent); text-underline-offset: 3px; }
+.ew-wrap summary { cursor: pointer; color: var(--accent); }
+.ew-wrap :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+@media(max-width:600px) { .ew-card,.ew-coverage { padding: 12px; } .ew-controls { align-items: stretch; } .ew-controls select { max-width: 100%; } }

@@ -278,6 +278,7 @@
   .uae-lead-note { font-size: 10px; color: var(--text-muted); font-style: italic; }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="stylesheet" href="./early_warning.css" />
 </head>
 <body>
 
@@ -311,6 +312,7 @@
   <button data-tab="orders">Orders</button>
   <button data-tab="businesses">Businesses</button>
   <button data-tab="uae">UAE Market</button>
+  <button data-tab="uae-early-warning">UAE Early-Warning</button>
 </nav>
 
 <main>
@@ -403,6 +405,7 @@
     <h2>UAE Market</h2>
     <div id="uae-content" class="muted">Loading market data...</div>
   </section>
+  <section id="uae-early-warning" class="panel" aria-label="UAE Early-Warning"></section>
 </main>
 
 <script src="./pc_market_local.js"></script>
@@ -1949,5 +1952,7 @@
     b.addEventListener('click', function() { renderUae(); });
   });
 </script>
+<script src="./early_warning_data.js"></script>
+<script src="./early_warning.js"></script>
 </body>
 </html>
