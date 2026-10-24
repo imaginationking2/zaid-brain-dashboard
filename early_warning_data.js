@@ -1,12 +1,12 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "watch-review-2026-10-24-063006-uae",
-  "checked_at": "2026-10-24T02:30:06Z",
+  "snapshot_id": "watch-review-2026-10-24-070059-uae",
+  "checked_at": "2026-10-24T03:00:59Z",
   "mode": "snapshot",
   "incidents": [
     {
       "id": "uaq-coastal-oil-spill-2026-10-22",
-      "revision": 31,
+      "revision": 32,
       "title": "UAQ coastal oil spill \u2014 temporary beach closures reported",
       "summary": "Temporary UAQ beach/coastal closures remain unresolved. The original Gulf News ministry report is unchanged; municipal cleanup and Sharjah24 direct reads failed, with prior successful evidence preserved. No reopening verified.",
       "status": "active",
@@ -20,24 +20,24 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Sharjah"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "resolved_at": null,
       "sources": [
         {
           "name": "Gulf News \u2014 reported MOCCAE statement",
           "url": "https://gulfnews.com/uae/uae-oil-spill-umm-al-quwain-beaches-closed-as-cleanup-efforts-begin-1.500720483",
           "access": "secondhand",
-          "description": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; same October 23 02:33 displayed update, timezone unstated. Secondary MOCCAE guidance, not pollution measurements or reopening. First observations and publication history preserved. Prior contextual UTC+4 publication assumption retained.",
+          "description": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; same October 23 02:33 update, timezone unstated; secondary MOCCAE guidance, not station readings or reopening. First observations and publication history preserved. Prior contextual UTC+4 publication assumption retained.",
           "published_at": "2026-10-23T02:33:00+04:00",
-          "checked_at": "2026-10-24T02:30:06Z"
+          "checked_at": "2026-10-24T03:00:59Z"
         },
         {
           "name": "Gulf News \u2014 municipality cleanup report",
           "url": "https://gulfnews.com/uae/umm-al-quwain-municipality-steps-up-efforts-to-contain-oil-spill-along-emirates-beaches-1.500720994",
           "access": "secondhand",
-          "description": "Bounded check October 24 02:29:41\u201302:29:46 UTC; checked_at is window-end bound, not exact completion. Same October 23 14:37 displayed update, timezone unstated. Secondary municipal cleanup/fishing restrictions; no reopening. First observations and publication history preserved. Prior contextual UTC+4 publication assumption retained.",
+          "description": "Bounded check October 24 03:00:33\u201303:00:39 UTC; checked_at is window-end bound, not exact completion. Same October 23 14:37 displayed update, timezone unstated; secondary cleanup/fishing restrictions, no reopening. First observations and publication history preserved. Prior contextual UTC+4 publication assumption retained.",
           "published_at": "2026-10-23T14:37:00+04:00",
-          "checked_at": "2026-10-24T02:29:46Z"
+          "checked_at": "2026-10-24T03:00:39Z"
         },
         {
           "name": "Sharjah24 \u2014 reproduced UAQ ministry closure/cleanup report",
@@ -59,9 +59,9 @@ window.ZAID_UAE_EARLY_WARNING = {
           "name": "Al Khaleej \u2014 repeated ministry/SGMB statements",
           "url": "https://www.alkhaleej.ae/2026-10-24/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0627\u0644\u0631\u0648\u0627\u0626\u062d-\u0639\u0644\u0649-\u0627\u0644\u0634\u0648\u0627\u0637\u0626-\u0644\u0627-\u062a\u0634\u0643\u0644-\u0645\u062e\u0627\u0637\u0631-\u0635\u062d\u064a\u0629",
           "access": "secondhand",
-          "description": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no new measurements. First observations and publication history preserved.",
+          "description": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no station measurements. First observations and publication history preserved.",
           "published_at": null,
-          "checked_at": "2026-10-24T02:30:06Z"
+          "checked_at": "2026-10-24T03:00:59Z"
         }
       ],
       "unknowns": [
@@ -232,12 +232,17 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T02:30:06Z",
           "kind": "update",
           "note": "06:30 UAE review October 24 uses actual 02:30:06 UTC cutoff. No qualifying new alert, resolution or materially expanded geography; status/severity/confidence/scopes unchanged. Weather visibility observation updated without inferring pollution or operational disruption. Repeated statements/search-only reports and an AI-generated illustration are not independent field evidence; old misleading URLs and stale advisories excluded. Source check windows retained at second precision; unchecked sources preserve prior freshness. Missing coverage is not all-clear. No notification."
+        },
+        {
+          "at": "2026-10-24T03:00:59Z",
+          "kind": "update",
+          "note": "07:00 UAE review October 24 uses actual 03:00:59 UTC cutoff. No qualifying new alert or resolution; status/severity/confidence/geographic scopes unchanged. Updated AUH/DXB dated weather readings do not establish pollution, spill causation or flight disruption. Repeated statements and private drift-model predictions are not confirmed pollutant arrival at intakes/ports. Old mismatched URLs and stale reports excluded; no freshness from unvisited snippets. Source check windows retained at second precision, unchecked evidence preserved. Missing coverage is not all-clear. No notification."
         }
       ]
     },
     {
       "id": "al-hamriyah-beach-precautionary-closure-2026-10-23",
-      "revision": 25,
+      "revision": 26,
       "title": "Al Hamriyah Beach \u2014 reported temporary precautionary closure",
       "summary": "Official Sharjah Government news channel Sharjah24 confirms SGMB announced the temporary precautionary closure of Al Hamriyah Beach, with specialised protection teams and instructions for fishermen and beachgoers to follow official guidance. Scope remains Al Hamriyah Beach only; no confirmed shore contamination, expansion or reopening. Reclassified to moderate severity (elevated precautionary closure), high confidence because evidence improved, not because conditions worsened.",
       "status": "active",
@@ -250,7 +255,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Al Hamriyah Beach"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "resolved_at": null,
       "sources": [
         {
@@ -289,17 +294,17 @@ window.ZAID_UAE_EARLY_WARNING = {
           "name": "Sharjah24 \u2014 official Sharjah Government news-channel confirmation",
           "url": "https://sharjah24.ae/en/Articles/2026/10/23/d61",
           "access": "direct",
-          "description": "Bounded check October 24 02:29:41\u201302:29:46 UTC; checked_at is window-end bound, not exact completion. Same official precautionary Hamriyah closure and authority instructions; October 23 URL date without clock. No reopening, confirmed shore pollution or expanded scope. First observations and publication history preserved.",
+          "description": "Bounded check October 24 03:00:33\u201303:00:39 UTC; checked_at is window-end bound, not exact completion. Same official precautionary Hamriyah closure/instructions, October 23 URL date without clock. No reopening, confirmed shore pollution or expanded scope. First observations and publication history preserved.",
           "published_at": null,
-          "checked_at": "2026-10-24T02:29:46Z"
+          "checked_at": "2026-10-24T03:00:39Z"
         },
         {
           "name": "Al Khaleej \u2014 repeated ministry/SGMB statements",
           "url": "https://www.alkhaleej.ae/2026-10-24/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0627\u0644\u0631\u0648\u0627\u0626\u062d-\u0639\u0644\u0649-\u0627\u0644\u0634\u0648\u0627\u0637\u0626-\u0644\u0627-\u062a\u0634\u0643\u0644-\u0645\u062e\u0627\u0637\u0631-\u0635\u062d\u064a\u0629",
           "access": "secondhand",
-          "description": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no new measurements. First observations and publication history preserved.",
+          "description": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no station measurements. First observations and publication history preserved.",
           "published_at": null,
-          "checked_at": "2026-10-24T02:30:06Z"
+          "checked_at": "2026-10-24T03:00:59Z"
         }
       ],
       "unknowns": [
@@ -433,12 +438,17 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T02:30:06Z",
           "kind": "update",
           "note": "06:30 UAE review October 24 uses actual 02:30:06 UTC cutoff. No qualifying new alert, resolution or materially expanded geography; status/severity/confidence/scopes unchanged. Weather visibility observation updated without inferring pollution or operational disruption. Repeated statements/search-only reports and an AI-generated illustration are not independent field evidence; old misleading URLs and stale advisories excluded. Source check windows retained at second precision; unchecked sources preserve prior freshness. Missing coverage is not all-clear. No notification."
+        },
+        {
+          "at": "2026-10-24T03:00:59Z",
+          "kind": "update",
+          "note": "07:00 UAE review October 24 uses actual 03:00:59 UTC cutoff. No qualifying new alert or resolution; status/severity/confidence/geographic scopes unchanged. Updated AUH/DXB dated weather readings do not establish pollution, spill causation or flight disruption. Repeated statements and private drift-model predictions are not confirmed pollutant arrival at intakes/ports. Old mismatched URLs and stale reports excluded; no freshness from unvisited snippets. Source check windows retained at second precision, unchecked evidence preserved. Missing coverage is not all-clear. No notification."
         }
       ]
     },
     {
       "id": "limah-reported-tanker-projectile-2026-10-22",
-      "revision": 19,
+      "revision": 20,
       "title": "Reported tanker projectile incident near Limah, Oman \u2014 secondhand lead",
       "summary": "Secondhand reports attribute to a delayed UKMTO notice an outbound tanker struck by an unknown projectile seven nautical miles northeast of Limah, Oman, continuing onward. Event timing is reported as October 22 at 17:15 UTC but remains unverified against the original notice. Casualty and damage status are unknown/not independently verified: Gulf News reported no casualties, while Anadolu says the notice provided no casualty or damage information. No verified Strait closure, UAE port disruption, perpetrator or link to the UAQ spill.",
       "status": "active",
@@ -450,7 +460,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Near Limah, Oman \u2014 reported seven nautical miles northeast"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "resolved_at": null,
       "sources": [
         {
@@ -473,9 +483,9 @@ window.ZAID_UAE_EARLY_WARNING = {
           "name": "Anadolu \u2014 reproduction of delayed UKMTO notice",
           "url": "https://www.aa.com.tr/en/middle-east/tanker-hit-by-unknown-projectile-in-strait-of-hormuz-uk-maritime-agency/4098861",
           "access": "secondhand",
-          "description": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; October 23 publication/update without clock. Same historical October 22 17:15 GMT event 7 NM northeast of Limah; tanker continued; no casualty/damage information. Not original UKMTO, new event or verified spill linkage. First observations and publication history preserved.",
+          "description": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; October 23 publication/update without clock. Same historical October 22 17:15 GMT event 7 NM northeast of Limah; tanker continued; casualty/damage information not supplied. Not original UKMTO, new event or verified spill linkage. First observations and publication history preserved.",
           "published_at": null,
-          "checked_at": "2026-10-24T02:30:06Z"
+          "checked_at": "2026-10-24T03:00:59Z"
         }
       ],
       "unknowns": [
@@ -580,6 +590,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T02:30:06Z",
           "kind": "update",
           "note": "06:30 UAE review October 24 uses actual 02:30:06 UTC cutoff. No qualifying new alert, resolution or materially expanded geography; status/severity/confidence/scopes unchanged. Weather visibility observation updated without inferring pollution or operational disruption. Repeated statements/search-only reports and an AI-generated illustration are not independent field evidence; old misleading URLs and stale advisories excluded. Source check windows retained at second precision; unchecked sources preserve prior freshness. Missing coverage is not all-clear. No notification."
+        },
+        {
+          "at": "2026-10-24T03:00:59Z",
+          "kind": "update",
+          "note": "07:00 UAE review October 24 uses actual 03:00:59 UTC cutoff. No qualifying new alert or resolution; status/severity/confidence/geographic scopes unchanged. Updated AUH/DXB dated weather readings do not establish pollution, spill causation or flight disruption. Repeated statements and private drift-model predictions are not confirmed pollutant arrival at intakes/ports. Old mismatched URLs and stale reports excluded; no freshness from unvisited snippets. Source check windows retained at second precision, unchecked evidence preserved. Missing coverage is not all-clear. No notification."
         }
       ]
     }
@@ -590,63 +605,63 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "UK FCDO",
       "url": "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:30Z",
+      "checked_at": "2026-10-24T03:00:21Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:25\u201302:29:30 UTC; checked_at is window-end bound, not exact completion. July 24 substantive update unchanged; current October 24 label only."
+      "detail": "Bounded check October 24 03:00:16\u201303:00:21 UTC; checked_at is window-end bound, not exact completion. July 24 substantive update unchanged; current October 24 label only."
     },
     {
       "id": "us",
       "name": "US travel advisory",
       "url": "https://travel.state.gov/en/international-travel/travel-advisories/united-arab-emirates.html",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:25\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Body inspected 02:29:30\u201335; August 29 Level 3/September 17 footer unchanged. Family may join UAE employees; no new departure."
+      "detail": "Bounded check October 24 03:00:16\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:21\u201327; August 29 Level 3/September 17 footer unchanged. Family may join UAE employees; no new departure."
     },
     {
       "id": "emirates",
       "name": "Emirates travel updates",
       "url": "https://www.emirates.com/english/help/travel-updates/",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:21Z",
       "published_at": "2026-10-05T20:31:00+04:00",
-      "detail": "Bounded check October 24 02:29:25\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Body inspected 02:29:30\u201335; October 5 20:31 Dubai Tel Aviv codeshare suspension unchanged."
+      "detail": "Bounded check October 24 03:00:16\u201303:00:21 UTC; checked_at is window-end bound, not exact completion. October 5 20:31 Dubai Tel Aviv codeshare suspension unchanged."
     },
     {
       "id": "etihad",
       "name": "Etihad flight status",
       "url": "https://www.etihad.com/en-ae/manage/flight-status",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:30Z",
+      "checked_at": "2026-10-24T03:00:21Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:25\u201302:29:30 UTC; checked_at is window-end bound, not exact completion. All AUH\u2013Dammam/Riyadh and Jeddah EY601\u2013604 cancellations through November 5 unchanged; no publication clock. Old Istanbul October 21/Taipei October 22\u201323 notices not fresh."
+      "detail": "Bounded check October 24 03:00:16\u201303:00:21 UTC; checked_at is window-end bound, not exact completion. All AUH\u2013Dammam/Riyadh and Jeddah EY601\u2013604 cancellations through November 5 unchanged, no publication clock. Old Istanbul October 21/Taipei October 22\u201323 notices not fresh."
     },
     {
       "id": "flydubai",
       "name": "flydubai operational updates",
       "url": "https://www.flydubai.com/en/help/operational-updates/",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": "2026-03-31T16:00:00+04:00",
-      "detail": "Bounded check October 24 02:29:41\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Body inspected 02:29:46\u201352; March 31 16:00 Dubai reduced schedule and July 22 Naples/Salerno notice unchanged."
+      "detail": "Bounded check October 24 03:00:33\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:39\u201345; March 31 16:00 Dubai reduced schedule and July 22 Naples/Salerno notice unchanged."
     },
     {
       "id": "maersk",
       "name": "Maersk updates",
       "url": "https://www.maersk.com/stay-ahead",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:41\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Body inspected 02:29:46\u201352; October 8 Update 51 Gulf bookings/Khor Fakkan cargo collection congestion including Ajman unchanged."
+      "detail": "Bounded check October 24 03:00:33\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:39\u201345; October 8 Update 51 Gulf restrictions/Khor Fakkan collection congestion including Ajman unchanged."
     },
     {
       "id": "ncema",
       "name": "NCEMA",
       "url": "https://www.ncema.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:30\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Request timed out."
+      "detail": "Bounded check October 24 03:00:21\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. Request timed out."
     },
     {
       "id": "moccae",
@@ -671,9 +686,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air-quality platform",
       "url": "https://www.ncm.gov.ae/",
       "status": "no_current_values",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:30\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Shell without dated current warning."
+      "detail": "Bounded check October 24 03:00:21\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. Shell without dated current warning."
     },
     {
       "id": "dxb",
@@ -698,18 +713,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Gulf News closure report",
       "url": "https://gulfnews.com/uae/uae-oil-spill-umm-al-quwain-beaches-closed-as-cleanup-efforts-begin-1.500720483",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": "2026-10-23T02:33:00+04:00",
-      "detail": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; same October 23 02:33 displayed update, timezone unstated. Secondary MOCCAE guidance, not pollution measurements or reopening."
+      "detail": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; same October 23 02:33 update, timezone unstated; secondary MOCCAE guidance, not station readings or reopening."
     },
     {
       "id": "gn-cleanup",
       "name": "Gulf News cleanup report",
       "url": "https://gulfnews.com/uae/umm-al-quwain-municipality-steps-up-efforts-to-contain-oil-spill-along-emirates-beaches-1.500720994",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:46Z",
+      "checked_at": "2026-10-24T03:00:39Z",
       "published_at": "2026-10-23T14:37:00+04:00",
-      "detail": "Bounded check October 24 02:29:41\u201302:29:46 UTC; checked_at is window-end bound, not exact completion. Same October 23 14:37 displayed update, timezone unstated. Secondary municipal cleanup/fishing restrictions; no reopening."
+      "detail": "Bounded check October 24 03:00:33\u201303:00:39 UTC; checked_at is window-end bound, not exact completion. Same October 23 14:37 displayed update, timezone unstated; secondary cleanup/fishing restrictions, no reopening."
     },
     {
       "id": "zayed-airport",
@@ -734,27 +749,27 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air quality",
       "url": "https://airquality.ncm.gov.ae/?lang=en",
       "status": "no_current_values",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:30\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Generic/blank values, no dated station observations."
+      "detail": "Bounded check October 24 03:00:21\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. Generic/blank values, no dated station observations."
     },
     {
       "id": "ncm-aviation",
       "name": "NCM Aviation Meteorology airports",
       "url": "https://www.avmet.ae/airports.aspx",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:41Z",
+      "checked_at": "2026-10-24T03:00:33Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:29:41 UTC; checked_at is window-end bound, not exact completion. Page 02:21 UTC; AUH observation 02:20Z visibility 8000m, south-southeast wind 4kt; METAR 02:00Z CAVOK. At cutoff station age 10m06s, METAR age 30m06s. October 23 23Z TAF PROB30 4000m haze 00\u201304 UTC remains probabilistic. Visibility change alone is not a qualifying alert. Weather is not AQ or operational all-clear; warning widgets unavailable, not none. No fresh DXB values supplied."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:33 UTC; checked_at is window-end bound, not exact completion. Page 02:52 UTC; AUH observation 02:51Z visibility 7000m, southeast wind 4kt; 02:30Z METAR 8000m, NSC, NOSIG. DXB observation 02:51Z visibility 4900m, southwest wind 3kt; 02:30Z METAR 5000m haze becoming 4000m. At cutoff station age 9m59s, METAR age 30m59s. October 23 23Z TAF retains PROB30 4000m haze 00\u201304 UTC. Warning widgets unavailable. Dated weather only, not pollution, spill causation or flight disruption evidence; visibility change alone is not a qualifying alert."
     },
     {
       "id": "ajman-police",
       "name": "Ajman Police",
       "url": "https://www.ajmanpolice.gov.ae/",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Dates inspected 02:30:01\u201306; routine October 23/20\u201321 items unchanged. January 20 road ticker not current; limited coverage."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Dates inspected 03:00:54\u201359; routine October 23/20\u201321 items unchanged, January 20 road ticker not current. Limited coverage."
     },
     {
       "id": "dubai-police",
@@ -770,27 +785,27 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Abu Dhabi Police",
       "url": "https://www.adpolice.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-24T02:29:41Z",
+      "checked_at": "2026-10-24T03:00:33Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:29:41 UTC; checked_at is window-end bound, not exact completion. Request timed out."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:33 UTC; checked_at is window-end bound, not exact completion. Request timed out."
     },
     {
       "id": "sharjah-police",
       "name": "Sharjah Police",
       "url": "https://www.shjpolice.gov.ae/",
       "status": "inaccessible",
-      "checked_at": "2026-10-24T02:29:41Z",
+      "checked_at": "2026-10-24T03:00:33Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:29:41 UTC; checked_at is window-end bound, not exact completion. Redirect loop."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:33 UTC; checked_at is window-end bound, not exact completion. Redirect loop."
     },
     {
       "id": "dubai-civil-defence",
       "name": "Dubai Civil Defence",
       "url": "https://www.dcd.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-24T02:29:41Z",
+      "checked_at": "2026-10-24T03:00:33Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:29:41 UTC; checked_at is window-end bound, not exact completion. Request timed out."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:33 UTC; checked_at is window-end bound, not exact completion. Request timed out."
     },
     {
       "id": "gn-al-hamriyah",
@@ -860,9 +875,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "PCFC \u2014 warnings and circulars index",
       "url": "https://pcfc.ae/en/Pages/Warnings-and-Circulars.aspx",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:46\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Details inspected 02:30:01\u201306; same October 23 R004 dhow race, October 21 G030 drone show, October 20 G029 unlit buoys, October 18 G028 containers. PDFs not reread; preserve failures and unknown validity/scope."
+      "detail": "Bounded check October 24 03:00:39\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Details inspected 03:00:54\u201359; same October 23 R004 race, October 21 G030 drone show, October 20 G029 unlit buoys and October 18 G028 containers. PDFs not reread; preserve earlier failures/unknown validity."
     },
     {
       "id": "ukmto-home",
@@ -878,18 +893,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "UKMTO recent incidents",
       "url": "https://www.ukmto.org/recent-incidents",
       "status": "unretrievable",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:46\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Zero-report shell, not zero incidents."
+      "detail": "Bounded check October 24 03:00:39\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Zero-report shell, not zero incidents."
     },
     {
       "id": "ukmto-warnings",
       "name": "UKMTO warnings",
       "url": "https://www.ukmto.org/ukmto-products/warnings",
       "status": "unretrievable",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:46\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Explanatory shell, no original Limah notice."
+      "detail": "Bounded check October 24 03:00:39\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Explanatory shell without original Limah notice."
     },
     {
       "id": "sharjah24-official-platform",
@@ -905,27 +920,27 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Sharjah24 \u2014 official Hamriyah confirmation access",
       "url": "https://sharjah24.ae/en/Articles/2026/10/23/d61",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:46Z",
+      "checked_at": "2026-10-24T03:00:39Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:41\u201302:29:46 UTC; checked_at is window-end bound, not exact completion. Same official precautionary Hamriyah closure and authority instructions; October 23 URL date without clock. No reopening, confirmed shore pollution or expanded scope."
+      "detail": "Bounded check October 24 03:00:33\u201303:00:39 UTC; checked_at is window-end bound, not exact completion. Same official precautionary Hamriyah closure/instructions, October 23 URL date without clock. No reopening, confirmed shore pollution or expanded scope."
     },
     {
       "id": "anadolu-limah",
       "name": "Anadolu \u2014 Limah reproduction access",
       "url": "https://www.aa.com.tr/en/middle-east/tanker-hit-by-unknown-projectile-in-strait-of-hormuz-uk-maritime-agency/4098861",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; October 23 publication/update without clock. Same historical October 22 17:15 GMT event 7 NM northeast of Limah; tanker continued; no casualty/damage information. Not original UKMTO, new event or verified spill linkage."
+      "detail": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; October 23 publication/update without clock. Same historical October 22 17:15 GMT event 7 NM northeast of Limah; tanker continued; casualty/damage information not supplied. Not original UKMTO, new event or verified spill linkage."
     },
     {
       "id": "admaritime-notices",
       "name": "Abu Dhabi Maritime \u2014 port documents index",
       "url": "https://www.admaritime.ae/port-documents/",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:46\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Same planned October 23 festival/Al Sadr cleanup/Motosurf/soil investigation index. PDFs not reread; Al Sadr PDF freshness/scope preserved, not spill spread."
+      "detail": "Bounded check October 24 03:00:39\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Same October 23 planned festival/Al Sadr cleanup/Motosurf/soil investigation. PDFs not reread; Al Sadr PDF freshness and limited restriction scope retained, not spill spread."
     },
     {
       "id": "admaritime-alsadr-cleanup",
@@ -943,52 +958,52 @@ window.ZAID_UAE_EARLY_WARNING = {
       "status": "stale",
       "checked_at": "2026-10-23T20:59:23Z",
       "published_at": null,
-      "detail": "Bounded retrieval October 24 02:29:41\u201346 UTC; THREE-DAY-OLD crawl. Same October 16 09:30 Amsterdam notice, Dubai suspension through October 24 inclusive/Dammam and Riyadh October 31. Substantive checked_at preserved; not fresh live status or evidence of resumption."
+      "detail": "Bounded retrieval October 24 03:00:33\u201339 UTC; THREE-DAY-OLD crawl. Same October 16 09:30 Amsterdam notice, Dubai through October 24 inclusive/Dammam and Riyadh October 31. Substantive checked_at preserved; not fresh live status or resumption evidence."
     },
     {
       "id": "moccae-www-root",
       "name": "MOCCAE \u2014 www root access",
       "url": "https://www.moccae.gov.ae/",
       "status": "rejected",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:30\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. www root rejected rather than timeout; no direct ministry content. Earlier /en endpoint unrefreshed."
+      "detail": "Bounded check October 24 03:00:21\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. www root rejected; no direct ministry content. Earlier /en endpoint unrefreshed."
     },
     {
       "id": "embassy-security-alerts",
       "name": "US Embassy UAE \u2014 security alerts access",
       "url": "https://ae.usembassy.gov/security-alerts/",
       "status": "inaccessible",
-      "checked_at": "2026-10-24T02:29:35Z",
+      "checked_at": "2026-10-24T03:00:27Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:30\u201302:29:35 UTC; checked_at is window-end bound, not exact completion. Security alerts inaccessible."
+      "detail": "Bounded check October 24 03:00:21\u201303:00:27 UTC; checked_at is window-end bound, not exact completion. Security alerts inaccessible."
     },
     {
       "id": "dubai-police-root",
       "name": "Dubai Police \u2014 root homepage coverage",
       "url": "https://www.dubaipolice.gov.ae/",
       "status": "no_current_values",
-      "checked_at": "2026-10-24T02:29:41Z",
+      "checked_at": "2026-10-24T03:00:33Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:35\u201302:29:41 UTC; checked_at is window-end bound, not exact completion. App shell only."
+      "detail": "Bounded check October 24 03:00:27\u201303:00:33 UTC; checked_at is window-end bound, not exact completion. App shell only."
     },
     {
       "id": "dubai-airports-root-status",
       "name": "Dubai Airports \u2014 generic flight-status page",
       "url": "https://www.dubaiairports.ae/flight-status",
       "status": "unretrievable",
-      "checked_at": "2026-10-24T02:29:46Z",
+      "checked_at": "2026-10-24T03:00:39Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:41\u201302:29:46 UTC; checked_at is window-end bound, not exact completion. Shell without rows or airport-wide anomaly capability."
+      "detail": "Bounded check October 24 03:00:33\u201303:00:39 UTC; checked_at is window-end bound, not exact completion. Shell without live rows; no anomaly measurement."
     },
     {
       "id": "emaratalyoum-spill-repeat",
       "name": "Emarat Al Youm \u2014 repeated closure and cleanup report",
       "url": "https://www.emaratalyoum.com/local-section/other/2026-10-24-1.2095642?ot=ot.AMPPageLayout",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; October 24 date without clock. Same secondhand closures/cleanup/fishing/Hamriyah report."
+      "detail": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; October 24 date without clock. Same secondhand cleanup/closures/fishing/Hamriyah."
     },
     {
       "id": "e20-planned-lane-lead",
@@ -1013,9 +1028,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "IMO \u2014 official historical highlighted incidents",
       "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
       "status": "checked",
-      "checked_at": "2026-10-24T02:29:52Z",
+      "checked_at": "2026-10-24T03:00:45Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:46\u201302:29:52 UTC; checked_at is window-end bound, not exact completion. Unchanged historical list as at October 22; not UAQ resolution or current pollution assessment."
+      "detail": "Bounded check October 24 03:00:39\u201303:00:45 UTC; checked_at is window-end bound, not exact completion. Unchanged historical list as at October 22, not UAQ resolution or current pollution assessment."
     },
     {
       "id": "maritime-executive-spill-reproduction",
@@ -1031,9 +1046,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Al Khaleej \u2014 repeated odour and closure statements",
       "url": "https://www.alkhaleej.ae/2026-10-24/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0627\u0644\u0631\u0648\u0627\u0626\u062d-\u0639\u0644\u0649-\u0627\u0644\u0634\u0648\u0627\u0637\u0626-\u0644\u0627-\u062a\u0634\u0643\u0644-\u0645\u062e\u0627\u0637\u0631-\u0635\u062d\u064a\u0629",
       "status": "checked",
-      "checked_at": "2026-10-24T02:30:06Z",
+      "checked_at": "2026-10-24T03:00:59Z",
       "published_at": null,
-      "detail": "Bounded check October 24 02:29:52\u201302:30:06 UTC; checked_at is window-end bound, not exact completion. Detailed body inspected 02:30:01\u201306; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no new measurements."
+      "detail": "Bounded check October 24 03:00:45\u201303:00:59 UTC; checked_at is window-end bound, not exact completion. Body inspected 03:00:54\u201359; same October 24 00:37 publication/00:39 update, timezone unstated. Secondhand statements, no station measurements."
     }
   ]
 };
