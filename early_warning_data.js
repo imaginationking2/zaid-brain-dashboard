@@ -1,14 +1,14 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "watch-review-2026-10-25-172951-uae",
-  "checked_at": "2026-10-25T13:29:51Z",
+  "snapshot_id": "uae-public-reconciliation-20261114-133207",
+  "checked_at": "2026-11-14T13:32:07Z",
   "mode": "snapshot",
   "incidents": [
     {
       "id": "uaq-coastal-oil-spill-2026-10-22",
-      "revision": 41,
+      "revision": 42,
       "title": "UAQ coastal oil spill \u2014 temporary beach closures reported",
-      "summary": "Temporary UAQ coastal/beach closures remain not verified resolved. Existing ministry/municipality accounts are supplemented by an AFP report that its journalists found police restricting access during a UAQ visit. This independently reported field observation corroborates the existing closure, but its exact time is unspecified and does not establish current conditions, a new closure, expanded geography or spill cause. No reopening verified.",
+      "summary": "Historicalspill/cleanupandUAQrestrictions remain not verifiedresolved. WAMOctober30containmentwasahistoricalsource-leakassessment,notfreshleakmeasurementorreopening. November6secondaryclosurehistoryandNovember13indexedcleanup-workerreport do not establishcurrentwaterquality. Ajmanhotel-onlyandSharjah/RAKreopeningreportsdonotresolveUAQ.",
       "status": "active",
       "severity": "moderate",
       "confidence": "medium",
@@ -20,7 +20,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Sharjah"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T08:04:31Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "resolved_at": null,
       "sources": [
         {
@@ -78,6 +78,30 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "First retrieval October 24 08:02:27-35 UTC; substantive body verified 08:04:17-21 UTC, bounded windows only. October 23 URL date, exact publication clock unavailable. Government-media reproduction of existing MOCCAE statement: tanker spill reached UAQ; odours reported in UAQ/Ajman/Sharjah; temporary all-UAQ beach/coastal closures and fishing prohibition in affected waters. Not direct MOCCAE access recovery, independent environmental measurement or new geography/closure. Attributed odour reassurance is not current AQ or an all-clear.",
           "published_at": null,
           "checked_at": "2026-10-24T08:04:21Z"
+        },
+        {
+          "name": "WAM historical containment",
+          "url": "https://www.wam.ae/en/article/c3051mm-oil-spill-from-gem-no-tanker-contained",
+          "access": "secondhand",
+          "description": "October30sourcecontainment/remediationstatementhistorical;notNovember9newleakdata.",
+          "published_at": null,
+          "checked_at": "2026-11-09T10:05:00Z"
+        },
+        {
+          "name": "GulfNews November6 closure roundup",
+          "url": "https://gulfnews.com/uae/environment/uae-oil-spill-beaches-in-sharjah-ras-al-khaimah-and-umm-al-quwain-remain-closed-1.500738685",
+          "access": "secondhand",
+          "description": "SecondhanddatedNovember6historicalSharjahcity/UAQ/RAKrestrictions,no freshreopeningproof.",
+          "published_at": null,
+          "checked_at": "2026-11-12T12:02:00Z"
+        },
+        {
+          "name": "TheNational indexed cleanup",
+          "url": "https://www.thenationalnews.com/news/uae/2026/11/13/hundreds-of-workers-continue-to-clean-oil-spilt-off-the-uae/",
+          "access": "secondhand",
+          "description": "Indexedonly,firstobservedNovember13 18:30; directfailedthen,notretried. Approximately1000workersUAQ/Sharjah/RAKattributedBeeahofficial; publicationdateNovember13clockunknown,notnewclosure/extentmeasurement.",
+          "published_at": null,
+          "checked_at": "2026-11-14T13:31:50Z"
         }
       ],
       "unknowns": [
@@ -303,14 +327,19 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T08:04:31Z",
           "kind": "update",
           "note": "Added English government-media reproduction of existing October 23 MOCCAE statement, first retrieved 08:02:27-35 UTC and body verified 08:04:17-21 UTC. Evidence addition only, not direct ministry recovery or independent measurement. No new incident, severity/confidence/geography change or reopening; prior source freshness preserved."
+        },
+        {
+          "at": "2026-11-14T13:31:50Z",
+          "kind": "update",
+          "note": "Currentreconciliationappendsretainedlaterqualifications; alloriginalhistory/sourcesunchanged. No specificUAQreopeningfoundinlatest13:31:34\u201350search. Activeisnotcurrentclosuremeasurement."
         }
       ]
     },
     {
       "id": "al-hamriyah-beach-precautionary-closure-2026-10-23",
-      "revision": 34,
+      "revision": 35,
       "title": "Al Hamriyah Beach \u2014 reported temporary precautionary closure",
-      "summary": "Official Sharjah Government news channel Sharjah24 confirms SGMB announced the temporary precautionary closure of Al Hamriyah Beach, with specialised protection teams and instructions for fishermen and beachgoers to follow official guidance. Scope remains Al Hamriyah Beach only; no confirmed shore contamination, expansion or reopening. Reclassified to moderate severity (elevated precautionary closure), high confidence because evidence improved, not because conditions worsened.",
+      "summary": "OriginalAlHamriyahprecautionaryclosurehistoryretained. November12broadSharjahreopeningreports lacknamedexceptions/list inretainedextracts; no specificallyverifiedAlHamriyahresolutiontime or currentwatersampling. SeparateSharjahcity/AlLuluyahrecordsarenotmerged.",
       "status": "active",
       "severity": "moderate",
       "confidence": "high",
@@ -321,7 +350,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Al Hamriyah Beach"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T07:00:02Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "resolved_at": null,
       "sources": [
         {
@@ -549,6 +578,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T07:00:02Z",
           "kind": "update",
           "note": "11:00 UAE review October 24 uses actual 07:00:02 UTC cutoff. No qualifying new immediate alert, reopening, contamination spread, evacuation instruction or airport/port-wide closure. Existing status/severity/confidence retained. Air Canada retained as four-day-cached historical September 24 airline baseline; AFP field report corroborates existing UAQ access restriction at an unspecified historical observation time, not current conditions or new closure. Unchecked source freshness preserved; no notification."
+        },
+        {
+          "at": "2026-11-14T13:31:50Z",
+          "kind": "update",
+          "note": "Broadreopeningreportnotautomaticallyappliedtooriginalnamedbeach. No newdirectoriginalbodyread claimed."
         }
       ]
     },
@@ -970,9 +1004,9 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "rak-beach-closure-2026-10-24",
-      "revision": 1,
+      "revision": 2,
       "title": "Reported Ras Al Khaimah beach closure until further notice",
-      "summary": "Credible secondhand reports attribute a Ras Al Khaimah beach closure until further notice to Public Services Department, shared by RAK Police. Reports differ between all beaches and all public beaches; private hotel beach applicability and exact effective time remain unverified. No reason was given in the Reuters account. Follow posted closures and authority reopening announcements, and check the venue before beach access. This does not establish oil reaching RAK, a causal spill link or that other beaches are open.",
+      "summary": "HistoricalRAKclosure retained with laterNovember12reopeningreport. Reutersreportsseveralbeachesreopened; namedcoverage/exceptionsandfullscopeoforiginalall/publicbeachesrestrictionnotresolvedhere. No blanketallcoastclearanceorwatermeasurementinferred.",
       "status": "active",
       "severity": "watch",
       "confidence": "medium",
@@ -982,7 +1016,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Ras Al Khaimah coastline"
       ],
       "event_at": null,
-      "checked_at": "2026-10-24T12:03:10Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "resolved_at": null,
       "sources": [
         {
@@ -1008,6 +1042,14 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Indexed text first observed October 24 12:01:46-12:02:00 UTC describes all public beaches/immediate closure, update14:25 timezone unspecified. Direct article failed 12:02:22-29. Search-only lead, not successful body retrieval, original confirmation or independent field evidence; all versus public/private hotel scope unresolved.",
           "published_at": null,
           "checked_at": "2026-10-24T12:02:00Z"
+        },
+        {
+          "name": "Reuters November12 beach reopenings",
+          "url": "https://www.reuters.com/world/middle-east/uaes-ras-al-khaimah-sharjah-reopen-several-beaches-after-tanker-oil-spill-2026-11-12/",
+          "access": "secondhand",
+          "description": "LatestsearchrecylesNovember12report,notnewdecision. Publication10:57:49UTCNovember12; namedlistnotretrieved.",
+          "published_at": "2026-11-12T10:57:49Z",
+          "checked_at": "2026-11-14T13:31:50Z"
         }
       ],
       "unknowns": [
@@ -1031,6 +1073,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-10-24T12:02:54Z",
           "kind": "update",
           "note": "WATCH alert already delivered at 12:02:54 UTC with secondhand/scope uncertainty and no oil-arrival claim. Delivery time is not event or publication time; no duplicate notification."
+        },
+        {
+          "at": "2026-11-14T13:31:50Z",
+          "kind": "update",
+          "note": "Laterqualifiedreopeningappended; no exacteffectivereopeningclockorcompleteoriginal-scopeclearance, so no fabricatedresolved_at."
         }
       ]
     },
@@ -1190,71 +1237,2019 @@ window.ZAID_UAE_EARLY_WARNING = {
           "note": "Official OMAL TAF issued October25 11:00Z, valid12Z October25-18Z October26, first observed11:59:25-11:59:39 UTC: PROB30 TEMPO2512/2516 VRB20G30KT 3000 TSRA BLDU FEW040CB. Compared with05Z TAF, TSRA added; same30kt gusts/3000m and end16Z, start rolled to12Z. Al Ain airport vicinity only. PROB30 means30% forecast probability, distinct from high confidence in official authenticity. No observed thunderstorm, closure, new warning or severity escalation established. Weather evidence revision8, severity unchanged; all prior source/PDF times/history retained. No user notification."
         }
       ]
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028",
+      "revision": 3,
+      "title": "Sharjah city beaches: historical precautionary closure; later reopening reported",
+      "summary": "October 28 official government-media instruction concerned Sharjah CITY beaches as a precaution against pollution arrival. November 12 Reuters and official-origin indexed reporting subsequently described reopening after cleanup/environmental assessment. Named beach list, exceptions and exact effective reopening time remain unavailable. This record does not resolve Al Luluyah, Al Hamriyah or Umm Al Quwain restrictions, establish measured water safety, or prove oil reached every city beach.",
+      "status": "active",
+      "severity": "moderate",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "environment",
+      "geographies": [
+        "Sharjah city"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:31:50Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Al Khaleej indexed original",
+          "url": "https://www.alkhaleej.ae/2026-10-28/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0625\u063a\u0644\u0627\u0642-\u0634\u0648\u0627\u0637\u0626-\u0645\u062f\u064a\u0646\u0629-\u0627\u0644\u0634\u0627\u0631\u0642\u0629-\u0645\u0624\u0642\u062a\u0627-\u0644\u062a\u062c\u0646\u0628-\u0648\u0635\u0648\u0644-\u062a\u0644\u0648\u062b-\u0646\u0641\u0637\u064a",
+          "access": "secondhand",
+          "description": "First material indexed read 13:03:38\u201346; parent reread 13:04:21\u201329. Published 15:27/updated15:30 UAE. Direct13:03:56\u201313:04:01 returned403.",
+          "published_at": "2026-10-28T15:30:00+04:00",
+          "checked_at": "2026-10-28T13:04:29Z"
+        },
+        {
+          "name": "Gulf Business attributed SGMB notice",
+          "url": "https://gulfbusiness.com/en/2026/sharjah/sharjah-temporarily-closes-beaches-over-oil-spill-concerns/",
+          "access": "secondhand",
+          "description": "Direct publisher body13:03:56\u201313:04:01; datedOctober28, hour unknown. Later parent retries failed; do not erase this success. Secondary attribution to SGMB, not pollution-arrival measurement.",
+          "published_at": null,
+          "checked_at": "2026-10-28T13:04:01Z"
+        },
+        {
+          "name": "Sharjah24 official city instruction",
+          "url": "https://sharjah24.ae/ar/Articles/2026/10/28/mm15",
+          "access": "direct",
+          "description": "First discoveryOctober28 13:33:20\u201327/fullbody13:33:27\u201333. Direct access failures preserved in history; recoveredOctober29 01:30:32\u201339/fullbody01:30:56\u201301:31:03. Latest archived directOctober30 17:00:14\u201326. October28 URL date, publicationclock unknown.",
+          "published_at": null,
+          "checked_at": "2026-10-30T17:00:26Z"
+        },
+        {
+          "name": "Reuters November12 reopening report",
+          "url": "https://www.reuters.com/world/middle-east/uaes-ras-al-khaimah-sharjah-reopen-several-beaches-after-tanker-oil-spill-2026-11-12/",
+          "access": "secondhand",
+          "description": "First retained read around11:31UTC; minute bound only. Secondhand Sharjah media-office attribution, unnamed beaches; not original municipal instruction.",
+          "published_at": "2026-11-12T10:57:49Z",
+          "checked_at": "2026-11-12T11:31:00Z"
+        },
+        {
+          "name": "Sharjah24 indexed reopening",
+          "url": "https://sharjah24.ae/ar/Articles/2026/11/12/KMR10",
+          "access": "secondhand",
+          "description": "Official-origin indexed text in16:31\u201316:33UTC pass, fullpage inaccessible. Reports emirate beaches reopened after assessment; no named list/exceptions or exact event/publication clock.",
+          "published_at": null,
+          "checked_at": "2026-11-12T16:33:00Z"
+        },
+        {
+          "name": "Emarat Al Youm indexed reopening",
+          "url": "https://www.emaratalyoum.com/local-section/other/2026-11-12-1.2102092",
+          "access": "secondhand",
+          "description": "Indexed same-office attribution, fullpage inaccessible, not independent confirmation.",
+          "published_at": null,
+          "checked_at": "2026-11-12T16:33:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-10-28T13:03:46Z",
+          "kind": "update",
+          "note": "Historical r1: first preliminary search13:03:30\u201338/materialindexed13:03:38\u201346. Moderate/elevated precautionary instruction, medium confidence in secondhand SGMB attribution; city scope only. Exact effective onset, boundaries and cause unknown."
+        },
+        {
+          "at": "2026-10-28T13:33:33Z",
+          "kind": "update",
+          "note": "Historical r2: official Sharjah24 body13:33:27\u201333 improves instruction confidence to high. Preserve r1 secondary provenance; not a new closure, pollution arrival, expanded geography or new effective time."
+        },
+        {
+          "at": "2026-11-12T11:31:00Z",
+          "kind": "update",
+          "note": "Around11:31UTC first retained Reuters reopening observation. Published10:57:49UTC; actual reopening clock/named exceptions unknown."
+        },
+        {
+          "at": "2026-11-12T16:33:00Z",
+          "kind": "update",
+          "note": "16:31\u201316:33UTC official-origin indexed reopening strengthens reported de-escalation; fullpages unavailable. No named-beach or UAQ resolution."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "Current reconciliation revision3 adds later qualified reopening evidence to historical r2. Active means not verified fully resolved for precise recorded scope; no backdated r3 or invented resolution time."
+        },
+        {
+          "at": "2026-10-28T14:02:51Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 14:02:44\u201314:02:51 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T14:33:28Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 14:33:22\u201314:33:28 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T15:02:21Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 15:02:11\u201315:02:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T15:33:27Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 15:33:21\u201315:33:27 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T16:05:02Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 16:04:55\u201316:05:02 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T16:31:45Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 16:31:35\u201316:31:45 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T17:01:22Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 17:01:07\u201317:01:22 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T17:31:27Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 17:31:20\u201317:31:27 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T18:01:55Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 18:01:42\u201318:01:55 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T18:30:43Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 18:30:30\u201318:30:43 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T19:00:53Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 19:00:38\u201319:00:53 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T19:31:04Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 19:30:58\u201319:31:04 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T20:00:58Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 20:00:51\u201320:00:58 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T20:31:44Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 20:31:37\u201320:31:44 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T21:02:49Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 21:02:45\u201321:02:49 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T21:32:26Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 21:32:22\u201321:32:26 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T22:02:36Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 22:02:30\u201322:02:36 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T22:30:37Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 22:30:30\u201322:30:37 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T23:00:38Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 23:00:38 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T23:31:58Z",
+          "kind": "update",
+          "note": "Historical original Sharjah24 Arabic body attempt failed; prior successful body remains separately preserved. 10-28 23:31:51\u201323:31:58 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T00:00:36Z",
+          "kind": "update",
+          "note": "Historical Arabic original body attempt failed; English indexed body00:30:39\u201348 is separate access mode;01:00:51\u201357 title-only does not refresh fullbody. 10-29 00:00:27\u201300:00:36 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T00:30:48Z",
+          "kind": "update",
+          "note": "Historical Arabic original body attempt failed; English indexed body00:30:39\u201348 is separate access mode;01:00:51\u201357 title-only does not refresh fullbody. 10-29 00:30:39\u201300:30:48 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T01:01:05Z",
+          "kind": "update",
+          "note": "Historical Arabic original body attempt failed; English indexed body00:30:39\u201348 is separate access mode;01:00:51\u201357 title-only does not refresh fullbody. 10-29 01:01:01\u201301:01:05 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T01:30:39Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 01:30:32\u201301:30:39 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T01:31:03Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 01:30:56\u201301:31:03 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T02:01:38Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 02:01:33\u201302:01:38 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T02:30:42Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 02:30:34\u201302:30:42 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T03:00:36Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 03:00:27\u201303:00:36 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T03:31:35Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 03:31:28\u201303:31:35 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T04:00:39Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 04:00:34\u201304:00:39 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T04:32:39Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 04:32:28\u201304:32:39 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T05:02:42Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 05:02:38\u201305:02:42 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T05:31:43Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 05:31:38\u201305:31:43 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T06:02:46Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 06:02:41\u201306:02:46 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T06:32:34Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 06:32:27\u201306:32:34 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T06:33:28Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 06:33:22\u201306:33:28 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T07:02:42Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 07:02:34\u201307:02:42 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T07:32:30Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 07:32:23\u201307:32:30 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T08:03:01Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 08:02:56\u201308:03:01 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T08:32:26Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 08:32:22\u201308:32:26 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T09:00:29Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 09:00:18\u201309:00:29 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T09:31:56Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 09:31:47\u201309:31:56 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T10:00:50Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 10:00:41\u201310:00:50 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T10:30:24Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 10:30:16\u201310:30:24 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T11:00:18Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 11:00:10\u201311:00:18 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T11:30:18Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 11:30:09\u201311:30:18 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T12:01:00Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 12:00:51\u201312:01:00 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T12:31:44Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 12:31:36\u201312:31:44 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T13:00:56Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 13:00:48\u201313:00:56 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T13:30:54Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 13:30:45\u201313:30:54 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T14:00:26Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 14:00:11\u201314:00:26 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T14:30:21Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 14:30:12\u201314:30:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T15:02:49Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 15:02:43\u201315:02:49 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T15:32:24Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 15:32:15\u201315:32:24 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T16:01:48Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 16:01:42\u201316:01:48 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T16:32:28Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 16:32:16\u201316:32:28 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T17:02:44Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 17:02:37\u201317:02:44 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T17:31:24Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 17:31:10\u201317:31:24 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T18:01:17Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 18:01:12\u201318:01:17 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T18:29:26Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 18:29:11\u201318:29:26 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T18:59:13Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 18:58:59\u201318:59:13 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T19:30:22Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 19:30:10\u201319:30:22 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T20:00:49Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 20:00:42\u201320:00:49 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T20:31:06Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 20:30:40\u201320:31:06 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T21:00:25Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 21:00:10\u201321:00:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T21:32:21Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 21:31:49\u201321:32:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T22:01:47Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 22:01:18\u201322:01:47 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T22:31:57Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 22:31:28\u201322:31:57 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T23:01:40Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 23:01:34\u201323:01:40 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T23:30:54Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 23:30:48\u201323:30:54 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-29T23:59:13Z",
+          "kind": "update",
+          "note": "Historical direct original Arabic city-closure body unchanged; no new decision, wider scope, verified arrival or reopening; historical r2 unchanged. 10-29 23:59:07\u201323:59:13 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T00:31:49Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 00:31:42\u201300:31:49 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T01:02:04Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 01:01:57\u201301:02:04 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T01:32:23Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 01:32:18\u201301:32:23 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T02:03:48Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 02:03:40\u201302:03:48 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T02:32:14Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 02:32:07\u201302:32:14 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T03:00:34Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 03:00:24\u201303:00:34 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T03:30:41Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 03:30:30\u201303:30:41 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T03:59:58Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 03:59:43\u201303:59:58 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T04:32:03Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 04:31:48\u201304:32:03 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T05:01:53Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 05:01:44\u201305:01:53 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T05:31:25Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 05:31:15\u201305:31:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T05:59:46Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 05:59:27\u201305:59:46 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T06:31:12Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 06:31:05\u201306:31:12 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T07:01:53Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 07:01:45\u201307:01:53 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T07:33:47Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 07:32:44\u201307:33:47 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T08:04:21Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 08:04:12\u201308:04:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T08:34:29Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 08:34:23\u201308:34:29 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T09:01:51Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 09:01:37\u201309:01:51 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T09:30:16Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 09:30:08\u201309:30:16 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T10:01:42Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 10:01:35\u201310:01:42 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T10:31:57Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 10:31:50\u201310:31:57 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T11:00:25Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 11:00:18\u201311:00:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T11:32:21Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 11:31:32\u201311:32:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T12:00:22Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 12:00:17\u201312:00:22 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T12:29:11Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 12:29:05\u201312:29:11 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T13:01:08Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 13:01:00\u201313:01:08 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T13:30:25Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 13:30:16\u201313:30:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T14:01:02Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 14:00:53\u201314:01:02 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T14:29:25Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 14:29:16\u201314:29:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T15:02:47Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 15:02:41\u201315:02:47 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T15:32:06Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 15:32:02\u201315:32:06 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T16:03:50Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 16:03:41\u201316:03:50 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T16:31:25Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 16:31:20\u201316:31:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T17:00:26Z",
+          "kind": "update",
+          "note": "Historical direct original city-closure text unchanged;13:00/13:30 extracts inheritOctober28 date, no new date extraction. Separate Ajman WATCH/WAM containment does not alter r2 city scope or prove reopening. 10-30 17:00:14\u201317:00:26 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-28T13:04:39Z",
+          "kind": "update",
+          "note": "UAEVartha discovery13:03:30\u201338/direct cachemiss13:03:38\u201346; extendedindexed13:04:21\u201331 barriers/sampling not adopted. X/ShjMedia cachemiss13:04:21\u201331; SGMB and Sharjah24 home13:04:31\u201339 no matchingbeacharticle. GulfBusiness parent retry13:04:07\u201314 failed; original researcher success retained. SGMB13:33:04\u201311 unrelatedOctober27news and GulfBusiness failure."
+        },
+        {
+          "at": "2026-10-28T22:30:55Z",
+          "kind": "update",
+          "note": "Secondary indexed repeats do not independently verify hazard: GN1.500726934 first14:02:51\u201314:03:01, published15:34UAE; AlEtihad4701909 indexed15:02:48\u201359,display16:10 timezoneunspecified; Argaam1948027 indexed16:32:04\u201314; GulfToday city notice17:01:29\u201347 display17:27UAE; Emirates247/7209 display15:50UAE; ARN temporaryclosure17:31:27\u201351 display18:21 timezoneunknown. English official variant indexed17:31:27\u201351; Arabic/Englishfullindexed22:30:49\u201355. Direct remains13:33:27\u201333. AlEtihad/secondaryrepeat searches14:02:51\u201314:03:01,15:34:15\u201323,16:05:24\u201333,17:01:29\u201347,18:02:01\u201314,19:00:53\u201319:01:04,19:31:12\u201320,20:02:22\u201330,21:03:14\u201356,21:32:54\u201321:33:12,22:02:50\u201322:03:19. ARN/Emirates247 bodies21:32:58\u201321:33:03 failed; GNbody23:01:06 failed. No extra scope/reopening/causation adopted."
+        },
+        {
+          "at": "2026-10-29T13:03:09Z",
+          "kind": "update",
+          "note": "UnitedArabTimes Ajman expansion claim first12:31:36\u201344 uncorroborated, not adopted; AjmanMedia13:03:01\u201309 routine stories not clearance. Aircraft/dispersant speculation, misbound GNquarry1.122922 and unverified tanker-cause claims excluded."
+        }
+      ]
+    },
+    {
+      "id": "uae-us-arrival-health-attestation-20261104",
+      "revision": 2,
+      "title": "US-bound Emirates attestation: online procedure replaces printed form",
+      "summary": "Official Emirates requirement for US-bound travel including transit retains November4 origin. November6 notice replaces printed procedure with mandatory online form available72hours before departure; availability is not a submission deadline. Prior21days DRC scope/exemptions unchanged; exact exception categories and linked-form functionality unverified. This is a boarding/check-in requirement, not UAE outbreak or airport closure.",
+      "status": "active",
+      "severity": "moderate",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "public_health",
+      "geographies": [
+        "US-bound travel including transit",
+        "United Arab Emirates"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Emirates original attestation",
+          "url": "https://www.emirates.com/english/help/travel-updates/",
+          "access": "direct",
+          "description": "First observation05:30:01\u201317UTC; publicationNovember4 05:02UAE/effective08:59UAE includingconnections/transit unless exempt. Prior printed-form procedure.",
+          "published_at": "2026-11-04T05:02:00+04:00",
+          "checked_at": "2026-11-04T05:30:17Z"
+        },
+        {
+          "name": "CDC attestation order",
+          "url": "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html",
+          "access": "secondhand",
+          "description": "Historical linked orderOctober22/amendedOctober28; prior21daysDRC and exceptions. Exact original-read subwindow not recovered; parent supplied original official-requirement evidence, not freshCDC read.",
+          "published_at": null,
+          "checked_at": "2026-11-04T05:30:17Z"
+        },
+        {
+          "name": "Emirates online procedure",
+          "url": "https://www.emirates.com/ae/english/help/travel-updates/",
+          "access": "direct",
+          "description": "Observed12:00:12\u201312:01:31UTC. Mandatoryonlineform replacesprinted; available72hours before departure. Linkedform inaccessible; no universaloutage inference.",
+          "published_at": "2026-11-06T10:36:00+04:00",
+          "checked_at": "2026-11-06T12:01:31Z"
+        },
+        {
+          "name": "Emirates retained notice",
+          "url": "https://www.emirates.com/english/help/travel-updates/",
+          "access": "direct",
+          "description": "Latesttransport pass completed13:32:07UTC; exactstart unknown. November6 attestation unchanged; no newerCDC or formsuccess supplied.",
+          "published_at": "2026-11-06T10:36:00+04:00",
+          "checked_at": "2026-11-14T13:32:07Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-04T05:30:17Z",
+          "kind": "update",
+          "note": "Historical r1 firstobserved05:30:01\u201317UTC. EffectiveNovember4 04:59UTC differs from publication01:02UTC and observation. Elevatedboardingimpact/highofficialrequirement confidence. Exactexceptions unknown."
+        },
+        {
+          "at": "2026-11-06T12:01:31Z",
+          "kind": "update",
+          "note": "Historical material update observed12:00:12\u201312:01:31UTC; noticeupdated06:36UTC. Onlineform replacesprintedprocedure, available72hoursbeforedeparture, not submissiondeadline. No historical revisionnumber assigned. Firstorigin retained; no newCDCread/formcompleted."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "Current reconciliation assigns revision2 for the recovered November6 procedure change; r2 is not claimed to have existed historically."
+        }
+      ]
+    },
+    {
+      "id": "ajman-reported-swimming-restrictions-20261027",
+      "revision": 2,
+      "title": "Ajman hotel swimming restrictions: historical reports and limited later access statement",
+      "summary": "October27\u201328 hotel notices reported no swimming while shore access remained available; authority originals and current exact scope were not authenticated. November6 AjmanNews later attributed hotel-beach swimming/access without restrictions to tourism department, observedNovember9; this is hotel-only secondhand de-escalation, not public-coast clearance or measured water safety.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "environment",
+      "geographies": [
+        "Ajman hotel beaches"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:31:50Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Profi.Travel hotel/agent report",
+          "url": "https://profi.travel/news/65368/details",
+          "access": "secondhand",
+          "description": "Firstdiscovery06:02:20\u201329/direct06:02:56\u201306:03:00. PublishedOctober29 13:02timezoneunspecified. AgentsrelayRamadaHotel&Suites noticeovernightOctober28 attributedtourismdepartment; no-swimming differsshoreaccess.",
+          "published_at": null,
+          "checked_at": "2026-10-30T16:31:25Z"
+        },
+        {
+          "name": "Rambler TourDom reproduction",
+          "url": "https://news.rambler.ua/abroad/57316128-oteli-shardzhi-i-adzhmana-vvodyat-zapret-na-kupanie-v-more-iz-za-razliva-nefti/amp/",
+          "access": "secondhand",
+          "description": "Firstdirect06:02:56\u201306:03:00; publicationOctober28 14:16timezoneunknown. HotelsnoticeseveningOctober27; RamadaBeach/WyndhamGarden/RussianExpress confirmations toTourDom. OriginalTourDom notobtained. Latestbroadread07:32:44\u201307:33:47.",
+          "published_at": null,
+          "checked_at": "2026-10-30T07:33:47Z"
+        },
+        {
+          "name": "Polis derivative",
+          "url": "https://polis812.ru/blog/gde-kupatsya-v-oae-v-oktyabre-noyabre-2026-goda-plyazhi-po-emiratam/",
+          "access": "secondhand",
+          "description": "Direct06:02:39\u201346, updatedOctober29; derivative, not independent authority verification.",
+          "published_at": null,
+          "checked_at": "2026-10-30T06:02:46Z"
+        },
+        {
+          "name": "AjmanNews hotel-only statement",
+          "url": "https://ajmannews.ae/news.php?cat_id=1&id=152936",
+          "access": "secondhand",
+          "description": "November6 17:38timezoneunstated tourismdepartment attribution. Firstretainedhotel-onlydeescalation06:30checkpoint minute-bound; originaldepartmentpost inaccessible, thirdpartymirror. Not allpublicbeaches or seawatersampling.",
+          "published_at": null,
+          "checked_at": "2026-11-09T06:30:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-10-30T06:03:00Z",
+          "kind": "update",
+          "note": "Historical r1 WATCH/medium. Discovery06:02:20\u201329; tworeportchannelsdirect06:02:56\u201306:03:00, secondarynot original authority/hotelnotices. IdentifierOctober27 reflects reportednotice date, not verifiedonset/discovery."
+        },
+        {
+          "at": "2026-10-30T06:03:32Z",
+          "kind": "update",
+          "note": "Municipality/police05:59:27\u201335 timeouts; tafsdirectcachemiss06:02:20\u201329; VisitAjman502/Ramadatimeout06:03:23\u201332. No authenticatedoriginal, currentenforcement/cause/waterquality/reopening."
+        },
+        {
+          "at": "2026-11-09T06:30:00Z",
+          "kind": "update",
+          "note": "Later hotel-only access/swimming statement firstretained06:30checkpoint; November6publication17:38timezoneunknown. Historical no-swimming records retained; not general municipalclearance."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "Current reconciliation revision2 records later qualified hotel-only de-escalation; not a backdated revision or verified resolution."
+        },
+        {
+          "at": "2026-10-30T06:34:10Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 06:30:58\u201306:34:10 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T07:02:15Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 07:01:45\u201307:02:15 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T07:33:47Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 07:32:44\u201307:33:47 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T08:04:32Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 08:04:21\u201308:04:32 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T08:05:27Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 08:05:17\u201308:05:27 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T08:34:29Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 08:34:23\u201308:34:29 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T09:02:33Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 09:02:26\u201309:02:33 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T09:30:16Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 09:30:08\u201309:30:16 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T10:01:42Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 10:01:35\u201310:01:42 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T10:31:57Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 10:31:50\u201310:31:57 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T11:01:17Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 11:00:18\u201311:01:17 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T11:32:21Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 11:31:32\u201311:32:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T12:00:22Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 12:00:17\u201312:00:22 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T12:29:38Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 12:29:05\u201312:29:38 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T13:30:53Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 13:30:16\u201313:30:53 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T14:03:21Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 14:03:14\u201314:03:21 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T14:32:04Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 14:31:57\u201314:32:04 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T15:02:47Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 15:02:41\u201315:02:47 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T15:32:56Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 15:32:45\u201315:32:56 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T16:04:15Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 16:04:07\u201316:04:15 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T16:31:25Z",
+          "kind": "update",
+          "note": "Historical Profi secondary report unchanged; publicationOctober29 13:02timezoneunknown. CurrentOct30authorityscope,enforcement,testing,reopeningunknown; historicalr1unchanged. First06:30run exactProfi subwindowunknown. 10-30 16:31:20\u201316:31:25 UTC. Timestamp is an inspection-window bound, not event/publication time."
+        },
+        {
+          "at": "2026-10-30T07:33:47Z",
+          "kind": "update",
+          "note": "Rambler direct06:33:45\u201306:34:10 and07:02:33\u201350; broad07:32:44\u201307:33:47 unchangedOctober28 14:16timezoneunknown. Laternotreread. Police06:31:05\u201312 routine recovery; municipalitytimeout samewindow. VisitAjmantimeout06:33:23\u201330,07:02:41\u201350. Municipality07:01:53\u201358timeout."
+        },
+        {
+          "at": "2026-10-30T13:33:02Z",
+          "kind": "update",
+          "note": "Profi13:01:00\u201308 title and13:01:26\u201335dateonly do not refresh fullbody; last12:29:05\u201311/details27\u201338; fullbodyrecovered13:30:43\u201353. Police08:34:34\u201339routine; municipality08:34:49\u201354timeout. Police09:01:32\u201337timeout,municipalitywithin09:01:32\u201351timeout,VisitAjman09:02:54\u201309:03:04timeout. Police09:30:08\u201316/10:01:35\u201342timeouts; recovered10:31:45\u201350 withdateditems10:32:14\u201324 routineOctober28CPR/27road/26meeting. Police11:00:12\u201318,11:31:24\u201332 readable; explicitdateditems11:31:59\u201311:32:07;12:00:09\u201316readwithoutnewdates. Police12:28:59\u201312:29:05 and13:00:52\u201313:01:00timeouts;13:30:09\u201316homepage recovery,13:32:52\u201313:33:02datefindnomatch. No comprehensivebeachcoverage."
+        },
+        {
+          "at": "2026-10-30T17:00:26Z",
+          "kind": "update",
+          "note": "Police14:00:45\u201353homepage,dateextract14:03:41\u201349;ADPolicehome14:00:45\u201353recovered,butnews14:03:14\u201321timeout. Police14:29:10\u201315/date14:32:04\u201312routine;ADPolicetimeout14:29:10\u201315. AjmanMedia routineindices11:01:03\u201317,11:31details,12:00,12:29,13:00 notclearance. Municipality/VisitAjman/Ramada/TourDomoriginals notrefreshedlater; lastProfi16:31:20\u201325,notreread17run. NewWAMslickassessmentnotnewpropertyban/reopening. Privateobservations,aircraft/dispersantspeculation excluded."
+        }
+      ]
+    },
+    {
+      "id": "uae-al-luluyah-beach-closure-20261109",
+      "revision": 1,
+      "title": "Al Luluyah Beach, Khor Fakkan: reported oil-related closure, reopening unverified",
+      "summary": "November9 GulfNews named Al Luluyah Beach in a temporary municipal closure after oil detection, cleanup and stay-away instruction; Reuters separately attributed a beach closure to municipality without naming beach. Originalmunicipalpost unavailable. No specific reopening verified. Cause, extent, exact effective clock and connection to earlier spill/vessel incidents unknown.",
+      "status": "active",
+      "severity": "moderate",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "environment",
+      "geographies": [
+        "Al Luluyah Beach",
+        "Khor Fakkan"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:31:50Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "GulfNews municipal-attributed named beach",
+          "url": "https://gulfnews.com/uae/sharjah/khor-fakkan-beach-closed-after-oil-spill-detected-along-coast-1.500741355",
+          "access": "secondhand",
+          "description": "Firstretained13:30checkpoint, precisefirstreadclockunknown. Historicalnoticenamedbeach/cleanup/stayawayuntilclearance. checked_at minute-bound checkpoint, not exactread.",
+          "published_at": "2026-11-09T13:04:00Z",
+          "checked_at": "2026-11-09T13:30:00Z"
+        },
+        {
+          "name": "Reuters municipal-attributed beach closure",
+          "url": "https://www.reuters.com/world/middle-east/uae-city-khor-fakkan-shuts-beach-after-detecting-oil-spill-2026-11-09/",
+          "access": "secondhand",
+          "description": "Firstretained13:30checkpoint, firstreadunknown; no beachname inReuters. Originalmunicipalpost notfound.",
+          "published_at": "2026-11-09T13:21:00Z",
+          "checked_at": "2026-11-09T13:30:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "Stable ID and revision1 assigned in current reconciliation; no historical assigned ID found. Firstretainedobservation November9 13:30checkpoint, not exactsourceclock; event/effectiveclosureclockunknown."
+        },
+        {
+          "at": "2026-11-09T18:30:54Z",
+          "kind": "update",
+          "note": "No materialchange/reopening found in November9 windows14:06\u201314:08,15:27\u201315:30(delayed14:30/15:30),16:01\u201316:02,16:33,16:59:55\u201317:01:18,approximately17:31\u201317:35coastal,17:59:53\u201318:01,18:29:42\u201318:30:54. Some laterretrievalsindexedonly; no retroactivecontinuousclosurecertification."
+        },
+        {
+          "at": "2026-11-14T13:31:50Z",
+          "kind": "update",
+          "note": "Latestofficialsearch13:31:34\u201350 found no specific AlLuluyahreopening. BroadNovember12Sharjah/RAKreport cannotresolve namedbeach. Active means not verifiedresolved, not contemporaneousclosureverification."
+        }
+      ]
+    },
+    {
+      "id": "abu-dhabi-al-mafraq-warehouse-fire-20261113",
+      "revision": 2,
+      "title": "Al Mafraq fire: reported controlled with no injuries; later site status unverified",
+      "summary": "Secondhand police-attributed reports say petroleum-container fire in AlMafraq controlled with no injuries and cooling underway at publication. Initial warehouse response was November13 noon/afternoon, exactonsetunknown. No originalpolicepost, latercurrentcooling, road/site reopening or complete resolution verified. AlBahiyahconstructionfire is separate.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "infrastructure",
+      "geographies": [
+        "Al Mafraq Industrial Area",
+        "Abu Dhabi"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:31:50Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "GulfNews response/containment",
+          "url": "https://gulfnews.com/uae/emergencies/fire-breaks-out-at-warehouse-in-abu-dhabi-2-1.500746128",
+          "access": "secondhand",
+          "description": "Latestsearchonly; directopensfailed. Display13:07UAE conflicts with latercontainment narrative, not controltime. FirstresponseobservedNovember13~10:30UTC.",
+          "published_at": null,
+          "checked_at": "2026-11-14T13:31:50Z"
+        },
+        {
+          "name": "AlKhaleej containment fullarticle",
+          "url": "https://www.alkhaleej.ae/2026-11-13/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0623\u0628\u0648\u0638\u0628\u064a-\u0627\u0644\u0633\u064a\u0637\u0631\u0629-\u0639\u0644\u0649-\u062d\u0631\u064a\u0642-\u0627\u0644\u0645\u0641\u0631\u0642-\u0627\u0644\u0635\u0646\u0627\u0639\u064a\u0629",
+          "access": "secondhand",
+          "description": "Fullpublisherbody21:29:34\u201321:30:02pass; publication15:12/update15:27UAE. Directsecondhandarticle, not originalpoliceconfirmation.",
+          "published_at": "2026-11-13T15:27:00+04:00",
+          "checked_at": "2026-11-13T21:30:02Z"
+        },
+        {
+          "name": "GulfToday containment",
+          "url": "https://www.gulftoday.ae/news/2026/11/13/abu-dhabi-police-and-adcda-bring-fire-in-al-mafraq-industrial-area-under-control",
+          "access": "secondhand",
+          "description": "Direct~01:00pass; updatedNovember13 18:01timezoneinferrednotprinted, textyesterdayFriday inconsistent. Samepublishinggroup asAlKhaleej, not independentverification.",
+          "published_at": null,
+          "checked_at": "2026-11-14T01:00:42Z"
+        },
+        {
+          "name": "EmaratAlYoum separate fires",
+          "url": "https://www.emaratalyoum.com/local-section/accidents/2026-11-13-1.2102455",
+          "access": "secondhand",
+          "description": "DirectNovember14~10:00\u201310:04pass. November13 update15:08timezoneunspecified, police-attributed controlled/noinjuries/cooling. AlBahiyahandMafraq separate; not freshfiretoday.",
+          "published_at": null,
+          "checked_at": "2026-11-14T10:04:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T10:30:00Z",
+          "kind": "update",
+          "note": "Historicalcandidate r1 firstobserved~10:30UTC response-onlyWATCH/moderate confidence; eventnoon/afternoonexactonsetunknown. GulfNews13:07UAE,AlKhaleej12:57/13:12UAE samepolicestatement,notindependent."
+        },
+        {
+          "at": "2026-11-13T20:30:57Z",
+          "kind": "update",
+          "note": "Proposedr2 reporteddeescalation firstobserved20:30pass indexedEmaratAlYoum1.2102455 andAlKhaleejdailyindex, original/fullarticlesinaccessible. Control/noinjuries/coolingatreporttime; no actualcontrolclock."
+        },
+        {
+          "at": "2026-11-13T21:30:02Z",
+          "kind": "update",
+          "note": "FullAlKhaleejbodyaccessible,publication15:12/update15:27UAEestablished. Improvesaccess,notprimaryconfidence or newevent; deescalationfirstobs20:30retained."
+        },
+        {
+          "at": "2026-11-14T01:00:42Z",
+          "kind": "update",
+          "note": "GulfToday fullbodynewlyread; samegroup, date/timeambiguity retained, not independentconfirmation."
+        },
+        {
+          "at": "2026-11-14T10:04:00Z",
+          "kind": "update",
+          "note": "EmaratAlYoumfullbodyreadhistoricaltwofirestatement, no laterresolution/reopening."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "Retain proposedrevision2 and all historical observations; subsequentsearchcopies/mirrors do not establish currentcooling, newonset or regression."
+        }
+      ]
+    },
+    {
+      "id": "spicejet-dubai-reported-checkin-disruption-20261112",
+      "revision": 1,
+      "title": "SpiceJet Dubai cancellations: November12 event, duration and restoration unresolved",
+      "summary": "FourNovember12Dubai departures reportedly cancelled afterdnatacheck-insuspension. NDTVsaysNovember12only; TNIEsaysFridayNovember13countersunavailable. No originalairline/dnata/DXBoperationalconfirmation or verifiedrestoration. LaterNDTV/IANS/ET/aggregatorreprints are not newcancellations or independentcorroboration. Microsoftemailissue causality unverified.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Dubai",
+        "SpiceJet departures"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "NDTVProfit",
+          "url": "https://www.ndtvprofit.com/india/four-spicejet-flights-cancelled-from-dubai-airport-dnata-suspends-check-in-services-12320617",
+          "access": "secondhand",
+          "description": "Latestselectivesearchpasscompleted13:32:07UTC,startunknown; directpublisherinaccessible. OriginalpublicationNovember13 08:55Dubai, firstobserved~November13 06:01UTC. SayssuspensionNovember12only.",
+          "published_at": "2026-11-13T08:55:00+04:00",
+          "checked_at": "2026-11-14T13:32:07Z"
+        },
+        {
+          "name": "TNIE duration conflict",
+          "url": "https://www.newindianexpress.com/india/2026/Nov/13/spicejet-flights-from-dubai-suspended-over-pending-airport-dues",
+          "access": "secondhand",
+          "description": "Searchonlyfullarticlefailed; updateNovember13 14:18IST/12:48Dubai saysFridaycountersnotallocated. Firstseen09:30November13pass.",
+          "published_at": "2026-11-13T14:18:00+05:30",
+          "checked_at": "2026-11-14T13:32:07Z"
+        },
+        {
+          "name": "NDTV IANS syndicated repeat",
+          "url": "https://www.ndtv.com/world-news/spicejet-cancels-4-dubai-flights-after-unpaid-dues-halts-check-in-services-12324287",
+          "access": "secondhand",
+          "description": "DirectarticleIANS/citesNDTVProfit; firstselected~02:02UTC. RepeatsNovember12event, not primaryreopening.",
+          "published_at": "2026-11-14T00:19:00+05:30",
+          "checked_at": "2026-11-14T02:02:09Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T06:01:00Z",
+          "kind": "update",
+          "note": "Firstdiscovery~06:01UTC in06:00checkpoint. EventNovember12, publicationNovember13. Informistcounter-duration differs; no primarycurrentstatus."
+        },
+        {
+          "at": "2026-11-13T09:32:00Z",
+          "kind": "update",
+          "note": "TNIEFridaycounterunavailabilityconflictswithNDTVNovember12only. No newindependentincident."
+        },
+        {
+          "at": "2026-11-14T00:01:10Z",
+          "kind": "update",
+          "note": "MumbaiAirportadvisoryselectedviaNDTVProfit12322619, publicationNovember13 17:55IST; fullpagefailed, originalnotfound. Historicalsupportinglead, not freshUAEdisruption."
+        },
+        {
+          "at": "2026-11-14T02:02:09Z",
+          "kind": "update",
+          "note": "DirectNDTV/IANSrepeat firstobserved~02:02; publication00:19IST earlier, doesnotresetevent."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "NewstableIDassignedduringcurrentreconciliation; no historicalassignedID supplied. RetainWATCHandunresolvedoutcome; no airport-wideoutage, restoration,financialclaim-as-officialfact or leakedemailcontent adopted."
+        }
+      ]
+    },
+    {
+      "id": "emirates-booking-confirmation-email-delay-20261113",
+      "revision": 1,
+      "title": "Emirates booking confirmation emails delayed",
+      "summary": "Emirates reports global email-delivery issue delays bookingconfirmations; bookingssecure and no furtheractionneeded. No recoveryannounced or flightinterruption stated; EmiratesdoesnotnameMicrosoft.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Emirates booking email channel"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Emirates official booking-email notice",
+          "url": "https://www.emirates.com/english/help/travel-updates/",
+          "access": "direct",
+          "description": "Latestpasscompleted13:32:07UTC, exactstartunknown. Fullnoticeunchanged; firstobservedNovember13 10:30checkpoint.",
+          "published_at": "2026-11-13T09:46:00+04:00",
+          "checked_at": "2026-11-14T13:32:07Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T10:30:00Z",
+          "kind": "update",
+          "note": "Firstobserved~10:30UTC, publication05:46UTC earlier; limitedemailimpact only."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; recurringdirectreadsretainnoticewithoutverifiedrecovery. No Microsoftcausalattributionorflightoutageinference."
+        }
+      ]
+    },
+    {
+      "id": "etihad-saudi-route-cancellations-through-20261119",
+      "revision": 1,
+      "title": "Etihad Riyadh/Dammam passenger and cargo cancellations through November19",
+      "summary": "Undatedofficialnotice cancelsAUH\u2013Riyadh/Dammampassengerandcargo throughNovember19. SelectedJeddahservicesscheduledfromNovember6, not verifiedoperation. No airport-wideclosureinferred.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Abu Dhabi\u2013Riyadh",
+        "Abu Dhabi\u2013Dammam"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Etihad official route notice",
+          "url": "https://www.etihad.com/en-ae/manage/flight-status",
+          "access": "direct",
+          "description": "Latestpasscompleted13:32:07UTC,startunknown; noticepublicationtimeabsent. RepeatedNovember8\u201314unchangedthroughNovember19.",
+          "published_at": null,
+          "checked_at": "2026-11-14T13:32:07Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-08T21:31:27Z",
+          "kind": "update",
+          "note": "Retained21:30checkpoint undatedroutecancellationthroughNovember19; no newpublicationclock."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; route-specificongoingnotice, not allEtihad/UAEoperations."
+        }
+      ]
+    },
+    {
+      "id": "etihad-ey822-delay-20261113",
+      "revision": 1,
+      "title": "EY822 AUH\u2013Incheon operational delay: notice removed, outcome unknown",
+      "summary": "Historicalisolatedflightnotice. RemovedbyNovember14 06:31passafterstilldisplayed06:00; removaldoesnotestablisharrival,recoveryorresolution. No delayduration/publicationclock.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Abu Dhabi",
+        "Flight-specific notice"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Etihad prior official notice",
+          "url": "https://www.etihad.com/en-ae/manage/flight-status",
+          "access": "direct",
+          "description": "Lastlistedwithin06:00:13\u201306:00:28UTC; laterabsenceread13:32pass not freshdetailsverification. No delayduration/publicationclock.",
+          "published_at": null,
+          "checked_at": "2026-11-14T06:00:28Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T14:02:00Z",
+          "kind": "update",
+          "note": "Firstobservedapproximatelyatthischeckpoint; exactfirstreadsecondnotcaptured. Eventdate11-13,notobservationdate."
+        },
+        {
+          "at": "2026-11-14T06:31:39Z",
+          "kind": "update",
+          "note": "Noticesabsentduring06:31:24\u201339UTC; firstremovalobservation. Priorhistory/outcomeuncertaintyretained."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; active means notverifiedresolved, not assertionofcurrentdelay."
+        }
+      ]
+    },
+    {
+      "id": "etihad-ey003-weather-diversion-20261112",
+      "revision": 1,
+      "title": "EY003 JFK weather diversion/EY004 delay: notices removed, outcome unknown",
+      "summary": "Historicalisolatedflightnotice. RemovedbyNovember14 06:31passafterstilldisplayed06:00; removaldoesnotestablisharrival,recoveryorresolution. EY003 divertedtoIADforJFKweather;EY004returndelay. Publicationtimeabsent.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Abu Dhabi",
+        "Flight-specific notice"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Etihad prior official notice",
+          "url": "https://www.etihad.com/en-ae/manage/flight-status",
+          "access": "direct",
+          "description": "Lastlistedwithin06:00:13\u201306:00:28UTC; laterabsenceread13:32pass not freshdetailsverification. EY003 divertedtoIADforJFKweather;EY004returndelay. Publicationtimeabsent.",
+          "published_at": null,
+          "checked_at": "2026-11-14T06:00:28Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T05:00:00Z",
+          "kind": "update",
+          "note": "Firstobservedapproximatelyatthischeckpoint; exactfirstreadsecondnotcaptured. Eventdate11-12,notobservationdate."
+        },
+        {
+          "at": "2026-11-14T06:31:39Z",
+          "kind": "update",
+          "note": "Noticesabsentduring06:31:24\u201339UTC; firstremovalobservation. Priorhistory/outcomeuncertaintyretained."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; active means notverifiedresolved, not assertionofcurrentdelay."
+        }
+      ]
+    },
+    {
+      "id": "lufthansa-group-dubai-suspensions-20261111",
+      "revision": 1,
+      "title": "Lufthansa Group Dubai route suspensions",
+      "summary": "November11notice: allgroupDubai flights suspendedthroughNovember24. MunichLufthansa5weekly/BerlinEurowingsdaily plannedNovember25; FrankfurtLufthansa/ZurichSWISS/ViennaAustrian throughMarch27,2027. Plannedreturnnotoperatedproof.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Dubai routes"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T08:37:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Official publisher notice",
+          "url": "https://business.lufthansagroup.com/it/en/program/experts/news/lufthansa-group-adjusts-dubai-flight-schedule",
+          "access": "direct",
+          "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. November11notice: allgroupDubai flights suspendedthroughNovember24. MunichLufthansa5weekly/BerlinEurowingsdaily plannedNovember25; FrankfurtLufthansa/ZurichSWISS/ViennaAustrian throughMarch27,2027. Plannedreturnnotoperatedproof.",
+          "published_at": null,
+          "checked_at": "2026-11-13T08:37:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T11:32:00Z",
+          "kind": "update",
+          "note": "Firstretainedobservationcheckpoint/windowbound; sourcepublicationdistinct/unknown."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        }
+      ]
+    },
+    {
+      "id": "ita-dubai-riyadh-standing-suspensions",
+      "revision": 1,
+      "title": "ITA Dubai and Riyadh standing suspensions",
+      "summary": "Undatedofficialpage: DubaisuspendedthroughMarch27,2027; RiyadhthroughJanuary7,2027. Noveldecisiontimeunknown; firstobservedNovember13 05:00run, not newpublication.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Dubai",
+        "Riyadh"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T08:37:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Official publisher notice",
+          "url": "https://www.ita-airways.com/us/en/book-and-prepare/current-information",
+          "access": "direct",
+          "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. Undatedofficialpage: DubaisuspendedthroughMarch27,2027; RiyadhthroughJanuary7,2027. Noveldecisiontimeunknown; firstobservedNovember13 05:00run, not newpublication.",
+          "published_at": null,
+          "checked_at": "2026-11-13T08:37:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T05:00:00Z",
+          "kind": "update",
+          "note": "Firstretainedobservationcheckpoint/windowbound; sourcepublicationdistinct/unknown."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        }
+      ]
+    },
+    {
+      "id": "qatar-saudi-planned-resumption-20261111",
+      "revision": 1,
+      "title": "Qatar Airways Saudi planned service dates",
+      "summary": "November11 16:54Dohanotice schedulesRiyadhNovember13,DammamNovember14; Abha/Taifsuspended. No completedoperationsverified.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Saudi routes"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T11:02:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Official publisher notice",
+          "url": "https://www.qatarairways.com/en/travel-alerts.html",
+          "access": "direct",
+          "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. November11 16:54Dohanotice schedulesRiyadhNovember13,DammamNovember14; Abha/Taifsuspended. No completedoperationsverified.",
+          "published_at": "2026-11-11T16:54:00+03:00",
+          "checked_at": "2026-11-13T11:02:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T05:00:00Z",
+          "kind": "update",
+          "note": "Firstretainedobservationcheckpoint/windowbound; sourcepublicationdistinct/unknown."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        }
+      ]
+    },
+    {
+      "id": "maersk-gulf-landside-pauses-update54-20261112",
+      "revision": 1,
+      "title": "Maersk Update54: carrier-specific Gulf landside pauses",
+      "summary": "November12Update54: UAE/QatarviaJeddah/Oman; Jeddah\u2192UAE/Oman/Qatar; Salalah/Sohar\u2192UAE/Saudi/Kuwait/Bahrain/Qatar landsidebookingpauses. Carrier-specific, not generalportclosure. LongerFujairahyard-densityextractNovember13 13:30notprovennew. Reefer/dangerousgoodsrestrictionsdisplayednotnew. Full-oceandiffnotperformedinheader-onlypasses.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "transport",
+      "geographies": [
+        "Gulf landside bookings"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Official publisher notice",
+          "url": "https://www.maersk.com/stay-ahead",
+          "access": "direct",
+          "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. November12Update54: UAE/QatarviaJeddah/Oman; Jeddah\u2192UAE/Oman/Qatar; Salalah/Sohar\u2192UAE/Saudi/Kuwait/Bahrain/Qatar landsidebookingpauses. Carrier-specific, not generalportclosure. LongerFujairahyard-densityextractNovember13 13:30notprovennew. Reefer/dangerousgoodsrestrictionsdisplayednotnew. Full-oceandiffnotperformedinheader-onlypasses.",
+          "published_at": null,
+          "checked_at": "2026-11-14T13:32:07Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T09:31:00Z",
+          "kind": "update",
+          "note": "Firstretainedobservationcheckpoint/windowbound; sourcepublicationdistinct/unknown."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        }
+      ]
+    },
+    {
+      "id": "vida-uaq-property-relocation-20261108",
+      "revision": 1,
+      "title": "Vida UAQ property operations relocation November8\u2013December10",
+      "summary": "Primarypropertynotice temporarilyrelocatesoperationsNovember8\u2013December10 forbeachenvironmentalchallenges, assistanceforbookings. Undatedpublication; not broaderUAQclosureorreopening.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "environment",
+      "geographies": [
+        "Vida Beach Resort Umm Al Quwain"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T07:02:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Official publisher notice",
+          "url": "https://www.vidahotels.com/en/resorts/vida-beach-resort-umm-al-quwain/",
+          "access": "direct",
+          "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. Primarypropertynotice temporarilyrelocatesoperationsNovember8\u2013December10 forbeachenvironmentalchallenges, assistanceforbookings. Undatedpublication; not broaderUAQclosureorreopening.",
+          "published_at": null,
+          "checked_at": "2026-11-13T07:02:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-09T03:02:00Z",
+          "kind": "update",
+          "note": "Firstretainedobservationcheckpoint/windowbound; sourcepublicationdistinct/unknown."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        }
+      ]
+    },
+    {
+      "id": "rak-dominica-prosperity-reported-strike-20261111",
+      "revision": 1,
+      "title": "Ras Al Khaimah vessel incident: historical crew evacuation report",
+      "summary": "UKMTO204/JMIC113andReutersidentifyDominicaProsperity November11 18:00UTCincident. Crewevacuated,nocasualtiesreported; firefightingatreporttimeonly. ReutersjoinsMinaSaqr/19Indianleadtoalreadyreported22crewincident. No newattack, currentfire, pollution or portclosureinferred.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "maritime",
+      "geographies": [
+        "Near Ras Al Khaimah"
+      ],
+      "event_at": "2026-11-11T18:00:00Z",
+      "checked_at": "2026-11-13T13:02:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO204 PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261112-ukmto_warning_204-26.pdf?rev=b01ee96bf3104a9598a09e7c49c7ab55",
+          "access": "direct",
+          "description": "Direct~13:01UTC pass. EventNovember11 18Z, publicationNovember12clockunknown; crew-safeevacuation/nocasualties/fireatreporttime.",
+          "published_at": null,
+          "checked_at": "2026-11-13T13:02:00Z"
+        },
+        {
+          "name": "Reuters report",
+          "url": "https://www.reuters.com/world/middle-east/vessel-fire-after-being-struck-off-uaes-ras-al-khaimah-maritime-agencies-say-2026-11-12/",
+          "access": "secondhand",
+          "description": "Indexedfulltextdirectblocked; publication13:43:43UTC, revisionclockunknown. Laterministerquote22crew19Indians, identifierpreservedwithoutguessingnamevsflag.",
+          "published_at": "2026-11-12T13:43:43Z",
+          "checked_at": "2026-11-12T17:03:00Z"
+        },
+        {
+          "name": "JMIC113",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_113_12-nov.pdf?rev=7fe7908661f24d2ebb037b750628f240",
+          "access": "direct",
+          "description": "Directwithin03:31\u201334UTCpass; informationcutoffNovember12 13:00UTC. Maps204DominicaProsperity/203FujairahEnergy/202NCCFajr. Notlivecurrentlisting.",
+          "published_at": null,
+          "checked_at": "2026-11-13T03:34:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T14:34:00Z",
+          "kind": "update",
+          "note": "Reutersindexedcrew-evacuation/fire update,secondhandUKMTO/Ambrey,notnewattacktoday."
+        },
+        {
+          "at": "2026-11-12T16:33:00Z",
+          "kind": "update",
+          "note": "Indexedofficial-originJMIC113/204identitylink,eventNovember11 18Z; directPDFtheninaccessible."
+        },
+        {
+          "at": "2026-11-12T17:03:00Z",
+          "kind": "update",
+          "note": "ReutersindexedupdatedtextjoinsMinaSaqrlead,notduplicateincident."
+        },
+        {
+          "at": "2026-11-13T13:02:00Z",
+          "kind": "update",
+          "note": "UKMTO204directPDFcorroboration,notfreshfirestatus."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; no duplicateMinaSaqrincident or unverifiedportclosure."
+        }
+      ]
+    },
+    {
+      "id": "ukmto203-fujairah-energy-late-report-20261110",
+      "revision": 1,
+      "title": "UKMTO203 late tanker-strike report: November10 event",
+      "summary": "Official-originindexedUKMTO203late-reportNovember10eastboundtankerstrike; multiplecasualtiestakenashore,remainingcrewsafe,damage/environmentunknown. JMIC113linksFujairahEnergy. Nofatalitiesinferred; relationshiptoADNOCstatementnotindependentlyestablished; no newattacktodayorportclosure.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "maritime",
+      "geographies": [
+        "Arabian Gulf"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-12T16:33:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO203 indexed PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261112-ukmto_warning_203-26.pdf?rev=724ce0c8e4a8458badd1f98205c92c4e",
+          "access": "secondhand",
+          "description": "Official-originfullindexedtext,directPDFinaccessible. PublishedNovember12clockunknown,eventNovember10clockunknown. IndexaccessnotdirectPDFread.",
+          "published_at": null,
+          "checked_at": "2026-11-12T15:02:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T15:02:00Z",
+          "kind": "update",
+          "note": "Firstretainedlate-reportcheckpoint; no exacteventclockorpublicationclock."
+        },
+        {
+          "at": "2026-11-12T16:33:00Z",
+          "kind": "update",
+          "note": "JMICindexedidentitylink203FujairahEnergy; no inventedmergerwithADNOC."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned, earlieruncertaintyretained."
+        }
+      ]
+    },
+    {
+      "id": "sea-of-oman-cargo-fire-rescue-20261108",
+      "revision": 1,
+      "title": "Sea of Oman cargo-ship rescue: November8 historical report",
+      "summary": "WAMNovember8reported22crewrescuedfromcargo-shipfire; separatefromOctobercoastalspill. Noestablishedpollution,cause,spilllinkorcurrentclosure.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "maritime",
+      "geographies": [
+        "Sea of Oman"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-09T11:02:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "WAM",
+          "url": "https://www.wam.ae/en/article/17ijsig-uae-national-guard-rescues-people-from-cargo-ship",
+          "access": "secondhand",
+          "description": "PublishedNovember8 07:04UAE; historicalrescue,notfreshpollutionmeasurement.",
+          "published_at": "2026-11-08T07:04:00+04:00",
+          "checked_at": "2026-11-09T11:02:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-08T23:02:00Z",
+          "kind": "update",
+          "note": "FirstretainedlateNovember8checkpoint, separateincident."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; no currenthazardorresolutioninferred."
+        }
+      ]
+    },
+    {
+      "id": "fujairah-road-crash-20261112",
+      "revision": 1,
+      "title": "Fujairah road crash: historical casualties, no current closure verified",
+      "summary": "November12police-attributedreports:14killed30injured, fireextinguished/sitesecured. WAMlater15discharged15incareatreporttime. No currentroadclosureornewaccidentinferredfromreprints.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "infrastructure",
+      "geographies": [
+        "Sheikh Khalifa bin Zayed Road near Fujairah entrance"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-12T20:32:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Reuters",
+          "url": "https://www.reuters.com/world/middle-east/uae-says-14-killed-30-injured-fujairah-traffic-accident-2026-11-12/",
+          "access": "secondhand",
+          "description": "Index-accessedpoliceattribution,notoriginalpoliceread.",
+          "published_at": "2026-11-12T14:41:53Z",
+          "checked_at": "2026-11-12T17:32:00Z"
+        },
+        {
+          "name": "WAM indexed police report",
+          "url": "https://www.wam.ae/en/article/c37voky-fujairah-police-detail-major-crash-sheikh-khalifa",
+          "access": "secondhand",
+          "description": "Firstobserved20:32UTC; directinaccessible,15discharged15receivingcareatreporttime.",
+          "published_at": "2026-11-12T16:42:51Z",
+          "checked_at": "2026-11-12T20:32:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T17:32:00Z",
+          "kind": "update",
+          "note": "Historicalaccidentreportfirstretained17:30checkpoint."
+        },
+        {
+          "at": "2026-11-12T20:32:00Z",
+          "kind": "update",
+          "note": "IndexedWAMcareupdate,notnewaccident."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; active means outcome/closure not newlyverified, not presentroadblock."
+        }
+      ]
+    },
+    {
+      "id": "e10-sheikh-zayed-bridge-right-lane-20261114",
+      "revision": 1,
+      "title": "Sheikh Zayed Bridge E10: secondhand planned right-lane closure",
+      "summary": "GulfNewsreportsAbuDhabiboundrightlaneonly plannedNovember14 00:00\u2013November16 06:00UAE. OriginalADMobilitypageinaccessible/X403. Notbridge-wideclosureorverifiedcurrentenforcement.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "infrastructure",
+      "geographies": [
+        "Sheikh Zayed Bridge E10 toward Abu Dhabi"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T04:31:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "GulfNews",
+          "url": "https://gulfnews.com/uae/transport/abu-dhabi-announces-weekend-lane-closure-on-sheikh-zayed-bridge-1.500745235",
+          "access": "secondhand",
+          "description": "Firstobserved~04:31UTC,secondhandADMobilityattribution; exactprimarycurrentstatusunknown.",
+          "published_at": "2026-11-12T18:22:00+04:00",
+          "checked_at": "2026-11-13T04:31:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-13T04:31:00Z",
+          "kind": "update",
+          "note": "Firstretainedplannedlane-onlylead, notfreshannouncement."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; plannedwindowstartnotverificationofactualclosure."
+        }
+      ]
+    },
+    {
+      "id": "kalba-lake-street-unverified-plan-20261113",
+      "revision": 1,
+      "title": "Kalba Lake Street: uncorroborated historical closure lead",
+      "summary": "SicurosecondhandleadplannedNovember13 16:00\u201318:00UAEAlQarmtoSarayaAlAlam. Originalpolicepost403,nocorroboration; elapsedplanwindow not proofclosureorresolution.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "low",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "infrastructure",
+      "geographies": [
+        "Kalba Lake Street"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-13T03:34:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Sicuro secondary tracker",
+          "url": "https://officialglobalalerts.sicurogroup.com/alerts/united-arab-emirates",
+          "access": "secondhand",
+          "description": "Trackerlatestscan02:39UTC; originalpostdatedNovember12 14:27UTC,policeX403. Unverifiedleadonly.",
+          "published_at": null,
+          "checked_at": "2026-11-13T03:34:00Z"
+        },
+        {
+          "name": "Original police post access failure",
+          "url": "https://x.com/ShjPolice/status/2120886308956733787",
+          "access": "secondhand",
+          "description": "Original403, no successfulbodyretrieval; sourcechecked_at is failedattempt explicitly, not successfulobservation.",
+          "published_at": null,
+          "checked_at": "2026-11-12T22:04:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-12T22:04:00Z",
+          "kind": "update",
+          "note": "Firstretainedsecondhandlead,original403."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassigned; retainedlow-confidenceWATCHnotconfirmedclosure."
+        }
+      ]
+    },
+    {
+      "id": "uae-airport-weather-observations-20261114",
+      "revision": 1,
+      "title": "Airport weather observations and probabilistic forecasts",
+      "summary": "LatestairportweatherobservationsandTAFonly; noair-qualitymeasurements, confirmeddisruptionorallclear. MixedMETARtimesandforecastprobabilitiesretained. Latest13:30transportpasscompleted13:32:07UTC, exactstartunrecorded. AUH METAR13:00UTC29012KT9999FEW045; DXB13:30UTC27009KT250V330CAVOK;DWC13:30UTC28009KTCAVOK;SHJ13:30UTC26010KTCAVOK. Observationtimesdifferfromretrieval. TAF11:00UTCunchanged, AUHpriorgustgroupabsent, DXB30%4000mHZNov15 01\u201305Z,DWC/SHJ00\u201305Z. Forecastnotobservedhazard, AQorflightnormality. Warningpanelsnotverifiedcurrent; preservepriorfailurehistory.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "high",
+      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "category": "weather",
+      "geographies": [
+        "Abu Dhabi airport",
+        "Dubai airport",
+        "Dubai World Central",
+        "Sharjah airport"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-14T13:32:07Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "NCM AvMet public weather",
+          "url": "https://www.avmet.ae/airports.aspx",
+          "access": "direct",
+          "description": "Latest13:30transportpasscompleted13:32:07UTC, exactstartunrecorded. AUH METAR13:00UTC29012KT9999FEW045; DXB13:30UTC27009KT250V330CAVOK;DWC13:30UTC28009KTCAVOK;SHJ13:30UTC26010KTCAVOK. Observationtimesdifferfromretrieval. TAF11:00UTCunchanged, AUHpriorgustgroupabsent, DXB30%4000mHZNov15 01\u201305Z,DWC/SHJ00\u201305Z. Forecastnotobservedhazard, AQorflightnormality. Warningpanelsnotverifiedcurrent; preservepriorfailurehistory.",
+          "published_at": null,
+          "checked_at": "2026-11-14T13:32:07Z"
+        }
+      ],
+      "unknowns": [
+        "Exact event time and current outcome not independently established. No all-clear inferred."
+      ],
+      "history": [
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "CurrentstableIDassignedforcurrentobservation/forecastledger; originalOctober24SIGMETincidentandallhistoryretainedseparately."
+        },
+        {
+          "at": "2026-11-13T05:30:00Z",
+          "kind": "update",
+          "note": "November13 04:43SIGMETvalid04:42\u201306:30offshoreembeddedthunderstorms. Expiry/notdisplayedreplacementnotallclear."
+        },
+        {
+          "at": "2026-11-09T13:38:00Z",
+          "kind": "update",
+          "note": "November9 13:20SIGMETvalidto14:20offshoreforecast, notairportclosure; laterexpirydoesnotresolvephysicalhazard."
+        },
+        {
+          "at": "2026-11-13T11:59:26Z",
+          "kind": "update",
+          "note": "New11ZTAFfirstseen~11:59pre-noon:AUH30%gust25kt12Z\u2013Nov14 00Z;DWC30%27kt/3kmBLDU12\u201314Z;DXB/SHJpriorgustgroupremoved. Forecastnotresolution."
+        },
+        {
+          "at": "2026-11-13T18:00:18Z",
+          "kind": "update",
+          "note": "New17ZTAFfirstseen17:59:35\u201318:00:18;AUH30%gust25ktNov14 05\u201315Z;DWCexpireddustgroupremoved,notphysicalresolution. METAR17:30Z."
+        },
+        {
+          "at": "2026-11-13T23:30:29Z",
+          "kind": "update",
+          "note": "New23ZTAFfirstseen23:30:13 afterprechecks23:28:46\u201323:29. DXB30%4kmHZNov15 01\u201305Z;DWC/SHJ00\u201305Z. METAR23Z. Forecastonly."
+        },
+        {
+          "at": "2026-11-14T01:30:25Z",
+          "kind": "update",
+          "note": "AUHsourceextract00:30Znotretroactively01:30;DXB/DWC/SHJ01:30Z. Approxrequestwindowsretained."
+        },
+        {
+          "at": "2026-11-14T02:02:09Z",
+          "kind": "update",
+          "note": "Official02:01:26\u201355initialAUH01:30Z;latertransport02:01:35\u201302:02:09allstations02:00Z. Separateextractsnotretroactivefreshness."
+        },
+        {
+          "at": "2026-11-14T02:31:17Z",
+          "kind": "update",
+          "note": "Allstationsstill02:00Zalreadyseenpriortransport;nonewmeasurementfromreread."
+        },
+        {
+          "at": "2026-11-14T05:30:52Z",
+          "kind": "update",
+          "note": "New05ZTAFfirstseen05:30:34\u201352:AUHprevailing8000mforecast,30%gust25kt12\u201315Z(16\u201319UAE),narrowerthanprior05\u201315Z. METAR05Z9999;forecastsnotobservations."
+        },
+        {
+          "at": "2026-11-14T09:30:28Z",
+          "kind": "update",
+          "note": "AUH/DXB/DWCMETAR09Z;SHJ09:30Z. Preserveindividualobservationtimes."
+        },
+        {
+          "at": "2026-11-14T10:29:16Z",
+          "kind": "update",
+          "note": "Early10:30nominalpassactual10:28:54\u201310:29:09official/~10:29transport. AUH/DXB/DWCMETAR10Z;SHJsource10:30labelaheadretrieval,notindependentlyverifiedfutureobservation."
+        },
+        {
+          "at": "2026-11-14T11:02:11Z",
+          "kind": "update",
+          "note": "All10:30ZMETARrereadaftertimestamp;earlierSHJdiscrepancyhistoryretained. HistoricalNovember11SHJPDFinternallydatedNov11despitemisleading2021title,notfreshwarning."
+        },
+        {
+          "at": "2026-11-14T11:30:27Z",
+          "kind": "update",
+          "note": "New11ZTAF:AUHpriorgust25ktgrouppresentin05Znowabsent,notresolution. AUH/DWC/SHJMETAR11:30Z,DXB11Z."
+        },
+        {
+          "at": "2026-11-14T11:59:40Z",
+          "kind": "update",
+          "note": "Nominal12passactual11:59:14\u201336official/11:59:20\u201340transport. AUH/SHJMETAR11:30Z;DXB/DWCsource12Zlabels aheadretrieval,discrepancyretained."
+        },
+        {
+          "at": "2026-11-14T12:30:02Z",
+          "kind": "update",
+          "note": "Nominal12:30actual12:29:38\u201354official/12:29:44\u201312:30:02transport. AUH12Z;laterDXB/DWC/SHJ12:30Z,source/retrievalnearlycoincident,preciselatencyunknown."
+        },
+        {
+          "at": "2026-11-14T13:01:16Z",
+          "kind": "update",
+          "note": "AUHinitial12:30Z;laterDXB/DWC/SHJ13Z. No substitutionofsourceobservationclockwithnominalrun."
+        },
+        {
+          "at": "2026-11-14T13:32:07Z",
+          "kind": "update",
+          "note": "LatestAUH13Z,DXB/DWC/SHJ13:30Z. Suspiciousfalse-alarm/recycledJune26storyexcluded; noadvice todisregardcurrentphonealerts. InaccessibleNCMmarinePDF2-20261113000134(and00132variant)indexleadsnotwave-value/warningverification."
+        }
+      ]
     }
   ],
   "coverage": [
     {
       "id": "uk",
-      "name": "UK FCDO",
+      "name": "FCDO UAE",
       "url": "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:17Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:12-13:29:17 UTC; checked_at is window-end bound, not event/publication time. July 24 substantive advice unchanged; current-at date is not new advice."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October27substantiveupdateunchanged; currentdateisnotpublication."
     },
     {
       "id": "us",
-      "name": "US travel advisory",
+      "name": "US State UAE",
       "url": "https://travel.state.gov/en/international-travel/travel-advisories/united-arab-emirates.html",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:17Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:12-13:29:17 UTC; checked_at is window-end bound, not event/publication time. October 23 Level 3/staffing/escalation wording unchanged; embedded embassy message fails. No ordered departure established."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October23Level3terrorism/armedconflictunchanged; embeddedembassyfails."
     },
     {
       "id": "emirates",
-      "name": "Emirates travel updates",
+      "name": "Emirates",
       "url": "https://www.emirates.com/english/help/travel-updates/",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:30Z",
-      "published_at": "2026-10-05T20:31:00+04:00",
-      "detail": "Bounded observation October 25 13:29:22-13:29:30 UTC; checked_at is window-end bound, not event/publication time. Same October 5 Tel Aviv codeshare suspension; details 13:29:27-13:29:30. No new operation or resumption established."
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": null,
+      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. November13 09:46UAEbookingemaildelayunchanged; November6 10:36UAEattestation/October5codesharehistorical. No flightoutageorrecovery."
     },
     {
       "id": "etihad",
-      "name": "Etihad flight status",
+      "name": "Etihad",
       "url": "https://www.etihad.com/en-ae/manage/flight-status",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:26Z",
+      "checked_at": "2026-11-14T13:32:07Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:22-13:29:26 UTC; checked_at is window-end bound, not event/publication time. Same all AUH-Dammam/Riyadh and specified Jeddah EY601-604 cancellations through November 5, publication clock absent. No broad airport interruption inferred."
+      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. UndatedRUH/DMMcancellationthroughNovember19/JeddahselectedscheduledNovember6. EY822/EY003noticesabsentsince06:31passNovember14,notresolved."
     },
     {
       "id": "flydubai",
-      "name": "flydubai operational updates",
+      "name": "flydubai",
       "url": "https://www.flydubai.com/en/help/operational-updates/",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:51Z",
-      "published_at": "2026-03-31T16:00:00+04:00",
-      "detail": "Bounded observation October 25 13:29:22-13:29:51 UTC; checked_at is window-end bound, not event/publication time. Same March 31 network and July 22 Naples/Salerno notices; details through 13:29:51. Other unqueried details retain prior freshness."
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": null,
+      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. IsraelnoticeOctober1 09:49UAEunchanged; directpageSaudiupdateunavailable."
     },
     {
       "id": "maersk",
-      "name": "Maersk updates",
+      "name": "Maersk",
       "url": "https://www.maersk.com/stay-ahead",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:26Z",
+      "checked_at": "2026-11-14T13:32:07Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:22-13:29:26 UTC; checked_at is window-end bound, not event/publication time. October 8 Update 51 and existing specified Gulf landside pauses unchanged; not a new port-wide closure."
+      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Update54November12andspecifiedlandsidepausesunchanged;notgeneralportclosure."
     },
     {
       "id": "ncema",
       "name": "NCEMA",
       "url": "https://www.ncema.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-25T13:29:17Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:12-13:29:17 UTC; checked_at is window-end bound, not event/publication time. Timed out; no successful substantive coverage."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentbody; attemptonly; previoussuccessfulfreshnessnotadvanced."
     },
     {
       "id": "moccae",
@@ -1276,12 +3271,12 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "ncm",
-      "name": "NCM air-quality platform",
+      "name": "NCM main",
       "url": "https://www.ncm.gov.ae/",
       "status": "no_current_values",
-      "checked_at": "2026-10-25T13:29:35Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:27-13:29:35 UTC; checked_at is window-end bound, not event/publication time. Generic shell; no original warning bulletin verified."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Genericnavigationshell, notlivewarningcoverage."
     },
     {
       "id": "dxb",
@@ -1342,18 +3337,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air quality",
       "url": "https://airquality.ncm.gov.ae/?lang=en",
       "status": "no_current_values",
-      "checked_at": "2026-10-25T13:29:35Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:27-13:29:35 UTC; checked_at is window-end bound, not event/publication time. No dated station values or selected-time observations. Missing values are not an all-clear."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Blank/no-selected-timevalues, no datedstationmeasurements. PageattemptisnotAQobservation."
     },
     {
       "id": "ncm-aviation",
-      "name": "NCM Aviation Meteorology airports",
+      "name": "NCM AvMet",
       "url": "https://www.avmet.ae/airports.aspx",
       "status": "checked",
-      "checked_at": "2026-10-25T13:29:36Z",
+      "checked_at": "2026-11-14T13:32:07Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:27-13:29:36 UTC; checked_at is window-end bound, not event/publication time. Page 13:17Z; AUH/AAN/DXB/RAK panels 13:16Z, SHJ 13:01Z. New 13:00Z METARs AUH/AAN 9999m, DXB/SHJ/RAK CAVOK. Al Ain FEW045TCU with CB TO W remark (cumulonimbus west of station). Appended TEMPO VRB15G25KT 4000 SHRA BLDU remains forecast trend, not observed rain/dust/reduced visibility. No verified operational impact or severity escalation. Same 11Z TAFs/revision 8: Al Ain PROB30 TSRA/BLDU 12-16Z, RAK 12-14Z. Warning/SIGMET fields remain unavailable; PDFs not reread. No AQ, all-clear or physical-resolution conclusion."
+      "detail": "Latest13:30transportpasscompleted13:32:07UTC, exactstartunrecorded. AUH METAR13:00UTC29012KT9999FEW045; DXB13:30UTC27009KT250V330CAVOK;DWC13:30UTC28009KTCAVOK;SHJ13:30UTC26010KTCAVOK. Observationtimesdifferfromretrieval. TAF11:00UTCunchanged, AUHpriorgustgroupabsent, DXB30%4000mHZNov15 01\u201305Z,DWC/SHJ00\u201305Z. Forecastnotobservedhazard, AQorflightnormality. Warningpanelsnotverifiedcurrent; preservepriorfailurehistory."
     },
     {
       "id": "ajman-police",
@@ -1387,18 +3382,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Sharjah Police",
       "url": "https://www.shjpolice.gov.ae/",
       "status": "inaccessible",
-      "checked_at": "2026-10-25T13:29:26Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:17-13:29:26 UTC; checked_at is window-end bound, not event/publication time. Redirect loop; no substantive notice coverage."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Redirectloop, notcurrentalerts."
     },
     {
       "id": "dubai-civil-defence",
       "name": "Dubai Civil Defence",
       "url": "https://www.dcd.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-25T11:02:10Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October25 11:02:06-11:02:10 UTC; checked_at is the window-end bound, not exact completion. Request timed out; no substantive refresh."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentnoticebody."
     },
     {
       "id": "gn-al-hamriyah",
@@ -1485,10 +3480,10 @@ window.ZAID_UAE_EARLY_WARNING = {
       "id": "ukmto-recent",
       "name": "UKMTO recent incidents",
       "url": "https://www.ukmto.org/recent-incidents",
-      "status": "unretrievable",
-      "checked_at": "2026-10-25T11:02:14Z",
+      "status": "no_current_values",
+      "checked_at": "2026-11-14T13:32:07Z",
       "published_at": null,
-      "detail": "Bounded observation October25 11:02:10-11:02:14 UTC; checked_at is the window-end bound, not exact completion. Zero-report interface without incident records, not safe-navigation confirmation or resolution."
+      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Empty0reportsshell, notzero incidentsorcurrentcompletefeed."
     },
     {
       "id": "ukmto-warnings",
@@ -1555,21 +3550,21 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "moccae-www-root",
-      "name": "MOCCAE \u2014 www root access",
+      "name": "MOCCAE www root",
       "url": "https://www.moccae.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-10-25T13:29:17Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:12-13:29:17 UTC; checked_at is window-end bound, not event/publication time. Request rejected; no substantive access recovery or new ministry observation."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Priorrejection/timeoutshistorical,noaccessrecoveryorallclear."
     },
     {
       "id": "embassy-security-alerts",
-      "name": "US Embassy UAE \u2014 security alerts access",
+      "name": "US Embassy alerts",
       "url": "https://ae.usembassy.gov/security-alerts/",
       "status": "inaccessible",
-      "checked_at": "2026-10-25T13:29:26Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October 25 13:29:17-13:29:26 UTC; checked_at is window-end bound, not event/publication time. Inaccessible; no successful substantive alert content."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No retrievedcurrentalertbody; prior403notallclear."
     },
     {
       "id": "dubai-police-root",
@@ -1657,9 +3652,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Abu Dhabi Police English news",
       "url": "https://www.adpolice.gov.ae/en/Media-Center/News",
       "status": "no_current_values",
-      "checked_at": "2026-10-25T11:02:10Z",
+      "checked_at": "2026-11-14T13:31:50Z",
       "published_at": null,
-      "detail": "Bounded observation October25 11:02:06-11:02:10 UTC; checked_at is the window-end bound, not exact completion. Empty template/placeholders and stale May 6 footer; not substantive current coverage or evidence of no notices."
+      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Dynamicempty/0results, notrestorednoticecoverage."
     },
     {
       "id": "ncm-ew4all",
@@ -2461,6 +4456,231 @@ window.ZAID_UAE_EARLY_WARNING = {
       "checked_at": "2026-10-25T13:29:35Z",
       "published_at": null,
       "detail": "Bounded observation October 25 13:29:26-13:29:35 UTC; checked_at is window-end bound, not event/publication time. Old July 2024 news/February 17, 2025 footer; no current closure/reopening evidence. Historical content remains stale."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-1",
+      "name": "Al Khaleej indexed original",
+      "url": "https://www.alkhaleej.ae/2026-10-28/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0625\u063a\u0644\u0627\u0642-\u0634\u0648\u0627\u0637\u0626-\u0645\u062f\u064a\u0646\u0629-\u0627\u0644\u0634\u0627\u0631\u0642\u0629-\u0645\u0624\u0642\u062a\u0627-\u0644\u062a\u062c\u0646\u0628-\u0648\u0635\u0648\u0644-\u062a\u0644\u0648\u062b-\u0646\u0641\u0637\u064a",
+      "status": "checked",
+      "checked_at": "2026-10-28T13:04:29Z",
+      "published_at": "2026-10-28T15:30:00+04:00",
+      "detail": "First material indexed read 13:03:38\u201346; parent reread 13:04:21\u201329. Published 15:27/updated15:30 UAE. Direct13:03:56\u201313:04:01 returned403."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-2",
+      "name": "Gulf Business attributed SGMB notice",
+      "url": "https://gulfbusiness.com/en/2026/sharjah/sharjah-temporarily-closes-beaches-over-oil-spill-concerns/",
+      "status": "checked",
+      "checked_at": "2026-10-28T13:04:01Z",
+      "published_at": null,
+      "detail": "Direct publisher body13:03:56\u201313:04:01; datedOctober28, hour unknown. Later parent retries failed; do not erase this success. Secondary attribution to SGMB, not pollution-arrival measurement."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-3",
+      "name": "Sharjah24 official city instruction",
+      "url": "https://sharjah24.ae/ar/Articles/2026/10/28/mm15",
+      "status": "checked",
+      "checked_at": "2026-10-30T17:00:26Z",
+      "published_at": null,
+      "detail": "First discoveryOctober28 13:33:20\u201327/fullbody13:33:27\u201333. Direct access failures preserved in history; recoveredOctober29 01:30:32\u201339/fullbody01:30:56\u201301:31:03. Latest archived directOctober30 17:00:14\u201326. October28 URL date, publicationclock unknown."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-4",
+      "name": "Reuters November12 reopening report",
+      "url": "https://www.reuters.com/world/middle-east/uaes-ras-al-khaimah-sharjah-reopen-several-beaches-after-tanker-oil-spill-2026-11-12/",
+      "status": "checked",
+      "checked_at": "2026-11-12T11:31:00Z",
+      "published_at": "2026-11-12T10:57:49Z",
+      "detail": "First retained read around11:31UTC; minute bound only. Secondhand Sharjah media-office attribution, unnamed beaches; not original municipal instruction."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-5",
+      "name": "Sharjah24 indexed reopening",
+      "url": "https://sharjah24.ae/ar/Articles/2026/11/12/KMR10",
+      "status": "checked",
+      "checked_at": "2026-11-12T16:33:00Z",
+      "published_at": null,
+      "detail": "Official-origin indexed text in16:31\u201316:33UTC pass, fullpage inaccessible. Reports emirate beaches reopened after assessment; no named list/exceptions or exact event/publication clock."
+    },
+    {
+      "id": "uae-sharjah-city-beach-closure-20261028-source-6",
+      "name": "Emarat Al Youm indexed reopening",
+      "url": "https://www.emaratalyoum.com/local-section/other/2026-11-12-1.2102092",
+      "status": "checked",
+      "checked_at": "2026-11-12T16:33:00Z",
+      "published_at": null,
+      "detail": "Indexed same-office attribution, fullpage inaccessible, not independent confirmation."
+    },
+    {
+      "id": "uae-us-arrival-health-attestation-20261104-source-1",
+      "name": "Emirates original attestation",
+      "url": "https://www.emirates.com/english/help/travel-updates/",
+      "status": "checked",
+      "checked_at": "2026-11-04T05:30:17Z",
+      "published_at": "2026-11-04T05:02:00+04:00",
+      "detail": "First observation05:30:01\u201317UTC; publicationNovember4 05:02UAE/effective08:59UAE includingconnections/transit unless exempt. Prior printed-form procedure."
+    },
+    {
+      "id": "uae-us-arrival-health-attestation-20261104-source-2",
+      "name": "CDC attestation order",
+      "url": "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html",
+      "status": "checked",
+      "checked_at": "2026-11-04T05:30:17Z",
+      "published_at": null,
+      "detail": "Historical linked orderOctober22/amendedOctober28; prior21daysDRC and exceptions. Exact original-read subwindow not recovered; parent supplied original official-requirement evidence, not freshCDC read."
+    },
+    {
+      "id": "uae-us-arrival-health-attestation-20261104-source-3",
+      "name": "Emirates online procedure",
+      "url": "https://www.emirates.com/ae/english/help/travel-updates/",
+      "status": "checked",
+      "checked_at": "2026-11-06T12:01:31Z",
+      "published_at": "2026-11-06T10:36:00+04:00",
+      "detail": "Observed12:00:12\u201312:01:31UTC. Mandatoryonlineform replacesprinted; available72hours before departure. Linkedform inaccessible; no universaloutage inference."
+    },
+    {
+      "id": "uae-us-arrival-health-attestation-20261104-source-4",
+      "name": "Emirates retained notice",
+      "url": "https://www.emirates.com/english/help/travel-updates/",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": "2026-11-06T10:36:00+04:00",
+      "detail": "Latesttransport pass completed13:32:07UTC; exactstart unknown. November6 attestation unchanged; no newerCDC or formsuccess supplied."
+    },
+    {
+      "id": "ajman-reported-swimming-restrictions-20261027-source-1",
+      "name": "Profi.Travel hotel/agent report",
+      "url": "https://profi.travel/news/65368/details",
+      "status": "checked",
+      "checked_at": "2026-10-30T16:31:25Z",
+      "published_at": null,
+      "detail": "Firstdiscovery06:02:20\u201329/direct06:02:56\u201306:03:00. PublishedOctober29 13:02timezoneunspecified. AgentsrelayRamadaHotel&Suites noticeovernightOctober28 attributedtourismdepartment; no-swimming differsshoreaccess."
+    },
+    {
+      "id": "ajman-reported-swimming-restrictions-20261027-source-2",
+      "name": "Rambler TourDom reproduction",
+      "url": "https://news.rambler.ua/abroad/57316128-oteli-shardzhi-i-adzhmana-vvodyat-zapret-na-kupanie-v-more-iz-za-razliva-nefti/amp/",
+      "status": "checked",
+      "checked_at": "2026-10-30T07:33:47Z",
+      "published_at": null,
+      "detail": "Firstdirect06:02:56\u201306:03:00; publicationOctober28 14:16timezoneunknown. HotelsnoticeseveningOctober27; RamadaBeach/WyndhamGarden/RussianExpress confirmations toTourDom. OriginalTourDom notobtained. Latestbroadread07:32:44\u201307:33:47."
+    },
+    {
+      "id": "ajman-reported-swimming-restrictions-20261027-source-3",
+      "name": "Polis derivative",
+      "url": "https://polis812.ru/blog/gde-kupatsya-v-oae-v-oktyabre-noyabre-2026-goda-plyazhi-po-emiratam/",
+      "status": "checked",
+      "checked_at": "2026-10-30T06:02:46Z",
+      "published_at": null,
+      "detail": "Direct06:02:39\u201346, updatedOctober29; derivative, not independent authority verification."
+    },
+    {
+      "id": "ajman-reported-swimming-restrictions-20261027-source-4",
+      "name": "AjmanNews hotel-only statement",
+      "url": "https://ajmannews.ae/news.php?cat_id=1&id=152936",
+      "status": "checked",
+      "checked_at": "2026-11-09T06:30:00Z",
+      "published_at": null,
+      "detail": "November6 17:38timezoneunstated tourismdepartment attribution. Firstretainedhotel-onlydeescalation06:30checkpoint minute-bound; originaldepartmentpost inaccessible, thirdpartymirror. Not allpublicbeaches or seawatersampling."
+    },
+    {
+      "id": "uae-al-luluyah-beach-closure-20261109-source-1",
+      "name": "GulfNews municipal-attributed named beach",
+      "url": "https://gulfnews.com/uae/sharjah/khor-fakkan-beach-closed-after-oil-spill-detected-along-coast-1.500741355",
+      "status": "checked",
+      "checked_at": "2026-11-09T13:30:00Z",
+      "published_at": "2026-11-09T13:04:00Z",
+      "detail": "Firstretained13:30checkpoint, precisefirstreadclockunknown. Historicalnoticenamedbeach/cleanup/stayawayuntilclearance. checked_at minute-bound checkpoint, not exactread."
+    },
+    {
+      "id": "uae-al-luluyah-beach-closure-20261109-source-2",
+      "name": "Reuters municipal-attributed beach closure",
+      "url": "https://www.reuters.com/world/middle-east/uae-city-khor-fakkan-shuts-beach-after-detecting-oil-spill-2026-11-09/",
+      "status": "checked",
+      "checked_at": "2026-11-09T13:30:00Z",
+      "published_at": "2026-11-09T13:21:00Z",
+      "detail": "Firstretained13:30checkpoint, firstreadunknown; no beachname inReuters. Originalmunicipalpost notfound."
+    },
+    {
+      "id": "abu-dhabi-al-mafraq-warehouse-fire-20261113-source-1",
+      "name": "GulfNews response/containment",
+      "url": "https://gulfnews.com/uae/emergencies/fire-breaks-out-at-warehouse-in-abu-dhabi-2-1.500746128",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:31:50Z",
+      "published_at": null,
+      "detail": "Latestsearchonly; directopensfailed. Display13:07UAE conflicts with latercontainment narrative, not controltime. FirstresponseobservedNovember13~10:30UTC."
+    },
+    {
+      "id": "abu-dhabi-al-mafraq-warehouse-fire-20261113-source-2",
+      "name": "AlKhaleej containment fullarticle",
+      "url": "https://www.alkhaleej.ae/2026-11-13/\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a/\u0623\u062e\u0628\u0627\u0631-\u0627\u0644\u062f\u0627\u0631/\u0623\u0628\u0648\u0638\u0628\u064a-\u0627\u0644\u0633\u064a\u0637\u0631\u0629-\u0639\u0644\u0649-\u062d\u0631\u064a\u0642-\u0627\u0644\u0645\u0641\u0631\u0642-\u0627\u0644\u0635\u0646\u0627\u0639\u064a\u0629",
+      "status": "checked",
+      "checked_at": "2026-11-13T21:30:02Z",
+      "published_at": "2026-11-13T15:27:00+04:00",
+      "detail": "Fullpublisherbody21:29:34\u201321:30:02pass; publication15:12/update15:27UAE. Directsecondhandarticle, not originalpoliceconfirmation."
+    },
+    {
+      "id": "abu-dhabi-al-mafraq-warehouse-fire-20261113-source-3",
+      "name": "GulfToday containment",
+      "url": "https://www.gulftoday.ae/news/2026/11/13/abu-dhabi-police-and-adcda-bring-fire-in-al-mafraq-industrial-area-under-control",
+      "status": "checked",
+      "checked_at": "2026-11-14T01:00:42Z",
+      "published_at": null,
+      "detail": "Direct~01:00pass; updatedNovember13 18:01timezoneinferrednotprinted, textyesterdayFriday inconsistent. Samepublishinggroup asAlKhaleej, not independentverification."
+    },
+    {
+      "id": "abu-dhabi-al-mafraq-warehouse-fire-20261113-source-4",
+      "name": "EmaratAlYoum separate fires",
+      "url": "https://www.emaratalyoum.com/local-section/accidents/2026-11-13-1.2102455",
+      "status": "checked",
+      "checked_at": "2026-11-14T10:04:00Z",
+      "published_at": null,
+      "detail": "DirectNovember14~10:00\u201310:04pass. November13 update15:08timezoneunspecified, police-attributed controlled/noinjuries/cooling. AlBahiyahandMafraq separate; not freshfiretoday."
+    },
+    {
+      "id": "spicejet-dubai-reported-checkin-disruption-20261112-source-1",
+      "name": "NDTVProfit",
+      "url": "https://www.ndtvprofit.com/india/four-spicejet-flights-cancelled-from-dubai-airport-dnata-suspends-check-in-services-12320617",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": "2026-11-13T08:55:00+04:00",
+      "detail": "Latestselectivesearchpasscompleted13:32:07UTC,startunknown; directpublisherinaccessible. OriginalpublicationNovember13 08:55Dubai, firstobserved~November13 06:01UTC. SayssuspensionNovember12only."
+    },
+    {
+      "id": "spicejet-dubai-reported-checkin-disruption-20261112-source-2",
+      "name": "TNIE duration conflict",
+      "url": "https://www.newindianexpress.com/india/2026/Nov/13/spicejet-flights-from-dubai-suspended-over-pending-airport-dues",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": "2026-11-13T14:18:00+05:30",
+      "detail": "Searchonlyfullarticlefailed; updateNovember13 14:18IST/12:48Dubai saysFridaycountersnotallocated. Firstseen09:30November13pass."
+    },
+    {
+      "id": "spicejet-dubai-reported-checkin-disruption-20261112-source-3",
+      "name": "NDTV IANS syndicated repeat",
+      "url": "https://www.ndtv.com/world-news/spicejet-cancels-4-dubai-flights-after-unpaid-dues-halts-check-in-services-12324287",
+      "status": "checked",
+      "checked_at": "2026-11-14T02:02:09Z",
+      "published_at": "2026-11-14T00:19:00+05:30",
+      "detail": "DirectarticleIANS/citesNDTVProfit; firstselected~02:02UTC. RepeatsNovember12event, not primaryreopening."
+    },
+    {
+      "id": "emirates-booking-confirmation-email-delay-20261113-source-1",
+      "name": "Emirates official booking-email notice",
+      "url": "https://www.emirates.com/english/help/travel-updates/",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": "2026-11-13T09:46:00+04:00",
+      "detail": "Latestpasscompleted13:32:07UTC, exactstartunknown. Fullnoticeunchanged; firstobservedNovember13 10:30checkpoint."
+    },
+    {
+      "id": "etihad-saudi-route-cancellations-through-20261119-source-1",
+      "name": "Etihad official route notice",
+      "url": "https://www.etihad.com/en-ae/manage/flight-status",
+      "status": "checked",
+      "checked_at": "2026-11-14T13:32:07Z",
+      "published_at": null,
+      "detail": "Latestpasscompleted13:32:07UTC,startunknown; noticepublicationtimeabsent. RepeatedNovember8\u201314unchangedthroughNovember19."
     }
   ]
 };
