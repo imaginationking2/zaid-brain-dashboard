@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-reconciliation-20261114-133207",
-  "checked_at": "2026-11-14T13:32:07Z",
+  "snapshot_id": "uae-public-watch-20261114-135956",
+  "checked_at": "2026-11-14T13:59:56Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3193,63 +3193,63 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "FCDO UAE",
       "url": "https://www.gov.uk/foreign-travel-advice/united-arab-emirates",
       "status": "checked",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October27substantiveupdateunchanged; currentdateisnotpublication."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. October27 substantive regional-tensions advice unchanged; current-date label not new publication. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October27substantiveupdateunchanged; currentdateisnotpublication."
     },
     {
       "id": "us",
       "name": "US State UAE",
       "url": "https://travel.state.gov/en/international-travel/travel-advisories/united-arab-emirates.html",
       "status": "checked",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October23Level3terrorism/armedconflictunchanged; embeddedembassyfails."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. October23 Level3 same scope unchanged. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. October23Level3terrorism/armedconflictunchanged; embeddedembassyfails."
     },
     {
       "id": "emirates",
       "name": "Emirates",
       "url": "https://www.emirates.com/english/help/travel-updates/",
       "status": "checked",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. November13 09:46UAEbookingemaildelayunchanged; November6 10:36UAEattestation/October5codesharehistorical. No flightoutageorrecovery."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. November13 09:46Dubai booking-email delay unchanged: booking secure/no action. No recovery/flight outage. November6 10:36online attestation and October5codeshare retain publication history. Previous coverage check 2026-11-14T13:32:07Z: Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. November13 09:46UAEbookingemaildelayunchanged; November6 10:36UAEattestation/October5codesharehistorical. No flightoutageorrecovery."
     },
     {
       "id": "etihad",
       "name": "Etihad",
       "url": "https://www.etihad.com/en-ae/manage/flight-status",
       "status": "checked",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. UndatedRUH/DMMcancellationthroughNovember19/JeddahselectedscheduledNovember6. EY822/EY003noticesabsentsince06:31passNovember14,notresolved."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. Undated AUH\u2013RUH/DMM all passenger/cargo cancellations throughNovember19; selectedJeddah scheduledfromNovember6 unchanged. Removed isolated-flight notices not resolved. Previous coverage check 2026-11-14T13:32:07Z: Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. UndatedRUH/DMMcancellationthroughNovember19/JeddahselectedscheduledNovember6. EY822/EY003noticesabsentsince06:31passNovember14,notresolved."
     },
     {
       "id": "flydubai",
       "name": "flydubai",
       "url": "https://www.flydubai.com/en/help/operational-updates/",
       "status": "checked",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. IsraelnoticeOctober1 09:49UAEunchanged; directpageSaudiupdateunavailable."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. October1 Israel suspension during investigation unchanged. Previous coverage check 2026-11-14T13:32:07Z: Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. IsraelnoticeOctober1 09:49UAEunchanged; directpageSaudiupdateunavailable."
     },
     {
       "id": "maersk",
       "name": "Maersk",
       "url": "https://www.maersk.com/stay-ahead",
       "status": "checked",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Update54November12andspecifiedlandsidepausesunchanged;notgeneralportclosure."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. November12 Update54 and same landside pauses UAE/QatarviaJeddah/Oman;JeddahtoUAE/Oman/Qatar;Salalah/SohartoUAE/Saudi/Kuwait/Bahrain/Qatar unchanged. Previous coverage check 2026-11-14T13:32:07Z: Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Update54November12andspecifiedlandsidepausesunchanged;notgeneralportclosure."
     },
     {
       "id": "ncema",
       "name": "NCEMA",
       "url": "https://www.ncema.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentbody; attemptonly; previoussuccessfulfreshnessnotadvanced."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Attempt failed; no successful current notice observation or all-clear. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentbody; attemptonly; previoussuccessfulfreshnessnotadvanced."
     },
     {
       "id": "moccae",
@@ -3274,9 +3274,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM main",
       "url": "https://www.ncm.gov.ae/",
       "status": "no_current_values",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Genericnavigationshell, notlivewarningcoverage."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Generic shell, not current warning data. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Genericnavigationshell, notlivewarningcoverage."
     },
     {
       "id": "dxb",
@@ -3337,18 +3337,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "NCM air quality",
       "url": "https://airquality.ncm.gov.ae/?lang=en",
       "status": "no_current_values",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Blank/no-selected-timevalues, no datedstationmeasurements. PageattemptisnotAQobservation."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Blank values/no dated station observations; attempt is not successful AQ measurement. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Blank/no-selected-timevalues, no datedstationmeasurements. PageattemptisnotAQobservation."
     },
     {
       "id": "ncm-aviation",
       "name": "NCM AvMet",
       "url": "https://www.avmet.ae/airports.aspx",
       "status": "checked",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Latest13:30transportpasscompleted13:32:07UTC, exactstartunrecorded. AUH METAR13:00UTC29012KT9999FEW045; DXB13:30UTC27009KT250V330CAVOK;DWC13:30UTC28009KTCAVOK;SHJ13:30UTC26010KTCAVOK. Observationtimesdifferfromretrieval. TAF11:00UTCunchanged, AUHpriorgustgroupabsent, DXB30%4000mHZNov15 01\u201305Z,DWC/SHJ00\u201305Z. Forecastnotobservedhazard, AQorflightnormality. Warningpanelsnotverifiedcurrent; preservepriorfailurehistory."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. All four METAR observations13:30UTC: AUH29010KT9999FEW045;DXB27009KT250V330CAVOK;DWC28009KTCAVOK;SHJ26010KTCAVOK. Visibility\u003e=10km at observation times only, not AQ or flight operations. TAF November14 11Z unchanged, overnight30%4kmhaze retained. Warning panels not freshly verified; no absence-of-warning inference. Previous coverage check 2026-11-14T13:32:07Z: Latest13:30transportpasscompleted13:32:07UTC, exactstartunrecorded. AUH METAR13:00UTC29012KT9999FEW045; DXB13:30UTC27009KT250V330CAVOK;DWC13:30UTC28009KTCAVOK;SHJ13:30UTC26010KTCAVOK. Observationtimesdifferfromretrieval. TAF11:00UTCunchanged, AUHpriorgustgroupabsent, DXB30%4000mHZNov15 01\u201305Z,DWC/SHJ00\u201305Z. Forecastnotobservedhazard, AQorflightnormality. Warningpanelsnotverifiedcurrent; preservepriorfailurehistory."
     },
     {
       "id": "ajman-police",
@@ -3382,18 +3382,18 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Sharjah Police",
       "url": "https://www.shjpolice.gov.ae/",
       "status": "inaccessible",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Redirectloop, notcurrentalerts."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Redirect loop; no current notice body. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Redirectloop, notcurrentalerts."
     },
     {
       "id": "dubai-civil-defence",
       "name": "Dubai Civil Defence",
       "url": "https://www.dcd.gov.ae/",
       "status": "timeout",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentnoticebody."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. No current notice body obtained. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No currentnoticebody."
     },
     {
       "id": "gn-al-hamriyah",
@@ -3481,9 +3481,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "UKMTO recent incidents",
       "url": "https://www.ukmto.org/recent-incidents",
       "status": "no_current_values",
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-14T13:59:56Z",
       "published_at": null,
-      "detail": "Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Empty0reportsshell, notzero incidentsorcurrentcompletefeed."
+      "detail": "Transport checks completed by13:59:56UTC before nominal14:00; exact opening time unrecorded, checked_at is completion bound only. Empty0-report shell is deficient live coverage, not zero incidents. Previous coverage check 2026-11-14T13:32:07Z: Transportpasscompleted13:32:07UTC; exactstartunrecorded, checked_at completionbound only. Empty0reportsshell, notzero incidentsorcurrentcompletefeed."
     },
     {
       "id": "ukmto-warnings",
@@ -3552,19 +3552,19 @@ window.ZAID_UAE_EARLY_WARNING = {
       "id": "moccae-www-root",
       "name": "MOCCAE www root",
       "url": "https://www.moccae.gov.ae/",
-      "status": "timeout",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "status": "rejected",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Priorrejection/timeoutshistorical,noaccessrecoveryorallclear."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Request rejected, previous timeout retained; no restored body access or successful freshness. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Priorrejection/timeoutshistorical,noaccessrecoveryorallclear."
     },
     {
       "id": "embassy-security-alerts",
       "name": "US Embassy alerts",
       "url": "https://ae.usembassy.gov/security-alerts/",
       "status": "inaccessible",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No retrievedcurrentalertbody; prior403notallclear."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. No alert body retrieved; failure does not refresh substantive evidence. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. No retrievedcurrentalertbody; prior403notallclear."
     },
     {
       "id": "dubai-police-root",
@@ -3652,9 +3652,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Abu Dhabi Police English news",
       "url": "https://www.adpolice.gov.ae/en/Media-Center/News",
       "status": "no_current_values",
-      "checked_at": "2026-11-14T13:31:50Z",
+      "checked_at": "2026-11-14T13:59:50Z",
       "published_at": null,
-      "detail": "Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Dynamicempty/0results, notrestorednoticecoverage."
+      "detail": "Actual official check window November14 13:59:41\u201313:59:50UTC, before nominal14:00. checked_at is window-end bound, not exact per-source second. Dynamically empty feed, not recovered alert coverage. Previous coverage check 2026-11-14T13:31:50Z: Actualofficialwindow13:31:34\u201313:31:50UTC; checked_at is window-end bound, not exactcompletion. Dynamicempty/0results, notrestorednoticecoverage."
     },
     {
       "id": "ncm-ew4all",
