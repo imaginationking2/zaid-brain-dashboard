@@ -1548,6 +1548,16 @@
     (data.abu_dhabi.vintage_discrepancies || []).forEach(function(r) { html += '<li>' + esc(r.metric + ': ' + JSON.stringify(r.editions) + '. ' + r.resolution) + '</li>'; });
     (data.abu_dhabi.current_edition_context || []).forEach(function(r) { html += '<li>' + esc(r.geography + ': ' + r.metric.replace(/_/g,' ') + ' = ' + r.value + '. ' + r.definition + ' (PDF page ' + r.page_1based + ')') + '</li>'; });
     html += '</ul></details>';
+    if (data.dubai) {
+      html += '<h4>Dubai publisher context: Q3 2026</h4><div class="uae-lead-note">Independently opened publisher PDFs, reviewed ' + esc(data.dubai.reviewed_at) + '. Historical research only, not a live official DLD feed. Publication dates unverified.</div><table><tr><th>Publisher / scope</th><th>Sales count</th><th>Sales AED bn</th><th>Source</th></tr>';
+      (data.dubai.observations || []).forEach(function(r) {
+        const safe = /^https:\/\/(reidin\.com|media\.espace\.ae)\//.test(r.url || '');
+        html += '<tr><td>' + esc(r.publisher + ' / ' + r.scope) + '</td><td>' + _uaeFmt(r.sales_count) + '</td><td>' + money(r.sales_value_aed) + '</td><td>' + (safe ? '<a target="_blank" rel="noopener noreferrer" href="' + esc(r.url) + '">Publisher PDF, page ' + esc(r.page_1based) + '</a>' : 'Source unavailable') + '</td></tr>';
+      });
+      html += '</table><ul>';
+      (data.dubai.guards || []).forEach(function(g) { html += '<li>' + esc(g) + '</li>'; });
+      html += '</ul>';
+    }
     html += '<details><summary>Source documents and review status</summary><ul>';
     (data.sources || []).forEach(function(r) { html += '<li>' + esc(r.filename + ' | ' + r.review_status) + '</li>'; });
     el.innerHTML = html + '</ul></details>';
