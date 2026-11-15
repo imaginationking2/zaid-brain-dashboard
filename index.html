@@ -409,6 +409,7 @@
 </main>
 
 <script src="./pc_market_local.js"></script>
+<script src="./uae_report_context.js"></script>
 <script>
   /* ───────────────────── config ───────────────────── */
   const DASHBOARD_GIST_RAW =
@@ -1517,6 +1518,58 @@
     });
   }
 
+  function _uaeRenderReportContext() {
+    const el = document.getElementById('uae-report-context');
+    if (!el) return;
+    const data = window.UAE_REPORT_CONTEXT;
+    if (!data) { el.textContent = 'Historical report context unavailable. Live source history is unchanged.'; return; }
+    const esc = function(x) { return String(x == null ? '' : x).replace(/[&<>"']/g, function(c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
+    const money = function(x) { return (x / 1e9).toFixed(2); };
+    let html = '<div class="uae-lead-note">Historical user-supplied reports, reviewed ' + esc(data.reviewed_at) + '. Not a live transaction feed or price index. Publisher authenticity has not been independently checked.</div>';
+    html += '<div style="overflow-x:auto;"><table style="width:100%;font-size:12px;"><tr><th>Ajman month</th><th>All transactions</th><th>All value AED bn</th><th>Trading count</th><th>Trading AED bn</th><th>Published</th></tr>';
+    (data.ajman_monthly || []).forEach(function(r) {
+      html += '<tr><td>' + esc(r.period) + '</td><td>' + _uaeFmt(r.total_transactions) + '</td><td>' + money(r.total_value_aed) + '</td><td>' + _uaeFmt(r.trading_transactions) + '</td><td>' + (r.trading_value_qualifier === 'greater_than' ? '&gt;' : '') + money(r.trading_value_aed) + '</td><td>' + esc(r.publication_date) + '</td></tr>';
+    });
+    html += '</table></div><div class="uae-lead-note">Values are rounded reported figures. June trading is a lower bound; August mortgage value is also a lower bound. Monthly values must not be combined with overlapping H1 aggregates.</div>';
+    html += '<details><summary>Separate context and safeguards</summary><ul>';
+    (data.ajman_context || []).forEach(function(r) {
+      const details = Object.keys(r).filter(function(k) { return !['period','period_start','period_end','publication_date','source_id','metric_family'].includes(k); }).map(function(k) { return k.replace(/_/g,' ') + ': ' + (r[k] == null ? 'unknown' : r[k]); }).join('; ');
+      html += '<li>' + esc(r.period + ' | ' + r.metric_family.replace(/_/g,' ') + ' | ' + details) + '</li>';
+    });
+    html += '</ul><ul>';
+    (data.guards || []).forEach(function(g) { html += '<li>' + esc(g) + '</li>'; });
+    html += '</ul></details><div class="uae-lead-note">Al Zorah matched-property records: ' + (data.al_zorah_comparables.records || []).length + '. The AED 36.3m maximum sale has no matching attributes and is excluded.</div>';
+    html += '<div class="uae-lead-note">Abu Dhabi reports: ' + esc(data.abu_dhabi.status.replace(/_/g,' ')) + '. No cross-emirate total is inferred.</div>';
+    html += '<table style="width:100%;font-size:12px;"><tr><th>Abu Dhabi edition</th><th>Total AED bn</th><th>Sales AED bn</th><th>PDF page</th></tr>';
+    (data.abu_dhabi.observations || []).forEach(function(r) {
+      html += '<tr><td>' + esc(r.edition) + '</td><td>' + money(r.total_value_aed) + '</td><td>' + (r.sales_value_aed == null ? 'Conflict: 32 vs 33' : money(r.sales_value_aed)) + '</td><td>' + esc(r.total_page_1based) + '</td></tr>';
+    });
+    html += '</table><details><summary>Abu Dhabi scope and edition conflicts</summary><ul>';
+    (data.abu_dhabi.vintage_discrepancies || []).forEach(function(r) { html += '<li>' + esc(r.metric + ': ' + JSON.stringify(r.editions) + '. ' + r.resolution) + '</li>'; });
+    (data.abu_dhabi.current_edition_context || []).forEach(function(r) { html += '<li>' + esc(r.geography + ': ' + r.metric.replace(/_/g,' ') + ' = ' + r.value + '. ' + r.definition + ' (PDF page ' + r.page_1based + ')') + '</li>'; });
+    html += '</ul></details>';
+    html += '<details><summary>Source documents and review status</summary><ul>';
+    (data.sources || []).forEach(function(r) { html += '<li>' + esc(r.filename + ' | ' + r.review_status) + '</li>'; });
+    el.innerHTML = html + '</ul></details>';
+  }
+
+  function _uaeRenderGeography(series, target) {
+    const el = document.getElementById(target);
+    if (!el) return;
+    const last = series.length ? series[series.length - 1] : null;
+    const prev = series.length > 1 ? series[series.length - 2] : null;
+    if (!last) { el.textContent = 'No regional source observations.'; return; }
+    const areas = [['dubai','Dubai'],['ajman','Ajman'],['sharjah','Sharjah'],['rak','Ras Al Khaimah'],['abudhabi','Abu Dhabi source segment'],['alain','Al Ain source segment'],['uaq','Umm Al Quwain'],['fujairah','Fujairah']];
+    let html = '<table style="width:100%;font-size:12px;"><tr><th>Source geography</th><th>Active listings</th><th>Change vs previous snapshot</th></tr>';
+    areas.forEach(function(pair) {
+      const n = last[pair[0]], old = prev && prev[pair[0]];
+      const valid = typeof n === 'number' && Number.isFinite(n);
+      const change = valid && typeof old === 'number' && old > 0 ? ((n / old - 1) * 100).toFixed(1) + '%' : 'Unavailable';
+      html += '<tr><td>' + pair[1] + '</td><td>' + (valid ? _uaeFmt(n) : 'Missing') + '</td><td>' + change + '</td></tr>';
+    });
+    el.innerHTML = html + '</table><div class="uae-lead-note">Source listing stock, not prices or transactions. Abu Dhabi and Al Ain remain separate source buckets; overlap has not been validated. No UAE-weighted price index is inferred.</div>';
+  }
+
   function _uaeRenderLuxury(last, dScr) {
     const metricsEl = document.getElementById('uae-lux-metrics');
     const pillEl = document.getElementById('uae-lux-pill');
@@ -1525,22 +1578,23 @@
       _uaeEmptyChart('uae-lux-chart');
       return;
     }
-    const dc = last.drop_count || 0, avg = last.avg_drop_pct || 0, maxD = last.max_drop_pct || avg;
+    const dc = last.drop_count, avg = last.avg_drop_pct == null ? '-' : last.avg_drop_pct, maxD = last.max_drop_pct == null ? '-' : last.max_drop_pct;
     const age = _uaeReadingAge(last.date);
     const scoreText = dScr == null ? '—' : dScr;
     const severe = last.drops_10pct_plus;
     const severeShare = last.distress_share_pct;
     if (metricsEl) {
       metricsEl.innerHTML =
-        '<div class="uae-mc"><div class="lbl">Active drops</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">' + (last.source_last_scan || ('observed ' + (last.date || '—'))) + '</div></div>' +
-        '<div class="uae-mc"><div class="lbl">Avg drop</div><div class="val" style="color:' + UAE_C.red + ';">' + avg + '%</div><div class="sub">across all</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Active reduced-price listings</div><div class="val" style="color:' + UAE_C.red + ';">' + _uaeFmt(dc) + '</div><div class="sub">' + (last.source_last_scan || ('observed ' + (last.date || '—'))) + '</div></div>' +
+        '<div class="uae-mc"><div class="lbl">Average asking reduction</div><div class="val" style="color:' + UAE_C.red + ';">' + avg + '%</div><div class="sub">among active drops only</div></div>' +
         '<div class="uae-mc"><div class="lbl">Drops ≥10%</div><div class="val" style="color:' + UAE_C.amber + ';">' + (severe != null ? _uaeFmt(severe) : '—') + '</div><div class="sub">' + (severeShare != null ? severeShare.toFixed(1) + '% of active drops' : 'tier data unavailable') + '</div></div>' +
         '<div class="uae-mc"><div class="lbl">Max drop</div><div class="val" style="color:' + UAE_C.red + ';">' + maxD + '%</div><div class="sub">single listing</div></div>' +
+        '<div class="uae-lead-note" style="grid-column:1/-1;">Listing-stock evidence, not transaction prices. September source-regime break is unresolved. Extraction: ' + (last.quality_status || 'historical / not assessed') + '. Scanned inventory: ' + (last.scanned_listing_count == null ? 'unavailable' : _uaeFmt(last.scanned_listing_count)) + '.</div>' +
         '<div class="uae-lead-note" style="grid-column:1/-1;color:' + (age.stale ? UAE_C.red : UAE_C.teal) + ';">Reading: ' + (last.date || '—') + ' · ' + age.text + (last.source_updated_date ? ' · source page updated ' + last.source_updated_date : '') + '</div>';
     }
     if (pillEl) {
-      pillEl.textContent = age.stale ? 'STALE · ' + (last.date || '—') : 'Price-drop stock: ' + scoreText + '/30';
-      pillEl.className = 'uae-pill ' + (age.stale ? 'uae-p-red' : dScr == null ? 'uae-p-gray' : dScr >= 24 ? 'uae-p-red' : dScr >= 15 ? 'uae-p-warn' : 'uae-p-ok');
+      pillEl.textContent = age.stale ? 'STALE · ' + (last.date || '—') : 'Score unavailable: unvalidated baseline';
+      pillEl.className = 'uae-pill ' + (age.stale ? 'uae-p-red' : 'uae-p-gray');
     }
   }
 
@@ -1553,7 +1607,7 @@
     _uaeMkChart('uae-lux-chart', {
       type: 'line',
       data: { labels: _uaeLabels(g), datasets: [
-        { label: 'Drop count', data: _uaeVals(g, 'drop_count'), borderColor: UAE_C.red, backgroundColor: UAE_C.red + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false },
+        { label: 'Active reduced asking-price listings (source stock)', data: _uaeVals(g, 'drop_count'), borderColor: UAE_C.red, backgroundColor: UAE_C.red + '22', borderWidth: 2, pointRadius: 3, fill: true, tension: 0.35, spanGaps: false },
         { label: 'Score begins (1.10× median)', data: _uaeLabels(g).map(function() { return baseline == null ? null : Math.round(baseline * 1.10); }), borderColor: UAE_C.amber, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false },
         { label: 'Full component score (2.00×)', data: _uaeLabels(g).map(function() { return baseline == null ? null : Math.round(baseline * 2.00); }), borderColor: UAE_C.red, borderDash: [5, 4], borderWidth: 1.5, pointRadius: 0, fill: false }
       ]},
@@ -1845,6 +1899,7 @@
             '<div class="uae-src">Source: uae.dubizzle.com/motors/ · supporting signal only until private sellers, new listings and relists are separated from dealers</div>' +
           '</div>' +
 
+          '<div class="uae-card"><div class="uae-st">Historical report context (separate evidence)</div><div id="uae-report-context"></div></div>' +
           '<div class="uae-section-div">Property Supply — UAE Total</div>' +
           '<div class="uae-grid2">' +
             '<div class="uae-card">' +
@@ -1859,12 +1914,14 @@
             '</div>' +
           '</div>' +
 
-          '<div class="uae-section-div">Luxury Price Drops — HNW Distress</div>' +
+          '<div class="uae-card"><div class="uae-st">Regional decomposition: for-sale listings</div><div id="uae-geography-sale"></div></div>' +
+          '<div class="uae-card"><div class="uae-st">Regional decomposition: rental listings</div><div id="uae-geography-rent"></div></div>' +
+          '<div class="uae-section-div">Reduced asking-price listings - Dubai only</div>' +
           '<div class="uae-card">' +
             '<div class="uae-st">Luxury Price Drops — Dubai <span id="uae-lux-pill" class="uae-pill uae-p-gray">score —/30</span></div>' +
             '<div class="uae-grid4" id="uae-lux-metrics"></div>' +
             '<div class="uae-cw" style="height:150px;margin-top:12px;"><canvas id="uae-lux-chart"></canvas></div>' +
-            '<div class="uae-src">Source: luxurypricedrops.com/dubai/market-data/ · score begins at 1.10× the rolling median and reaches 30/30 at 2.00× · source date shown above</div>' +
+            '<div class="uae-src">Source: luxurypricedrops.com/dubai/market-data/ · unvalidated economic baseline; source stock is not a price index · source date shown above</div>' +
           '</div>' +
 
           '<div class="uae-section-div">Al Zorah · weekly liquidity watch</div>' +
@@ -1922,6 +1979,9 @@
       _uaeRenderUsedCars(data.dubizzle_motors_series || []);
       _uaeRenderPropertyTotal(data.dubizzle_property_sale_series || [], 'propsale', UAE_C.green);
       _uaeRenderPropertyTotal(data.dubizzle_property_rent_series || [], 'proprent', UAE_C.blue);
+      _uaeRenderReportContext();
+      _uaeRenderGeography(data.dubizzle_property_sale_series || [], 'uae-geography-sale');
+      _uaeRenderGeography(data.dubizzle_property_rent_series || [], 'uae-geography-rent');
       const luxSeries = data.luxury_drops_series || [];
       const luxScore = stress.components && stress.components.luxury_price_drops ? stress.components.luxury_price_drops.score : null;
       _uaeRenderLuxury(luxSeries[luxSeries.length - 1], luxScore);
