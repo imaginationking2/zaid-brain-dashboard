@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261115-043101",
-  "checked_at": "2026-11-15T04:31:01Z",
+  "snapshot_id": "uae-public-watch-20261122-1130-lufthansa",
+  "checked_at": "2026-11-22T11:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -2543,7 +2543,7 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "lufthansa-group-dubai-suspensions-20261111",
-      "revision": 1,
+      "revision": 2,
       "title": "Lufthansa Group Dubai route suspensions",
       "summary": "November11notice: allgroupDubai flights suspendedthroughNovember24. MunichLufthansa5weekly/BerlinEurowingsdaily plannedNovember25; FrankfurtLufthansa/ZurichSWISS/ViennaAustrian throughMarch27,2027. Plannedreturnnotoperatedproof.",
       "status": "active",
@@ -2555,7 +2555,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Dubai routes"
       ],
       "event_at": null,
-      "checked_at": "2026-11-13T08:37:00Z",
+      "checked_at": "2026-11-22T11:30:00Z",
       "resolved_at": null,
       "sources": [
         {
@@ -2565,6 +2565,14 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. November11notice: allgroupDubai flights suspendedthroughNovember24. MunichLufthansa5weekly/BerlinEurowingsdaily plannedNovember25; FrankfurtLufthansa/ZurichSWISS/ViennaAustrian throughMarch27,2027. Plannedreturnnotoperatedproof.",
           "published_at": null,
           "checked_at": "2026-11-13T08:37:00Z"
+        },
+        {
+          "name": "Lufthansa Group November 11 Dubai schedule notice",
+          "url": "https://business.lufthansagroup.com/de/en/program/experts/news/lufthansa-group-adjusts-dubai-flight-schedule",
+          "access": "direct",
+          "description": "Standing notice dated November 11, directly checked November 22 at 11:30 UTC (minute precision). Munich Lufthansa and Berlin Eurowings services scheduled to resume November 25; Frankfurt Lufthansa, Zurich SWISS and Vienna Austrian remain suspended through March 27, 2027. Scheduled resumption is not proof of operation; no live itinerary checked. Exact publication time unavailable.",
+          "published_at": null,
+          "checked_at": "2026-11-22T11:30:00Z"
         }
       ],
       "unknowns": [
@@ -2580,6 +2588,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-14T13:32:07Z",
           "kind": "update",
           "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        },
+        {
+          "at": "2026-11-22T11:30:00Z",
+          "kind": "update",
+          "note": "Reverified the same November 11 standing notice via the German-locale official source. Prior incident check November 13 at 08:37 UTC and all original source/history entries retained. November 25 scheduled Munich/Berlin return and March 27, 2027 Frankfurt/Zurich/Vienna suspension baseline unchanged; no contrary claim or live itinerary checked. This is a later verification, not a new announcement or operated-service confirmation."
         }
       ]
     },
