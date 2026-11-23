@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261122-1130-lufthansa",
-  "checked_at": "2026-11-22T11:30:00Z",
+  "snapshot_id": "uae-public-watch-20261123-1700-maersk56",
+  "checked_at": "2026-11-23T17:00:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -2683,19 +2683,19 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "maersk-gulf-landside-pauses-update54-20261112",
-      "revision": 1,
-      "title": "Maersk Update54: carrier-specific Gulf landside pauses",
-      "summary": "November12Update54: UAE/QatarviaJeddah/Oman; Jeddah\u2192UAE/Oman/Qatar; Salalah/Sohar\u2192UAE/Saudi/Kuwait/Bahrain/Qatar landsidebookingpauses. Carrier-specific, not generalportclosure. LongerFujairahyard-densityextractNovember13 13:30notprovennew. Reefer/dangerousgoodsrestrictionsdisplayednotnew. Full-oceandiffnotperformedinheader-onlypasses.",
+      "revision": 2,
+      "title": "Maersk Update 56: carrier-specific booking and DG documentation changes",
+      "summary": "November 23 Update 56 specifies refrigerated Jeddah-to-UAE/Bahrain/Kuwait/Qatar landside pause; Update 55 said UAE/Oman/Qatar without cargo class. Published scope change does not confirm dry capacity resumed. Other Salalah/Sohar-to-UAE and UAE/Qatar via Jeddah/Oman pauses unchanged; dry UAE ocean cargo accepted subject to terms/capacity. Sohar DG requires MSDS plus DG permit or Bayan exemption proof; missing requested documents for cargo on water risks non-discharge and USD 1,000/container charge. No UAE port closure or specific-shipment impact verified.",
       "status": "active",
       "severity": "watch",
       "confidence": "high",
-      "confidence_basis": "Confidence applies to the explicitly attributed evidence and access mode, not independent verification of present conditions.",
+      "confidence_basis": "High confidence in directly verified carrier-specific published wording and documentation terms; no independent confirmation of resumed capacity or individual-shipment effects.",
       "category": "transport",
       "geographies": [
         "Gulf landside bookings"
       ],
       "event_at": null,
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-23T17:00:00Z",
       "resolved_at": null,
       "sources": [
         {
@@ -2705,6 +2705,22 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Lastprovidedbodyreadboundedbycheckpoint, not exactcompletion wherewindowunknown. November12Update54: UAE/QatarviaJeddah/Oman; Jeddah\u2192UAE/Oman/Qatar; Salalah/Sohar\u2192UAE/Saudi/Kuwait/Bahrain/Qatar landsidebookingpauses. Carrier-specific, not generalportclosure. LongerFujairahyard-densityextractNovember13 13:30notprovennew. Reefer/dangerousgoodsrestrictionsdisplayednotnew. Full-oceandiffnotperformedinheader-onlypasses.",
           "published_at": null,
           "checked_at": "2026-11-14T13:32:07Z"
+        },
+        {
+          "name": "Maersk Middle East operational Update 56",
+          "url": "https://www.maersk.com/news/articles/2026/11/23/middle-east-operational-update-56",
+          "access": "direct",
+          "description": "Dated November 23, no publication clock displayed; first observed in November 23 17:00 UTC run (minute precision). Jeddah pause now expressly refrigerated cargo to UAE/Bahrain/Kuwait/Qatar. Sohar-bound dangerous goods: MSDS plus DG permit or Bayan exemption proof; missing requested documents for cargo on water may prevent discharge and incur USD 1,000/container. Existing Khor Fakkan congestion, selected Jebel Ali reroutes, Fujairah off-dock handling, Hormuz fee and Ajman empty-return figures are not new versus Update 55. No general port closure, dry-capacity resumption or specific shipment effect established.",
+          "published_at": null,
+          "checked_at": "2026-11-23T17:00:00Z"
+        },
+        {
+          "name": "Maersk Update 55 comparison baseline",
+          "url": "https://www.maersk.com/news/articles/2026/11/18/middle-east-operational-update-55",
+          "access": "direct",
+          "description": "November 18 dated comparison text reviewed in November 23 17:00 UTC run; exact publication clock unavailable. Jeddah-to-UAE/Oman/Qatar landside pause lacked cargo-class qualification. Update 56 changes published scope; not evidence dry Jeddah-to-UAE capacity resumed. Salalah/Sohar-to-UAE and UAE/Qatar via Jeddah/Oman temporary pauses remain unchanged.",
+          "published_at": null,
+          "checked_at": "2026-11-23T17:00:00Z"
         }
       ],
       "unknowns": [
@@ -2720,6 +2736,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-14T13:32:07Z",
           "kind": "update",
           "note": "StableIDassignedcurrentreconciliation; preserveplanversusoperationandproperty/geographicscope; no outcomeinferred."
+        },
+        {
+          "at": "2026-11-23T17:00:00Z",
+          "kind": "update",
+          "note": "Carrier Update 56 first observed at this run; November 23 publication date only, precise issue time unknown. Update 55 comparison establishes published scope/documentation change, not dry-capacity resumption. Stable ID retained. Prior visible summary and source check November 14 13:32:07 UTC retained here: November12Update54: UAE/QatarviaJeddah/Oman; Jeddah\u2192UAE/Oman/Qatar; Salalah/Sohar\u2192UAE/Saudi/Kuwait/Bahrain/Qatar landsidebookingpauses. Carrier-specific, not generalportclosure. LongerFujairahyard-densityextractNovember13 13:30notprovennew. Reefer/dangerousgoodsrestrictionsdisplayednotnew. Full-oceandiffnotperformedinheader-onlypasses."
         }
       ]
     },
