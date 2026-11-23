@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261123-1700-maersk56",
-  "checked_at": "2026-11-23T17:00:00Z",
+  "snapshot_id": "uae-public-watch-20261123-1730-riyadh-air",
+  "checked_at": "2026-11-23T17:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3359,6 +3359,52 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-15T04:31:01Z",
           "kind": "update",
           "note": "Current reconciliation revision23 records five04ZMETAR/page04:20/retrieval04:30:42-04:31:01. Elapsed secondary rough-sea endpoint not cancellation/resolution; dated bulletin and marine not reread. Prior AvMet source: {\"name\": \"NCM AvMet public weather\", \"url\": \"https://www.avmet.ae/airports.aspx\", \"access\": \"direct\", \"description\": \"AvMet read November15 03:59:44-04:00:08UTC; page03:48, fiveMETARs03:30, TAFNov14 23Z unchanged. No numerical values supplied; not AQ/airport-wide operations. Earlier data gaps and clock discrepancies retained.\", \"published_at\": null, \"checked_at\": \"2026-11-15T04:00:08Z\"}"
+        }
+      ]
+    },
+    {
+      "id": "riyadh-air-dubai-direct-resumption-20261122",
+      "revision": 1,
+      "title": "Riyadh Air Dubai direct service resumed; connecting cancellations remain",
+      "summary": "Riyadh Air lists Riyadh-Dubai direct service resumption for November 22. Public commercial history corroborates RX243 landed November 22 at 19:04 UAE. First verified by this watch November 23 at 17:30 UTC, not a November 23 resumption. Connecting flights remain cancelled until further notice. Carrier/route-specific recovery does not establish all frequencies or guarantee future flights; Etihad Abu Dhabi-Riyadh/Dammam cancellations through November 30 remain a separate baseline.",
+      "status": "active",
+      "severity": "informational",
+      "confidence": "high",
+      "confidence_basis": "Direct carrier notice plus public commercial flight-history corroboration for one completed flight; no inference about passengers, all frequencies or future operation.",
+      "category": "transport",
+      "geographies": [
+        "Riyadh-Dubai route"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-23T17:30:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Riyadh Air travel update",
+          "url": "https://www.riyadhair.com/en-sa/travel-update",
+          "access": "direct",
+          "description": "First verified in November 23 17:30 UTC watch (minute precision); publication time not displayed. Lists direct Riyadh-Dubai resumption for November 22 while connecting flights remain cancelled until further notice. Exact resumption clock unavailable.",
+          "published_at": null,
+          "checked_at": "2026-11-23T17:30:00Z"
+        },
+        {
+          "name": "Public commercial RX243 flight history",
+          "url": "https://www.flightradar24.com/data/playback/42aea0c7",
+          "access": "direct",
+          "description": "Reviewed in November 23 17:30 UTC watch. RX243 landed November 22 at 19:04 UAE (15:04 UTC). Corroborates one operated commercial service only; no passenger inference or future-frequency guarantee. Publication clock unavailable.",
+          "published_at": null,
+          "checked_at": "2026-11-23T17:30:00Z"
+        }
+      ],
+      "unknowns": [
+        "Exact resumption and notice publication times unavailable; event_at remains null rather than inventing midnight.",
+        "No guarantee of all frequencies or future flights; connecting-flight cancellation has no verified end."
+      ],
+      "history": [
+        {
+          "at": "2026-11-23T17:30:00Z",
+          "kind": "update",
+          "note": "First watch verification of carrier-specific November 22 direct-service recovery, with completed-flight corroboration at November 22 19:04 UAE. Newly discovered evidence, not a November 23 resumption. No matching existing incident found; unrelated airline restrictions remain unchanged."
         }
       ]
     }
