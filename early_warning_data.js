@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261123-1730-riyadh-air",
-  "checked_at": "2026-11-23T17:30:00Z",
+  "snapshot_id": "uae-public-watch-20261123-2000-etihad",
+  "checked_at": "2026-11-23T20:00:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -2404,9 +2404,9 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "etihad-saudi-route-cancellations-through-20261119",
-      "revision": 1,
-      "title": "Etihad Riyadh/Dammam passenger and cargo cancellations through November19",
-      "summary": "Undatedofficialnotice cancelsAUH\u2013Riyadh/Dammampassengerandcargo throughNovember19. SelectedJeddahservicesscheduledfromNovember6, not verifiedoperation. No airport-wideclosureinferred.",
+      "revision": 2,
+      "title": "Etihad Riyadh/Dammam passenger and cargo cancellations through November 30",
+      "summary": "Undated Etihad official notice cancels Abu Dhabi-Riyadh and Abu Dhabi-Dammam passenger and cargo services in both directions through November 30. Reconfirmed November 23 at 20:00 UTC; extension first observed by the watch November 17, not newly announced this check. Carrier-specific; Riyadh Air Dubai direct recovery does not resolve these separate cancellations. Prior selected Jeddah schedule was not proof of operation. No airport-wide closure inferred.",
       "status": "active",
       "severity": "watch",
       "confidence": "high",
@@ -2417,7 +2417,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Abu Dhabi\u2013Dammam"
       ],
       "event_at": null,
-      "checked_at": "2026-11-14T13:32:07Z",
+      "checked_at": "2026-11-23T20:00:00Z",
       "resolved_at": null,
       "sources": [
         {
@@ -2427,6 +2427,14 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Latestpasscompleted13:32:07UTC,startunknown; noticepublicationtimeabsent. RepeatedNovember8\u201314unchangedthroughNovember19.",
           "published_at": null,
           "checked_at": "2026-11-14T13:32:07Z"
+        },
+        {
+          "name": "Etihad official route notice recheck",
+          "url": "https://www.etihad.com/en-ae/manage/flight-status",
+          "access": "direct",
+          "description": "Rechecked November 23 20:00 UTC watch (minute precision): Abu Dhabi to/from Riyadh and Dammam passenger/cargo cancellations through November 30. Undated notice; publication time unavailable. Extension first observed in November 17 17:30-17:34 UTC watch window, not a November 23 announcement. Other airline routes and airport-wide operations not established by this notice.",
+          "published_at": null,
+          "checked_at": "2026-11-23T20:00:00Z"
         }
       ],
       "unknowns": [
@@ -2442,6 +2450,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-14T13:32:07Z",
           "kind": "update",
           "note": "CurrentstableIDassigned; route-specificongoingnotice, not allEtihad/UAEoperations."
+        },
+        {
+          "at": "2026-11-23T20:00:00Z",
+          "kind": "update",
+          "note": "Reconcile previously retained extension, first observed November 17 17:30-17:34 UTC and reconfirmed this check. Stable ID retained despite historical date suffix; no new severity or incident. Prior visible summary retained: Undatedofficialnotice cancelsAUH\u2013Riyadh/Dammampassengerandcargo throughNovember19. SelectedJeddahservicesscheduledfromNovember6, not verifiedoperation. No airport-wideclosureinferred."
         }
       ]
     },
@@ -3442,9 +3455,9 @@ window.ZAID_UAE_EARLY_WARNING = {
       "name": "Etihad",
       "url": "https://www.etihad.com/en-ae/manage/flight-status",
       "status": "checked",
-      "checked_at": "2026-11-15T04:31:01Z",
+      "checked_at": "2026-11-23T20:00:00Z",
       "published_at": null,
-      "detail": "Nov15 04:30:42-04:31:01Z: Undated Riyadh/Dammam throughNovember19 unchanged; Jeddah scheduled not observed. Prior 2026-11-15T04:00:08Z: Nov15 check03:59:44-04:00:08UTC (source subwindows unknown). Undated Riyadh/Dammam throughNovember19 unchanged; Jeddah scheduled not observed. Prior check 2026-11-15T03:29:13Z: Actual November15 03:28:57-03:29:13UTC before nominal03:30; source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T03:01:32Z: Actual November15 03:01:08-03:01:32UTC; exact source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T02:29:47Z: Actual November15 02:29:18-02:29:47UTC before nominal02:30; source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T01:59:13Z: Actual November15 01:58:52-01:59:13UTC checks before nominal02:00; exact per-source subwindow not supplied. Undated Riyadh/Dammam cancellation through November19 unchanged; selected Jeddah scheduled November6; removal not resolution. Complete earlier coverage row retained under stable history ID etihad-history-20261115T012905Z."
+      "detail": "November 23 20:00 UTC recheck: undated official AUH-Riyadh/Dammam passenger/cargo cancellations both directions through November 30, consistent with November 17 watch evidence; not a new announcement. Prior coverage 2026-11-15T04:31:01Z: Nov15 04:30:42-04:31:01Z: Undated Riyadh/Dammam throughNovember19 unchanged; Jeddah scheduled not observed. Prior 2026-11-15T04:00:08Z: Nov15 check03:59:44-04:00:08UTC (source subwindows unknown). Undated Riyadh/Dammam throughNovember19 unchanged; Jeddah scheduled not observed. Prior check 2026-11-15T03:29:13Z: Actual November15 03:28:57-03:29:13UTC before nominal03:30; source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T03:01:32Z: Actual November15 03:01:08-03:01:32UTC; exact source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T02:29:47Z: Actual November15 02:29:18-02:29:47UTC before nominal02:30; source subwindows unspecified. Undated Riyadh/Dammam cancellation through November19 unchanged; scheduled Jeddah not observed operation. Previous attempt/check 2026-11-15T01:59:13Z: Actual November15 01:58:52-01:59:13UTC checks before nominal02:00; exact per-source subwindow not supplied. Undated Riyadh/Dammam cancellation through November19 unchanged; selected Jeddah scheduled November6; removal not resolution. Complete earlier coverage row retained under stable history ID etihad-history-20261115T012905Z."
     },
     {
       "id": "flydubai",
