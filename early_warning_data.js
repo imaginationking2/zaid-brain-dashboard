@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261124-0700-ppa022",
-  "checked_at": "2026-11-24T07:00:00Z",
+  "snapshot_id": "uae-public-watch-20261124-1200-ukmto218",
+  "checked_at": "2026-11-24T12:00:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3461,6 +3461,45 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-24T07:00:00Z",
           "kind": "update",
           "note": "First watch observation of November 23 PPA notice citing November 12 instruments; delayed discovery is not a November 23 effective-date claim. No matching notice/circular record found. Dedupe identity PPA 022/2026, federal circular 07/2026 and resolution 4/S. Other maritime incidents remain separate."
+        }
+      ]
+    },
+    {
+      "id": "ukmto-warning-218-26-dibba-20261122",
+      "revision": 1,
+      "title": "UKMTO 218-26: reported projectile strike on anchored bulk carrier",
+      "summary": "UKMTO reports a company security officer account of an anchored commercial bulk carrier struck by an unknown projectile near Khor Fakkan in Dibba offshore anchorage on November 22 at 10:26 UTC (14:26 UAE). Fire reported; no casualties reported at notice time. Authorities investigating; vessels advised to use caution. First observed by this watch November 24 at 12:00 UTC, not a new November 24 strike. No verified spill, port/beach closure, wider shipping disruption or public instruction.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Official UKMTO notice directly verified, but underlying incident attributed to company security officer without known independent corroboration. No current outcome inferred.",
+      "category": "maritime",
+      "geographies": [
+        "Dibba offshore anchorage near Khor Fakkan"
+      ],
+      "event_at": "2026-11-22T10:26:00Z",
+      "checked_at": "2026-11-24T12:00:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO warning 218-26",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261123-ukmto_warning_218-26.pdf?rev=c7e5cc8ab919410b8992986bedf64329",
+          "access": "direct",
+          "description": "Official notice first observed by this watch November 24 at 12:00 UTC (minute precision). Reports company security officer account: anchored commercial bulk carrier hit by unknown projectile November 22 at 10:26 UTC near Khor Fakkan in Dibba offshore anchorage, fire reported, no casualties reported at notice time. Authorities investigating and UKMTO advises vessels to use caution. No official issue time established; November 23 filename is not publication-date confirmation. Secondary circulation November 24, including Newsquawk 08:41 UTC, is not an official publication timestamp.",
+          "published_at": null,
+          "checked_at": "2026-11-24T12:00:00Z"
+        }
+      ],
+      "unknowns": [
+        "Underlying incident has no known independent corroboration; later fire, damage and casualty outcomes unverified.",
+        "No verified spill, port or beach closure, wider shipping disruption or general public instruction.",
+        "Official publication date/time unavailable; filename date not adopted."
+      ],
+      "history": [
+        {
+          "at": "2026-11-24T12:00:00Z",
+          "kind": "update",
+          "note": "First watch observation of distinct warning 218-26 concerning November 22 10:26 UTC incident. No matching record found. Official notice existence is verified; incident remains attributed to company security officer. Distinct from 217-26 and PPA 022/2026; no linkage inferred. Event, discovery and unknown official publication times kept separate."
         }
       ]
     }
