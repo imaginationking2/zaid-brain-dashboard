@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261123-2000-etihad",
-  "checked_at": "2026-11-23T20:00:00Z",
+  "snapshot_id": "uae-public-watch-20261124-0700-ppa022",
+  "checked_at": "2026-11-24T07:00:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3418,6 +3418,49 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-23T17:30:00Z",
           "kind": "update",
           "note": "First watch verification of carrier-specific November 22 direct-service recovery, with completed-flight corroboration at November 22 19:04 UAE. Newly discovered evidence, not a November 23 resumption. No matching existing incident found; unrelated airline restrictions remain unchanged."
+        }
+      ]
+    },
+    {
+      "id": "adnoc-ppa-tanker-restrictions-notice022-2026",
+      "revision": 1,
+      "title": "ADNOC PPA notice 022/2026: tanker access restrictions and approved calls",
+      "summary": "PPA notice dated November 23 cites federal circular 07/2026 and resolution 4/S dated November 12. Tankers with crude, petroleum products, liquefied gases, chemicals or other hazardous/harmful cargo may not transit, enter or wait in PPA-controlled waters unless calling or conducting approved business at its ports/terminals. Approved calls at Ruwais, Jebel Dhanna, Das, Zirku and Mubarraz require pre-arrival documents 72 hours ahead. Rescue, pollution response and aid to persons in distress exempt. Stated 90-day period runs from referenced instruments, not this notice. No general port closure or ordinary container-freight change established.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "high",
+      "confidence_basis": "Direct ADNOC PPA authority notice; confidence applies to its stated scope and attribution. Referenced federal text not independently retrieved; no affected shipment identified.",
+      "category": "maritime",
+      "geographies": [
+        "ADNOC PPA-controlled waters",
+        "Ruwais",
+        "Jebel Dhanna",
+        "Das",
+        "Zirku",
+        "Mubarraz"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-24T07:00:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "ADNOC PPA Port Marine Notice 022/2026",
+          "url": "https://ppa.adnoc.ae/-/media/ppa/files/marine-notices/local-marine-notices/das/2026/dzmmn0222026marine-notice-restrictions-on-tanker-movements-within-uae-territorial-waters-including-d.ashx",
+          "access": "direct",
+          "description": "Notice dated November 23 for Das, Zirku and Mubarraz, first retrieved in November 24 07:00 UTC watch (minute precision). Cites Federal Maritime Administration circular 07/2026 and ministerial resolution 4/S dated November 12. Restricts specified tanker transit/entry/waiting in PPA-controlled waters except approved port/terminal business. Approved tanker calls at Ruwais, Jebel Dhanna, Das, Zirku or Mubarraz remain subject to pre-arrival requirements including documents 72 hours ahead; rescue, pollution response and assistance to persons in distress exempt. Rules stated for 90 days from issuance of referenced instruments, not November 23 port-notice publication. Exact issue clocks unavailable.",
+          "published_at": null,
+          "checked_at": "2026-11-24T07:00:00Z"
+        }
+      ],
+      "unknowns": [
+        "Referenced federal instruments not independently retrieved; exact effective and expiry instants not calculated.",
+        "No general port closure, ordinary container-freight change or specific-shipment impact verified."
+      ],
+      "history": [
+        {
+          "at": "2026-11-24T07:00:00Z",
+          "kind": "update",
+          "note": "First watch observation of November 23 PPA notice citing November 12 instruments; delayed discovery is not a November 23 effective-date claim. No matching notice/circular record found. Dedupe identity PPA 022/2026, federal circular 07/2026 and resolution 4/S. Other maritime incidents remain separate."
         }
       ]
     }
