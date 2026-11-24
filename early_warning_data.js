@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261124-1400-ukmto219",
-  "checked_at": "2026-11-24T14:00:00Z",
+  "snapshot_id": "uae-public-watch-20261124-1530-ukmto219-correction",
+  "checked_at": "2026-11-24T15:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3505,19 +3505,19 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "ukmto-warning-219-26-20261123",
-      "revision": 1,
+      "revision": 2,
       "title": "UKMTO 219-26: time-late report of three commercial vessels struck",
-      "summary": "Indexed official UKMTO 219-26 text reports three commercial vessels struck by unknown projectiles on November 23, exact event time unknown. Crews accounted for and vessels continued at report time; damage and environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC, not a newly timed November 24 event. Direct index rendered only a shell; official publication time unverified. No verified closure, onshore consequence or carrier interruption. Distinct notice from 218-26.",
+      "summary": "Primary UKMTO 219-26 PDF establishes event time November 23 at 20:25 UTC (00:25 UAE November 24): three commercial vessels struck by unknown projectiles. All accounted for and voyages continued at report time; damage/environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC; primary PDF verified at 15:30 UTC. Publication date indicated as November 24 by PDF filename/index, exact publication clock unverified. No verified closure, onshore consequence or carrier interruption. Distinct from 218-26.",
       "status": "active",
       "severity": "watch",
       "confidence": "medium",
-      "confidence_basis": "Indexed text of official UKMTO notice, with direct rendering limited to a shell. Confidence bounded by access mode; no independent incident corroboration or current outcome established.",
+      "confidence_basis": "Primary official PDF directly verified, improving access evidence; underlying report has no independent incident corroboration or verified later outcome. Confidence remains medium.",
       "category": "maritime",
       "geographies": [
         "Regional maritime waters; exact locality not established in reviewed text"
       ],
-      "event_at": null,
-      "checked_at": "2026-11-24T14:00:00Z",
+      "event_at": "2026-11-23T20:25:00Z",
+      "checked_at": "2026-11-24T15:30:00Z",
       "resolved_at": null,
       "sources": [
         {
@@ -3527,11 +3527,19 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Official-source index text observed through search/index at November 24 14:00 UTC watch (minute precision); direct rendering returned only a dynamic shell. Time-late November 23 report: three commercial vessels struck by unknown projectiles, crews accounted for, vessels continued, damage/environmental impact unknown, vessel caution. Not direct full-notice retrieval. Exact event clock and official publication date/time unverified.",
           "published_at": null,
           "checked_at": "2026-11-24T14:00:00Z"
+        },
+        {
+          "name": "UKMTO warning 219-26 primary PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261124-ukmto_warning_219-26.pdf?rev=8d57662b37b844e3a680cf462d2cdac1",
+          "access": "direct",
+          "description": "Primary PDF verified in November 24 15:30 UTC watch (minute precision), after first indexed observation at 14:00 UTC. Establishes November 23 20:25 UTC event time (00:25 UAE November 24). Same three commercial vessels struck by unknown projectiles; all accounted for, voyages continued, damage/environmental impact unknown. Filename/index indicate November 24 publication date; exact official publication clock unverified, no invented timestamp.",
+          "published_at": null,
+          "checked_at": "2026-11-24T15:30:00Z"
         }
       ],
       "unknowns": [
-        "Exact November 23 event time and official publication timestamp unverified; event_at and published_at remain null.",
-        "Direct full notice unavailable; damage, environmental impact and later outcomes unknown.",
+        "Exact official publication time unverified; date indicated November 24 by filename/index only, published_at remains null.",
+        "Damage, environmental impact and later outcomes unknown; no independent incident corroboration established.",
         "No verified closure, onshore consequence or carrier interruption; no inferred linkage to 218-26 or other incidents."
       ],
       "history": [
@@ -3539,6 +3547,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-24T14:00:00Z",
           "kind": "update",
           "note": "First watch observation of indexed official warning 219-26 for November 23, time unknown. Distinct notice from 218-26; preserve delayed-discovery versus event timing. Direct source shell is a coverage gap, not zero incidents or full-document verification. No matching existing record found."
+        },
+        {
+          "at": "2026-11-24T15:30:00Z",
+          "kind": "correction",
+          "note": "Primary PDF establishes previously unknown event time 2026-11-23T20:25:00Z. First observation remains November 24 14:00 UTC in original source/history. WATCH and incident identity unchanged; this is evidence correction, not a new incident. Earlier visible fields preserved: {\"summary\": \"Indexed official UKMTO 219-26 text reports three commercial vessels struck by unknown projectiles on November 23, exact event time unknown. Crews accounted for and vessels continued at report time; damage and environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC, not a newly timed November 24 event. Direct index rendered only a shell; official publication time unverified. No verified closure, onshore consequence or carrier interruption. Distinct notice from 218-26.\", \"unknowns\": [\"Exact November 23 event time and official publication timestamp unverified; event_at and published_at remain null.\", \"Direct full notice unavailable; damage, environmental impact and later outcomes unknown.\", \"No verified closure, onshore consequence or carrier interruption; no inferred linkage to 218-26 or other incidents.\"], \"confidence_basis\": \"Indexed text of official UKMTO notice, with direct rendering limited to a shell. Confidence bounded by access mode; no independent incident corroboration or current outcome established.\", \"event_at\": null, \"checked_at\": \"2026-11-24T14:00:00Z\"}"
         }
       ]
     }
