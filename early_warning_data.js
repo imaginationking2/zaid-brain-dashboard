@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261124-1530-ukmto219-correction",
-  "checked_at": "2026-11-24T15:30:00Z",
+  "snapshot_id": "uae-public-watch-20261125-0634-ukmto219-221",
+  "checked_at": "2026-11-25T06:34:06Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3505,19 +3505,19 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "ukmto-warning-219-26-20261123",
-      "revision": 2,
-      "title": "UKMTO 219-26: time-late report of three commercial vessels struck",
-      "summary": "Primary UKMTO 219-26 PDF establishes event time November 23 at 20:25 UTC (00:25 UAE November 24): three commercial vessels struck by unknown projectiles. All accounted for and voyages continued at report time; damage/environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC; primary PDF verified at 15:30 UTC. Publication date indicated as November 24 by PDF filename/index, exact publication clock unverified. No verified closure, onshore consequence or carrier interruption. Distinct from 218-26.",
+      "revision": 3,
+      "title": "UKMTO 219-26 Update 001: single tanker report after aggregate reclassification",
+      "summary": "UKMTO 219-26 Update 001 explicitly reclassifies the prior aggregate as three separate attacks. This record now concerns one eastbound tanker in the Strait of Hormuz struck by an unknown projectile November 22 at 20:25 UTC (00:25 UAE November 23). Transit continued; all crew accounted for at report time; damage/environmental impact unknown. Separate 220-26 and 221-26 records cover 20:32 and 20:42 UTC that day. Superseded aggregate is historical, not a fourth event. No verified closure or current movements inferred.",
       "status": "active",
       "severity": "watch",
       "confidence": "medium",
-      "confidence_basis": "Primary official PDF directly verified, improving access evidence; underlying report has no independent incident corroboration or verified later outcome. Confidence remains medium.",
+      "confidence_basis": "Official UKMTO primary Update 001 directly reread by the watch; confidence remains medium for attributed time-late incident evidence without independent corroboration or verified later outcome.",
       "category": "maritime",
       "geographies": [
         "Regional maritime waters; exact locality not established in reviewed text"
       ],
-      "event_at": "2026-11-23T20:25:00Z",
-      "checked_at": "2026-11-24T15:30:00Z",
+      "event_at": "2026-11-22T20:25:00Z",
+      "checked_at": "2026-11-25T06:34:06Z",
       "resolved_at": null,
       "sources": [
         {
@@ -3535,12 +3535,20 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Primary PDF verified in November 24 15:30 UTC watch (minute precision), after first indexed observation at 14:00 UTC. Establishes November 23 20:25 UTC event time (00:25 UAE November 24). Same three commercial vessels struck by unknown projectiles; all accounted for, voyages continued, damage/environmental impact unknown. Filename/index indicate November 24 publication date; exact official publication clock unverified, no invented timestamp.",
           "published_at": null,
           "checked_at": "2026-11-24T15:30:00Z"
+        },
+        {
+          "name": "UKMTO 219-26 Update 001 primary PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261124-ukmto_warning_219-26---update-01.pdf?rev=b1e6e670f4b64cd78ee6d900c30ca0fa",
+          "access": "direct",
+          "description": "Actual primary PDF text reread by root watch November 25 following the 06:30 UTC run. checked_at 06:34:06 UTC is reconciliation receipt bound, not an exact source retrieval second; individual retrieval time unrecorded. November 24 issue set, exact publication minute unknown. Update 001 explicitly reclassifies the earlier aggregate as three separate attacks. This report concerns one tanker November 22 at 20:25 UTC (00:25 UAE November 23). Eastbound tanker in Strait of Hormuz struck by unknown projectile, continued transit, all crew accounted for at report time, damage/environmental impact unknown; existing vessel caution. No closure, named hull identity or present movements inferred.",
+          "published_at": null,
+          "checked_at": "2026-11-25T06:34:06Z"
         }
       ],
       "unknowns": [
-        "Exact official publication time unverified; date indicated November 24 by filename/index only, published_at remains null.",
-        "Damage, environmental impact and later outcomes unknown; no independent incident corroboration established.",
-        "No verified closure, onshore consequence or carrier interruption; no inferred linkage to 218-26 or other incidents."
+        "Exact publication minute unknown; documents belong to November 24 issue set, published_at remains null.",
+        "Damage, environmental impact, later outcomes and distinct named hull identities unverified.",
+        "No verified closure or present vessel movements; superseded aggregate must not be counted as an additional event."
       ],
       "history": [
         {
@@ -3552,6 +3560,89 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-24T15:30:00Z",
           "kind": "correction",
           "note": "Primary PDF establishes previously unknown event time 2026-11-23T20:25:00Z. First observation remains November 24 14:00 UTC in original source/history. WATCH and incident identity unchanged; this is evidence correction, not a new incident. Earlier visible fields preserved: {\"summary\": \"Indexed official UKMTO 219-26 text reports three commercial vessels struck by unknown projectiles on November 23, exact event time unknown. Crews accounted for and vessels continued at report time; damage and environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC, not a newly timed November 24 event. Direct index rendered only a shell; official publication time unverified. No verified closure, onshore consequence or carrier interruption. Distinct notice from 218-26.\", \"unknowns\": [\"Exact November 23 event time and official publication timestamp unverified; event_at and published_at remain null.\", \"Direct full notice unavailable; damage, environmental impact and later outcomes unknown.\", \"No verified closure, onshore consequence or carrier interruption; no inferred linkage to 218-26 or other incidents.\"], \"confidence_basis\": \"Indexed text of official UKMTO notice, with direct rendering limited to a shell. Confidence bounded by access mode; no independent incident corroboration or current outcome established.\", \"event_at\": null, \"checked_at\": \"2026-11-24T14:00:00Z\"}"
+        },
+        {
+          "at": "2026-11-25T06:34:06Z",
+          "kind": "correction",
+          "note": "Primary Update 001 reclassifies aggregate into 219/220/221. Correct 219 event date to November 22 at 20:25 UTC; stable ID retained despite historical date suffix. Original first observation November 24 14:00 UTC preserved in old source/history; primary Update 001 reread November 25 after 06:30, exact read second unknown, current timestamp receipt bound. Prior aggregate superseded, not a fourth event. Earlier visible fields: {\"title\": \"UKMTO 219-26: time-late report of three commercial vessels struck\", \"summary\": \"Primary UKMTO 219-26 PDF establishes event time November 23 at 20:25 UTC (00:25 UAE November 24): three commercial vessels struck by unknown projectiles. All accounted for and voyages continued at report time; damage/environmental impact unknown. Vessel caution advised. First observed by this watch November 24 at 14:00 UTC; primary PDF verified at 15:30 UTC. Publication date indicated as November 24 by PDF filename/index, exact publication clock unverified. No verified closure, onshore consequence or carrier interruption. Distinct from 218-26.\", \"unknowns\": [\"Exact official publication time unverified; date indicated November 24 by filename/index only, published_at remains null.\", \"Damage, environmental impact and later outcomes unknown; no independent incident corroboration established.\", \"No verified closure, onshore consequence or carrier interruption; no inferred linkage to 218-26 or other incidents.\"], \"confidence_basis\": \"Primary official PDF directly verified, improving access evidence; underlying report has no independent incident corroboration or verified later outcome. Confidence remains medium.\", \"event_at\": \"2026-11-23T20:25:00Z\", \"checked_at\": \"2026-11-24T15:30:00Z\"}"
+        }
+      ]
+    },
+    {
+      "id": "ukmto-warning-220-26-20261122",
+      "revision": 1,
+      "title": "UKMTO 220-26: separate time-late tanker strike report",
+      "summary": "UKMTO 220-26 reports an eastbound tanker in the Strait of Hormuz struck by an unknown projectile November 22 at 20:32 UTC (00:32 UAE November 23). Transit continued and all crew accounted for at report time; damage/environmental impact unknown. Existing vessel caution. Separate attack report following explicit 219-26 Update 001 aggregate reclassification; no distinct named hull identity, closure or present movements inferred.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Official primary UKMTO report directly reread by root watch, but no independent incident corroboration or verified later outcome.",
+      "category": "maritime",
+      "geographies": [
+        "Strait of Hormuz"
+      ],
+      "event_at": "2026-11-22T20:32:00Z",
+      "checked_at": "2026-11-25T06:34:06Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO 220-26 primary PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261124-ukmto_warning_220-26.pdf?rev=5b9c02d562b14ceda33a9016887cc72e",
+          "access": "direct",
+          "description": "Actual primary PDF text reread by root watch November 25 following the 06:30 UTC run. checked_at 06:34:06 UTC is reconciliation receipt bound, not an exact source retrieval second; individual retrieval time unrecorded. November 24 issue set, exact publication minute unknown. Separate incident November 22 at 20:32 UTC (00:32 UAE November 23). Eastbound tanker in Strait of Hormuz struck by unknown projectile, continued transit, all crew accounted for at report time, damage/environmental impact unknown; existing vessel caution. No closure, named hull identity or present movements inferred.",
+          "published_at": null,
+          "checked_at": "2026-11-25T06:34:06Z"
+        }
+      ],
+      "unknowns": [
+        "Exact official publication minute unknown; November 24 issue set, published_at remains null.",
+        "Damage, environmental impact, later outcomes and distinct named hull identities unknown; no verified closure or current movements.",
+        "Historical first discovery of this separate notice not supplied; November 25 receipt/reread recorded without inventing an earlier observation."
+      ],
+      "history": [
+        {
+          "at": "2026-11-25T06:34:06Z",
+          "kind": "update",
+          "note": "Separate record appended from primary PDF reread November 25 following 06:30 UTC watch; checked timestamp is receipt bound, individual retrieval time unknown. Event November 22 20:32 UTC distinct from November 24 issue set and current reconciliation. 219 aggregate superseded, not a fourth event; prior history retained."
+        }
+      ]
+    },
+    {
+      "id": "ukmto-warning-221-26-20261122",
+      "revision": 1,
+      "title": "UKMTO 221-26: separate time-late tanker strike report",
+      "summary": "UKMTO 221-26 reports an eastbound tanker in the Strait of Hormuz struck by an unknown projectile November 22 at 20:42 UTC (00:42 UAE November 23). Transit continued and all crew accounted for at report time; damage/environmental impact unknown. Existing vessel caution. Separate attack report following explicit 219-26 Update 001 aggregate reclassification; no distinct named hull identity, closure or present movements inferred.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Official primary UKMTO report directly reread by root watch, but no independent incident corroboration or verified later outcome.",
+      "category": "maritime",
+      "geographies": [
+        "Strait of Hormuz"
+      ],
+      "event_at": "2026-11-22T20:42:00Z",
+      "checked_at": "2026-11-25T06:34:06Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO 221-26 primary PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261124-ukmto_warning_221-26.pdf?rev=26e3f50218144bbcb7ea1d5906b63bdd",
+          "access": "direct",
+          "description": "Actual primary PDF text reread by root watch November 25 following the 06:30 UTC run. checked_at 06:34:06 UTC is reconciliation receipt bound, not an exact source retrieval second; individual retrieval time unrecorded. November 24 issue set, exact publication minute unknown. Separate incident November 22 at 20:42 UTC (00:42 UAE November 23). Eastbound tanker in Strait of Hormuz struck by unknown projectile, continued transit, all crew accounted for at report time, damage/environmental impact unknown; existing vessel caution. No closure, named hull identity or present movements inferred.",
+          "published_at": null,
+          "checked_at": "2026-11-25T06:34:06Z"
+        }
+      ],
+      "unknowns": [
+        "Exact official publication minute unknown; November 24 issue set, published_at remains null.",
+        "Damage, environmental impact, later outcomes and distinct named hull identities unknown; no verified closure or current movements.",
+        "Historical first discovery of this separate notice not supplied; November 25 receipt/reread recorded without inventing an earlier observation."
+      ],
+      "history": [
+        {
+          "at": "2026-11-25T06:34:06Z",
+          "kind": "update",
+          "note": "Separate record appended from primary PDF reread November 25 following 06:30 UTC watch; checked timestamp is receipt bound, individual retrieval time unknown. Event November 22 20:42 UTC distinct from November 24 issue set and current reconciliation. 219 aggregate superseded, not a fourth event; prior history retained."
         }
       ]
     }
