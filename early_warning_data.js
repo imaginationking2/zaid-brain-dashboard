@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261125-0634-ukmto219-221",
-  "checked_at": "2026-11-25T06:34:06Z",
+  "snapshot_id": "uae-public-watch-20261125-0830-us-mission",
+  "checked_at": "2026-11-25T08:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3643,6 +3643,54 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-25T06:34:06Z",
           "kind": "update",
           "note": "Separate record appended from primary PDF reread November 25 following 06:30 UTC watch; checked timestamp is receipt bound, individual retrieval time unknown. Event November 22 20:42 UTC distinct from November 24 issue set and current reconciliation. 219 aggregate superseded, not a fourth event; prior history retained."
+        }
+      ]
+    },
+    {
+      "id": "us-mission-uae-security-alert-20261124",
+      "revision": 1,
+      "title": "Reported U.S. Mission UAE November 24 regional security alert",
+      "summary": "Two public secondary reports reproduce a U.S. Mission UAE alert dated November 24 advising Americans across the Middle East to maintain heightened vigilance amid regional threats, prepare for potential cancellations, airspace closures or travel disruption, and verify flights. First observed by this watch November 25 at 08:30 UTC. Primary embassy endpoint returned 403. This is precautionary advice, not a UAE evacuation order, confirmed closure or change to the separate October 23 Level 3 country advisory. No UAE disruption verified.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "High confidence in reported issuance from two public secondary reproductions, with overall evidence confidence medium because primary text could not be retrieved. Reproductions are not two independent primary confirmations; no operational impact verified.",
+      "category": "official_advisory",
+      "geographies": [
+        "United Arab Emirates",
+        "Middle East regional travel"
+      ],
+      "event_at": null,
+      "checked_at": "2026-11-25T08:30:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "Gulf News reproduction of U.S. regional security advice",
+          "url": "https://gulfnews.com/amp/story/world%2Fmena%2Fus-warns-americans-in-the-middle-east-of-iranian-houthi-attack-threats-1.500760091",
+          "access": "secondhand",
+          "description": "First observed November 25 08:30 UTC. Publisher update displayed November 25 09:30 UAE (05:30 UTC); update time is not embassy alert issuance time. Reports November 24 U.S. Mission alert on heightened vigilance and potential travel disruption. No confirmed UAE closure or evacuation order established.",
+          "published_at": null,
+          "checked_at": "2026-11-25T08:30:00Z"
+        },
+        {
+          "name": "Defconlevel secondary alert reproduction",
+          "url": "https://www.defconlevel.com/alert/2026-11-23-u-s-mission-in-uae-issues-security-alert-on-iranian-and-houthi-attack-threat",
+          "access": "secondhand",
+          "description": "Read in November 25 08:30 UTC watch as supplementary reproduction of Mission UAE alert dated November 24. Aggregator URL/date labels and timestamps conflict; not adopted as exact alert issue time. Same underlying alert, not independent primary confirmation.",
+          "published_at": null,
+          "checked_at": "2026-11-25T08:30:00Z"
+        }
+      ],
+      "unknowns": [
+        "Primary https://ae.usembassy.gov/security-alert-u-s-mission-united-arab-emirates-november-24-2026/ returned 403; no successful direct observation claimed.",
+        "Exact November 24 alert issuance time unverified; event_at and published_at remain null, with first observation separately recorded.",
+        "No verified UAE evacuation order, closure or disruption; formal U.S. country advisory remains separate October 23 Level 3."
+      ],
+      "history": [
+        {
+          "at": "2026-11-25T08:30:00Z",
+          "kind": "update",
+          "note": "First watch observation of secondary reproductions of November 24 U.S. Mission UAE security alert. No matching record found. WATCH advisory retained with inaccessible primary explicitly disclosed; no source timestamp invented from conflicting aggregator labels or publisher update. Prior advisories and all incident history remain separate."
         }
       ]
     }
