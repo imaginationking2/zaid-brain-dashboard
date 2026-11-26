@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261125-0830-us-mission",
-  "checked_at": "2026-11-25T08:30:00Z",
+  "snapshot_id": "uae-public-watch-20261126-0330-ukmto222",
+  "checked_at": "2026-11-26T03:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3691,6 +3691,45 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-25T08:30:00Z",
           "kind": "update",
           "note": "First watch observation of secondary reproductions of November 24 U.S. Mission UAE security alert. No matching record found. WATCH advisory retained with inaccessible primary explicitly disclosed; no source timestamp invented from conflicting aggregator labels or publisher update. Prior advisories and all incident history remain separate."
+        }
+      ]
+    },
+    {
+      "id": "ukmto-warning-222-26-20261125",
+      "revision": 1,
+      "title": "UKMTO 222-26: reported explosion near tanker west of Dubai",
+      "summary": "UKMTO Suspicious Activity warning 222-26 records a tanker master report of an explosion caused by an unknown projectile near the tanker about 50 nautical miles west of Dubai on November 25 at 21:30 UTC (01:30 UAE November 26). Crew all safe and accounted for; no damage or environmental impact reported at notice time. Authorities investigating; vessels advised to transit cautiously and report suspicious activity. First observed by watch November 26 at 03:30 UTC. No verified port closure, carrier stoppage or resident instruction.",
+      "status": "active",
+      "severity": "watch",
+      "confidence": "medium",
+      "confidence_basis": "Official primary UKMTO Suspicious Activity notice verified; occurrence remains a tanker master account without independent corroboration. Confidence in issuer is distinct from confidence in underlying occurrence or later outcome.",
+      "category": "maritime",
+      "geographies": [
+        "Offshore west of Dubai"
+      ],
+      "event_at": "2026-11-25T21:30:00Z",
+      "checked_at": "2026-11-26T03:30:00Z",
+      "resolved_at": null,
+      "sources": [
+        {
+          "name": "UKMTO warning 222-26 primary PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/20261125-ukmto_warning-222-26.pdf?rev=d10d7544e1274cb594c1257ad0ec6dc2",
+          "access": "direct",
+          "description": "Official Suspicious Activity notice first observed November 26 03:30 UTC watch. Incident November 25 21:30 UTC (November 26 01:30 UAE), about 50 nautical miles west of Dubai. Master reported explosion from unknown projectile near tanker; all crew safe/accounted for; no damage or environmental impact reported at notice time. Authorities investigating, vessel caution and suspicious-activity reporting advised. Exact official publication time absent; incident time and filename not used as publication timestamp.",
+          "published_at": null,
+          "checked_at": "2026-11-26T03:30:00Z"
+        }
+      ],
+      "unknowns": [
+        "Master account not independently corroborated; no named vessel, tactical tracking or current movements inferred.",
+        "Exact official publication time unknown; published_at remains null. No verified later outcome or broader disruption.",
+        "No verified port closure, carrier stoppage or public instruction for residents; no reported damage is an attributed notice-time statement, not environmental clearance."
+      ],
+      "history": [
+        {
+          "at": "2026-11-26T03:30:00Z",
+          "kind": "update",
+          "note": "First watch observation of distinct UKMTO 222-26 Suspicious Activity report. Incident November 25 21:30 UTC kept separate from November 26 03:30 UTC discovery and unknown publication time. Dated index https://www.ukmto.org/recent-incidents?gsid=d960774b-1309-458d-ba69-74674ff5d99b supports notice identity, not comprehensive live feed coverage. All prior incidents/coverage retained; no inferred link to earlier reports."
         }
       ]
     }
