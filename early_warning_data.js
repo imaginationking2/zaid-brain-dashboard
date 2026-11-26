@@ -1,7 +1,7 @@
 window.ZAID_UAE_EARLY_WARNING = {
   "schema_version": 1,
-  "snapshot_id": "uae-public-watch-20261126-0330-ukmto222",
-  "checked_at": "2026-11-26T03:30:00Z",
+  "snapshot_id": "uae-public-watch-20261126-1730-ppa-jmic117",
+  "checked_at": "2026-11-26T17:30:00Z",
   "mode": "snapshot",
   "incidents": [
     {
@@ -3423,11 +3423,11 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "adnoc-ppa-tanker-restrictions-notice022-2026",
-      "revision": 1,
+      "revision": 2,
       "title": "ADNOC PPA notice 022/2026: tanker access restrictions and approved calls",
       "summary": "PPA notice dated November 23 cites federal circular 07/2026 and resolution 4/S dated November 12. Tankers with crude, petroleum products, liquefied gases, chemicals or other hazardous/harmful cargo may not transit, enter or wait in PPA-controlled waters unless calling or conducting approved business at its ports/terminals. Approved calls at Ruwais, Jebel Dhanna, Das, Zirku and Mubarraz require pre-arrival documents 72 hours ahead. Rescue, pollution response and aid to persons in distress exempt. Stated 90-day period runs from referenced instruments, not this notice. No general port closure or ordinary container-freight change established.",
       "status": "active",
-      "severity": "watch",
+      "severity": "moderate",
       "confidence": "high",
       "confidence_basis": "Direct ADNOC PPA authority notice; confidence applies to its stated scope and attribution. Referenced federal text not independently retrieved; no affected shipment identified.",
       "category": "maritime",
@@ -3461,6 +3461,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-24T07:00:00Z",
           "kind": "update",
           "note": "First watch observation of November 23 PPA notice citing November 12 instruments; delayed discovery is not a November 23 effective-date claim. No matching notice/circular record found. Dedupe identity PPA 022/2026, federal circular 07/2026 and resolution 4/S. Other maritime incidents remain separate."
+        },
+        {
+          "at": "2026-11-26T17:30:00Z",
+          "kind": "update",
+          "note": "Requested ELEVATED logistics reassessment maps to schema severity moderate for verified carrier-type access/documentation restrictions. Same November 23 PPA 022/2026 notice already recorded and first observed November 24 07:00 UTC; November 26 rediscovery is not a new announcement or effective date. Prior severity watch; high confidence, tanker-specific scope, exceptions, unknown federal-instrument expiry and original observation times unchanged. No duplicate incident or general port closure."
         }
       ]
     },
@@ -3696,9 +3701,9 @@ window.ZAID_UAE_EARLY_WARNING = {
     },
     {
       "id": "ukmto-warning-222-26-20261125",
-      "revision": 1,
+      "revision": 2,
       "title": "UKMTO 222-26: reported explosion near tanker west of Dubai",
-      "summary": "UKMTO Suspicious Activity warning 222-26 records a tanker master report of an explosion caused by an unknown projectile near the tanker about 50 nautical miles west of Dubai on November 25 at 21:30 UTC (01:30 UAE November 26). Crew all safe and accounted for; no damage or environmental impact reported at notice time. Authorities investigating; vessels advised to transit cautiously and report suspicious activity. First observed by watch November 26 at 03:30 UTC. No verified port closure, carrier stoppage or resident instruction.",
+      "summary": "UKMTO 222-26 records a tanker master report of an unknown-projectile explosion near the tanker about 50 nautical miles west of Dubai on November 25 at 21:30 UTC (01:30 UAE November 26). Crew safe/accounted for, no damage or environmental impact reported at notice time. November 26 JMIC 117 indexed official text describes two nearby reported explosions and repeats no reported damage/pollution; direct PDF unavailable, not independent occurrence confirmation. Authorities investigating; vessel caution. No verified port closure, carrier stoppage or resident instruction.",
       "status": "active",
       "severity": "watch",
       "confidence": "medium",
@@ -3708,7 +3713,7 @@ window.ZAID_UAE_EARLY_WARNING = {
         "Offshore west of Dubai"
       ],
       "event_at": "2026-11-25T21:30:00Z",
-      "checked_at": "2026-11-26T03:30:00Z",
+      "checked_at": "2026-11-26T17:30:00Z",
       "resolved_at": null,
       "sources": [
         {
@@ -3718,6 +3723,14 @@ window.ZAID_UAE_EARLY_WARNING = {
           "description": "Official Suspicious Activity notice first observed November 26 03:30 UTC watch. Incident November 25 21:30 UTC (November 26 01:30 UAE), about 50 nautical miles west of Dubai. Master reported explosion from unknown projectile near tanker; all crew safe/accounted for; no damage or environmental impact reported at notice time. Authorities investigating, vessel caution and suspicious-activity reporting advised. Exact official publication time absent; incident time and filename not used as publication timestamp.",
           "published_at": null,
           "checked_at": "2026-11-26T03:30:00Z"
+        },
+        {
+          "name": "JMIC advisory Update 117 indexed official PDF",
+          "url": "https://www.ukmto.org/-/media/ukmto/products/jmic_advisory_update_117_26-nov.pdf?rev=0f40aa2f469e4ad49304c026fc7d6a64",
+          "access": "secondhand",
+          "description": "Official PDF indexed text observed November 26 17:30 UTC watch; direct open unavailable. Update 117 dated November 26, exact publication time unverified. For existing 222-26 describes two reported nearby explosions and no reported damage/pollution. Same reporting chain, not independent corroboration. Separate 223-26 tanker report and reduced regional traffic mentioned without sufficient verified event detail for a new record or UAE-specific closure conclusion.",
+          "published_at": null,
+          "checked_at": "2026-11-26T17:30:00Z"
         }
       ],
       "unknowns": [
@@ -3730,6 +3743,11 @@ window.ZAID_UAE_EARLY_WARNING = {
           "at": "2026-11-26T03:30:00Z",
           "kind": "update",
           "note": "First watch observation of distinct UKMTO 222-26 Suspicious Activity report. Incident November 25 21:30 UTC kept separate from November 26 03:30 UTC discovery and unknown publication time. Dated index https://www.ukmto.org/recent-incidents?gsid=d960774b-1309-458d-ba69-74674ff5d99b supports notice identity, not comprehensive live feed coverage. All prior incidents/coverage retained; no inferred link to earlier reports."
+        },
+        {
+          "at": "2026-11-26T17:30:00Z",
+          "kind": "update",
+          "note": "Added qualified JMIC 117 indexed text, direct PDF unavailable. Reported two nearby explosions refine existing 222-26 description; no independent occurrence confirmation or new port effect. Original primary PDF, November 26 03:30 UTC first observation and November 25 21:30 UTC event unchanged. Prior visible summary retained: UKMTO Suspicious Activity warning 222-26 records a tanker master report of an explosion caused by an unknown projectile near the tanker about 50 nautical miles west of Dubai on November 25 at 21:30 UTC (01:30 UAE November 26). Crew all safe and accounted for; no damage or environmental impact reported at notice time. Authorities investigating; vessels advised to transit cautiously and report suspicious activity. First observed by watch November 26 at 03:30 UTC. No verified port closure, carrier stoppage or resident instruction."
         }
       ]
     }
